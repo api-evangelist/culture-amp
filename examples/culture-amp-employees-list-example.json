@@ -1,0 +1,48 @@
+{
+  "data": [
+    {
+      "id": "96b1cff7-3099-44a9-bd28-0292be8aff7f",
+      "name": "Bertram Gilfoyle",
+      "preferredName": "Gilfoyle",
+      "birthDate": "1980-08-24",
+      "startDate": "2015-07-19",
+      "employeeIdentifier": "2",
+      "email": "gilfoyle@piedpiper.com",
+      "links": [
+        {
+          "rel": "demographics",
+          "uri": "/v1/employees/96b1cff7-3099-44a9-bd28-0292be8aff7f/demographics"
+        },
+        {
+          "rel": "manager-reviews",
+          "uri": "/v1/employees/96b1cff7-3099-44a9-bd28-0292be8aff7f/manager-reviews"
+        }
+      ],
+      "processedAt": "2019-08-01T12:00:00Z"
+    },
+    {
+      "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "name": "Richard Hendricks",
+      "preferredName": "Richard",
+      "birthDate": "1985-05-20",
+      "startDate": "2014-01-15",
+      "employeeIdentifier": "1",
+      "email": "richard@piedpiper.com",
+      "links": [
+        {
+          "rel": "demographics",
+          "uri": "/v1/employees/a1b2c3d4-e5f6-7890-abcd-ef1234567890/demographics"
+        },
+        {
+          "rel": "manager-reviews",
+          "uri": "/v1/employees/a1b2c3d4-e5f6-7890-abcd-ef1234567890/manager-reviews"
+        }
+      ],
+      "processedAt": "2023-01-15T08:00:00Z"
+    }
+  ],
+  "pagination": {
+    "afterKey": "ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J",
+    "nextPath": "/v1/employees?cursor=ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J"
+  }
+}

@@ -1,0 +1,168 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "ca": "https://api.cultureamp.com/v1/vocab#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "Employee": "ca:Employee",
+    "id": "@id",
+    "employeeIdentifier": "ca:employeeIdentifier",
+    "email": {
+      "@id": "schema:email",
+      "@type": "@id"
+    },
+    "name": "schema:name",
+    "preferredName": "ca:preferredName",
+    "birthDate": {
+      "@id": "schema:birthDate",
+      "@type": "xsd:date"
+    },
+    "startDate": {
+      "@id": "schema:startDate",
+      "@type": "xsd:date"
+    },
+    "endDate": {
+      "@id": "schema:endDate",
+      "@type": "xsd:date"
+    },
+    "processedAt": {
+      "@id": "ca:processedAt",
+      "@type": "xsd:dateTime"
+    },
+    "links": {
+      "@id": "ca:links",
+      "@container": "@set"
+    },
+    "rel": "ca:linkRelation",
+    "uri": {
+      "@id": "ca:linkUri",
+      "@type": "@id"
+    },
+
+    "Demographic": "ca:Demographic",
+    "value": "ca:demographicValue",
+
+    "PerformanceCycle": "ca:PerformanceCycle",
+    "state": "ca:cycleState",
+    "createdAt": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:dateTime"
+    },
+    "updatedAt": {
+      "@id": "schema:dateModified",
+      "@type": "xsd:dateTime"
+    },
+
+    "ManagerReview": "ca:ManagerReview",
+    "performanceCycleId": "ca:performanceCycleId",
+    "managerReviewId": "ca:managerReviewId",
+    "employeeId": "ca:employeeId",
+    "managerId": "ca:managerId",
+    "performanceRating": "ca:performanceRating",
+    "ratingQuestion": "ca:ratingQuestion",
+    "ratingBuckets": {
+      "@id": "ca:ratingBuckets",
+      "@container": "@set"
+    },
+    "rating": "ca:rating",
+    "title": "schema:name",
+    "description": "schema:description",
+    "status": "ca:status",
+    "reviewAcknowledged": "ca:reviewAcknowledged",
+    "completedAt": {
+      "@id": "ca:completedAt",
+      "@type": "xsd:dateTime"
+    },
+    "openTextQuestions": {
+      "@id": "ca:openTextQuestions",
+      "@container": "@set"
+    },
+    "multipleChoiceQuestions": {
+      "@id": "ca:multipleChoiceQuestions",
+      "@container": "@set"
+    },
+    "multipleChoiceMultiSelectQuestions": {
+      "@id": "ca:multipleChoiceMultiSelectQuestions",
+      "@container": "@set"
+    },
+    "answer": "ca:answer",
+    "answers": {
+      "@id": "ca:answers",
+      "@container": "@set"
+    },
+    "options": {
+      "@id": "ca:options",
+      "@container": "@set"
+    },
+    "text": "ca:questionText",
+
+    "Survey": "ca:Survey",
+    "rdeEnabled": "ca:rdeEnabled",
+    "workflow": "ca:surveyWorkflow",
+    "launchedAt": {
+      "@id": "ca:launchedAt",
+      "@type": "xsd:dateTime"
+    },
+    "closedAt": {
+      "@id": "ca:closedAt",
+      "@type": "xsd:dateTime"
+    },
+    "kioskModeEnabled": "ca:kioskModeEnabled",
+
+    "SurveyQuestion": "ca:SurveyQuestion",
+    "code": "ca:code",
+    "questionType": "ca:questionType",
+    "label": "ca:localizedLabel",
+    "ratingScale": "ca:ratingScale",
+    "selectOptions": {
+      "@id": "ca:selectOptions",
+      "@container": "@set"
+    },
+    "otherOption": "ca:otherOption",
+    "sectionId": "ca:sectionId",
+    "factorIds": {
+      "@id": "ca:factorIds",
+      "@container": "@set"
+    },
+
+    "SurveyFactor": "ca:SurveyFactor",
+    "type": "ca:factorType",
+    "indexFactor": "ca:indexFactor",
+    "customFactor": "ca:customFactor",
+    "shortDescription": "ca:shortDescription",
+    "longDescription": "ca:longDescription",
+    "order": "ca:sortOrder",
+
+    "SurveySection": "ca:SurveySection",
+
+    "SurveyResponse": "ca:SurveyResponse",
+    "captureLocale": "ca:captureLocale",
+    "surveySubmittedBy": "ca:surveySubmittedBy",
+    "startedAt": {
+      "@id": "ca:startedAt",
+      "@type": "xsd:dateTime"
+    },
+    "submittedAt": {
+      "@id": "ca:submittedAt",
+      "@type": "xsd:dateTime"
+    },
+    "expiredAt": {
+      "@id": "ca:expiredAt",
+      "@type": "xsd:dateTime"
+    },
+
+    "Pagination": "ca:Pagination",
+    "afterKey": "ca:paginationAfterKey",
+    "nextPath": "ca:paginationNextPath",
+
+    "Error": "ca:Error",
+    "message": "ca:errorMessage",
+
+    "data": {
+      "@id": "ca:data",
+      "@container": "@set"
+    },
+    "pagination": "ca:pagination"
+  }
+}

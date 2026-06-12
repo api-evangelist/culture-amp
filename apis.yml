@@ -50,6 +50,22 @@ apis:
         url: https://api.cultureamp.com/spec
       - type: Authentication
         url: https://docs.api.cultureamp.com/docs/resources-getting-started
+      - type: OpenAPILocal
+        url: openapi/culture-amp-public-api-openapi.yml
+      - type: JSONSchema
+        url: json-schema/culture-amp-employee-schema.json
+      - type: JSONSchema
+        url: json-schema/culture-amp-performance-cycle-schema.json
+      - type: JSONSchema
+        url: json-schema/culture-amp-manager-review-schema.json
+      - type: Example
+        url: examples/culture-amp-employee-example.json
+      - type: Example
+        url: examples/culture-amp-employees-list-example.json
+      - type: Example
+        url: examples/culture-amp-performance-cycle-example.json
+      - type: Example
+        url: examples/culture-amp-manager-review-example.json
 common:
   - type: Website
     url: https://www.cultureamp.com
@@ -73,6 +89,10 @@ common:
     url: rate-limits/culture-amp-rate-limits.yml
   - type: FinOps
     url: finops/culture-amp-finops.yml
+  - type: Vocabulary
+    url: vocabulary/culture-amp-vocabulary.yml
+  - type: JSONLDContext
+    url: json-ld/culture-amp-context.jsonld
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

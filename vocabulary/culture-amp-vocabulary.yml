@@ -1,0 +1,132 @@
+vocabulary:
+  name: Culture Amp API Vocabulary
+  description: Key terms and concepts used in the Culture Amp Public API
+  url: https://docs.api.cultureamp.com
+  version: "0.0.1"
+
+terms:
+
+  - term: Employee
+    definition: >
+      An individual who is a member of an organization tracked in Culture Amp.
+      Each employee has a unique Culture Amp identifier (UUID) and optionally an
+      organization-supplied employee identifier.
+    related:
+      - employeeIdentifier
+      - demographics
+      - manager-reviews
+
+  - term: employeeIdentifier
+    definition: >
+      The unique identifier used by the employee's organization (e.g., HRIS ID)
+      to identify the employee, distinct from the Culture Amp internal UUID.
+
+  - term: Demographic
+    definition: >
+      A named attribute-value pair describing an employee's characteristics
+      (e.g., department, location, job level). Used for segmenting survey results
+      and analytics.
+
+  - term: PerformanceCycle
+    definition: >
+      A defined period during which employee performance is evaluated. Cycles
+      have a name, a state (active, closed, ready), and timestamps tracking
+      creation, update, and API processing.
+
+  - term: PerformanceCycleState
+    definition: >
+      The current phase of a performance cycle. Possible values: active
+      (currently running), closed (completed), ready (configured but not yet started).
+    values:
+      - active
+      - closed
+      - ready
+
+  - term: ManagerReview
+    definition: >
+      A structured evaluation of an employee completed by their manager within
+      a performance cycle. Contains performance ratings, open-text responses,
+      and multiple-choice question answers.
+
+  - term: PerformanceRating
+    definition: >
+      The quantitative and qualitative assessment assigned to an employee
+      during a manager review, comprising a rating question, rating buckets
+      (scale anchors), and the actual rating awarded.
+
+  - term: RatingBucket
+    definition: >
+      A discrete performance tier within a rating scale (e.g., "Outstanding",
+      "Good", "Needs Improvement") that maps a label to a numeric value.
+
+  - term: PerformanceReviewStatus
+    definition: >
+      The workflow state of a manager review. Reviews with "dirty" status
+      are excluded from API responses.
+    values:
+      - completed
+      - shared
+      - dirty
+      - incomplete
+
+  - term: Survey
+    definition: >
+      An employee engagement or culture survey administered to participants
+      in an organization. Contains questions, factors, sections, and responses.
+      Note: Survey endpoints are deprecated in the public API.
+
+  - term: SurveyQuestion
+    definition: >
+      An individual question within a survey, with a type (culture, segment, etc.),
+      a localized label, optional select options, and associations to sections
+      and factors.
+
+  - term: SurveyFactor
+    definition: >
+      A thematic grouping or measurement dimension used in survey reporting
+      (e.g., "Engagement", "Inclusion"). Factors may be index factors that
+      drive composite scores.
+
+  - term: SurveySection
+    definition: >
+      A logical grouping of related questions within a survey, supporting
+      structured presentation and reporting.
+
+  - term: SurveyResponse
+    definition: >
+      An individual participant's set of answers to a survey. Contains per-question
+      answers (ratings, text, or select choices) and timestamps for start and submission.
+
+  - term: rdeEnabled
+    definition: >
+      Raw Data Extract enabled flag. When true, the survey or response was launched
+      with RDE enabled, allowing raw response data to be accessed via the Reporting API.
+
+  - term: processedAt
+    definition: >
+      The timestamp indicating when a resource was last ingested and processed
+      by the Culture Amp Public API. Consumers can use this field to detect
+      changes since their last retrieval.
+
+  - term: Pagination
+    definition: >
+      Cursor-based pagination metadata returned with list responses. Includes
+      an afterKey (opaque cursor) and a nextPath URL for fetching the subsequent
+      page of results.
+
+  - term: OAuth2ClientCredentials
+    definition: >
+      The authentication mechanism used by the Culture Amp Public API. Client
+      applications obtain access tokens via the OAuth 2.0 Client Credentials
+      Flow using a client ID and secret, then present the token as a Bearer
+      credential on each API request.
+
+scopes:
+  - scope: employees-read
+    description: Grants read access to employee resources
+  - scope: employee-demographics-read
+    description: Grants read access to employee demographic assignments
+  - scope: performance-evaluations-read
+    description: Grants read access to performance cycles and manager reviews
+  - scope: surveys-read
+    description: Grants read access to survey data (deprecated endpoints)

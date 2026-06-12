@@ -1,0 +1,83 @@
+{
+  "data": {
+    "performanceCycleId": "b6505a73-d45f-4091-b3fb-74997de4cd01",
+    "managerReviewId": "b6505a73-d45f-4091-b3fb-74997de4cd02",
+    "employeeId": "b6505a73-d45f-4091-b3fb-74997de4cd03",
+    "managerId": "b6505a73-d45f-4091-b3fb-74997de4cd04",
+    "performanceRating": {
+      "ratingQuestion": {
+        "title": "How would you rate the employee's performance?",
+        "description": "Please rate the employee's overall performance, consider the impact they have had as well as how they live our values"
+      },
+      "ratingBuckets": [
+        {
+          "title": "Outstanding",
+          "value": 2,
+          "description": "The employee has exceeded expectations and has had a significant impact on the team and the company"
+        },
+        {
+          "title": "Good",
+          "value": 1,
+          "description": "The employee has met expectations and has had a positive impact on the team and the company"
+        },
+        {
+          "title": "Needs Improvement",
+          "value": 0,
+          "description": "The employee has not met expectations and has had a negative impact on the team and the company"
+        }
+      ],
+      "rating": {
+        "id": "b6505a73-d45f-4091-b3fb-74997de4cd06",
+        "title": "Outstanding",
+        "description": "The employee has exceeded expectations and has had a significant impact on the team and the company",
+        "value": 5,
+        "createdAt": "2022-04-28T02:14:10+00:00",
+        "updatedAt": "2022-08-02T02:14:10+00:00"
+      }
+    },
+    "openTextQuestions": [
+      {
+        "id": "e79b5eed-c761-4d3a-b91e-5906ff0b7954",
+        "text": "What should this employee celebrate this year?",
+        "answer": "Breaking a record for sales"
+      },
+      {
+        "id": "e79b5eed-c761-4d3a-b91e-5906ff0b7955",
+        "text": "What should this employee focus on next year?",
+        "answer": "Upskilling in Power BI"
+      }
+    ],
+    "multipleChoiceQuestions": [
+      {
+        "id": "addc75b3-9a0d-4567-bdde-190b575835c0",
+        "text": "Does this employee embody company value #1?",
+        "options": ["yes", "no", "often", "sometimes"],
+        "answer": "yes"
+      }
+    ],
+    "multipleChoiceMultiSelectQuestions": [
+      {
+        "id": "addc75b3-9a0d-4567-bdde-190b575835c2",
+        "text": "Which company values does this employee demonstrate?",
+        "options": ["integrity", "collaboration", "innovation", "accountability"],
+        "answers": ["integrity", "collaboration"]
+      }
+    ],
+    "reviewAcknowledged": true,
+    "status": "completed",
+    "links": [
+      {
+        "rel": "employee",
+        "uri": "/v1/employees/b6505a73-d45f-4091-b3fb-74997de4cd03"
+      },
+      {
+        "rel": "performance-cycle",
+        "uri": "/v1/performance-cycles/b6505a73-d45f-4091-b3fb-74997de4cd01"
+      }
+    ],
+    "processedAt": "2022-08-02T02:15:10+00:00",
+    "createdAt": "2022-04-28T02:14:10+00:00",
+    "updatedAt": "2022-08-02T02:14:10+00:00",
+    "completedAt": "2022-08-02T02:14:10+00:00"
+  }
+}

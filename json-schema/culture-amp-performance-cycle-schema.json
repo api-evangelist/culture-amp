@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/culture-amp/main/json-schema/culture-amp-performance-cycle-schema.json",
+  "title": "PerformanceCycle",
+  "description": "Describes a performance cycle in the Culture Amp Public API",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The identifier used by Culture Amp to identify the performance cycle"
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the performance cycle"
+    },
+    "state": {
+      "type": "string",
+      "description": "The state of the performance cycle",
+      "enum": ["active", "closed", "ready"]
+    },
+    "createdAt": {
+      "type": "string",
+      "description": "The date the performance cycle was created in the source system",
+      "format": "date-time"
+    },
+    "updatedAt": {
+      "type": "string",
+      "description": "The date the performance cycle was last updated in the source system",
+      "format": "date-time"
+    },
+    "processedAt": {
+      "type": "string",
+      "description": "The date the performance cycle was last processed by the public API",
+      "format": "date-time"
+    }
+  },
+  "required": ["id", "name", "state", "createdAt", "updatedAt", "processedAt"]
+}

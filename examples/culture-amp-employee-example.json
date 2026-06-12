@@ -1,0 +1,23 @@
+{
+  "data": {
+    "id": "96b1cff7-3099-44a9-bd28-0292be8aff7f",
+    "name": "Bertram Gilfoyle",
+    "preferredName": "Gilfoyle",
+    "birthDate": "1980-08-24",
+    "startDate": "2015-07-19",
+    "endDate": "2019-08-01",
+    "employeeIdentifier": "2",
+    "email": "gilfoyle@piedpiper.com",
+    "links": [
+      {
+        "rel": "demographics",
+        "uri": "/v1/employees/96b1cff7-3099-44a9-bd28-0292be8aff7f/demographics"
+      },
+      {
+        "rel": "manager-reviews",
+        "uri": "/v1/employees/96b1cff7-3099-44a9-bd28-0292be8aff7f/manager-reviews"
+      }
+    ],
+    "processedAt": "2019-08-01T12:00:00Z"
+  }
+}

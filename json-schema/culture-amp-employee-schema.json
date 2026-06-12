@@ -1,0 +1,76 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/culture-amp/main/json-schema/culture-amp-employee-schema.json",
+  "title": "Employee",
+  "description": "The employee data record for the Culture Amp Public API",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The identifier used by Culture Amp to identify the employee",
+      "format": "uuid"
+    },
+    "employeeIdentifier": {
+      "type": "string",
+      "description": "The identifier used by the employee's organization to identify the employee"
+    },
+    "email": {
+      "type": "string",
+      "description": "The employee's email address",
+      "format": "email"
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the employee"
+    },
+    "preferredName": {
+      "type": "string",
+      "description": "The employee preferred name"
+    },
+    "birthDate": {
+      "type": "string",
+      "description": "The date of birth in YYYY-MM-DD format",
+      "format": "date"
+    },
+    "startDate": {
+      "type": "string",
+      "description": "The date the employee started in the company, in YYYY-MM-DD format",
+      "format": "date"
+    },
+    "endDate": {
+      "type": "string",
+      "description": "The date the employee left the company, in YYYY-MM-DD format",
+      "format": "date"
+    },
+    "links": {
+      "type": "array",
+      "description": "Links to data related to the employee",
+      "items": {
+        "$ref": "#/definitions/Link"
+      }
+    },
+    "processedAt": {
+      "type": "string",
+      "description": "The date the employee was last processed by the public API",
+      "format": "date-time"
+    }
+  },
+  "required": ["id", "name", "processedAt"],
+  "definitions": {
+    "Link": {
+      "type": "object",
+      "description": "Link to related data",
+      "properties": {
+        "rel": {
+          "type": "string",
+          "description": "The type of related data e.g. demographics, goals, performance"
+        },
+        "uri": {
+          "type": "string",
+          "description": "The relative url that points to the data"
+        }
+      },
+      "required": ["rel", "uri"]
+    }
+  }
+}

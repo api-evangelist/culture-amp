@@ -1,0 +1,144 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/culture-amp/main/json-schema/culture-amp-manager-review-schema.json",
+  "title": "ManagerReview",
+  "description": "Describes a manager review in the Culture Amp Public API",
+  "type": "object",
+  "properties": {
+    "performanceCycleId": {
+      "type": "string",
+      "description": "The identifier of the performance cycle this review belongs to"
+    },
+    "managerReviewId": {
+      "type": "string",
+      "description": "The unique identifier of the manager review"
+    },
+    "employeeId": {
+      "type": "string",
+      "description": "The identifier used by Culture Amp to identify the employee being reviewed"
+    },
+    "managerId": {
+      "type": "string",
+      "description": "The employee identifier used by Culture Amp to identify the manager performing the review"
+    },
+    "performanceRating": {
+      "type": "object",
+      "description": "Describes a performance rating for an employee",
+      "properties": {
+        "ratingQuestion": {
+          "type": "object",
+          "properties": {
+            "title": { "type": "string" },
+            "description": { "type": "string" }
+          },
+          "required": ["title"]
+        },
+        "ratingBuckets": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "title": { "type": "string" },
+              "description": { "type": "string" },
+              "value": { "type": "integer" }
+            },
+            "required": ["title", "value"]
+          }
+        },
+        "rating": {
+          "type": "object",
+          "properties": {
+            "id": { "type": "string" },
+            "title": { "type": "string" },
+            "description": { "type": "string" },
+            "value": { "type": "integer" },
+            "createdAt": { "type": "string", "format": "date-time" },
+            "updatedAt": { "type": "string", "format": "date-time" }
+          },
+          "required": ["id", "title", "value", "createdAt", "updatedAt"]
+        }
+      },
+      "required": ["ratingBuckets"]
+    },
+    "openTextQuestions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "text": { "type": "string" },
+          "answer": { "type": "string" }
+        },
+        "required": ["id", "text"]
+      }
+    },
+    "multipleChoiceQuestions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "text": { "type": "string" },
+          "options": { "type": "array", "items": { "type": "string" } },
+          "answer": { "type": "string" }
+        },
+        "required": ["id", "text", "options"]
+      }
+    },
+    "multipleChoiceMultiSelectQuestions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "text": { "type": "string" },
+          "options": { "type": "array", "items": { "type": "string" } },
+          "answers": { "type": "array", "items": { "type": "string" } }
+        },
+        "required": ["id", "text", "options"]
+      }
+    },
+    "reviewAcknowledged": {
+      "type": "boolean",
+      "description": "Indicates whether the review has been shared with the employee and acknowledged by them"
+    },
+    "status": {
+      "type": "string",
+      "description": "The status of the performance review",
+      "enum": ["completed", "shared", "dirty", "incomplete"]
+    },
+    "links": {
+      "type": "array",
+      "description": "Links to data related to the manager review",
+      "items": {
+        "type": "object",
+        "properties": {
+          "rel": { "type": "string" },
+          "uri": { "type": "string" }
+        },
+        "required": ["rel", "uri"]
+      }
+    },
+    "completedAt": {
+      "type": ["string", "null"],
+      "description": "The date the manager review was completed in the source system",
+      "format": "date-time"
+    },
+    "createdAt": {
+      "type": "string",
+      "description": "The date the manager review was created in the source system",
+      "format": "date-time"
+    },
+    "updatedAt": {
+      "type": "string",
+      "description": "The date the manager review was last updated in the source system",
+      "format": "date-time"
+    },
+    "processedAt": {
+      "type": "string",
+      "description": "The date the manager review was last processed by the public API",
+      "format": "date-time"
+    }
+  },
+  "required": ["employeeId", "createdAt", "updatedAt", "processedAt"]
+}
