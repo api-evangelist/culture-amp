@@ -1,0 +1,78 @@
+aid: culture-amp
+name: Culture Amp
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/culture-amp/refs/heads/main/apis.yml
+created: 2026-06-12
+modified: 2026-06-12
+specificationVersion: '0.19'
+description: >
+  Culture Amp is the leading employee experience platform providing tools for
+  employee engagement surveys, performance management, and people analytics.
+  The Culture Amp Public API is a RESTful, read-only interface that enables
+  organizations to programmatically retrieve their people data—including
+  employee records, demographics, performance cycles, manager reviews, and
+  survey results—for use in external systems and custom analytics. The API
+  uses OAuth 2.0 Client Credentials Flow for authentication and is available
+  to all Culture Amp subscribers at no additional cost as part of standard
+  subscription fees. The platform serves thousands of organizations worldwide
+  and integrates with leading HRIS systems, Slack, Microsoft Teams, and
+  compensation tools like Pave.
+tags:
+  - HR
+  - Employee Engagement
+  - Performance Management
+  - People Analytics
+  - Surveys
+  - Human Resources
+apis:
+  - aid: culture-amp:culture-amp-public-api
+    name: Culture Amp Public API
+    type: RESTful
+    description: >
+      The Culture Amp Public API provides read-only programmatic access to
+      employee data, performance cycles, manager reviews, and survey data.
+      It follows OAuth 2.0 Client Credentials Flow authentication and returns
+      paginated JSON responses. The API enables integration with HRIS systems,
+      custom dashboards, and automated data pipelines.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://www.cultureamp.com/company/api
+    baseURL: https://api.cultureamp.com
+    tags:
+      - Employee Engagement
+      - Performance Management
+      - Surveys
+      - People Analytics
+    properties:
+      - type: Documentation
+        url: https://docs.api.cultureamp.com/docs/resources-getting-started
+      - type: OpenAPI
+        url: https://api.cultureamp.com/spec
+      - type: Authentication
+        url: https://docs.api.cultureamp.com/docs/resources-getting-started
+common:
+  - type: Website
+    url: https://www.cultureamp.com
+  - type: Documentation
+    url: https://docs.api.cultureamp.com
+  - type: GitHubOrganization
+    url: https://github.com/cultureamp
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/cultureamp
+  - type: X
+    url: https://x.com/CultureAmp
+  - type: Blog
+    url: https://www.cultureamp.com/blog
+  - type: Pricing
+    url: https://www.cultureamp.com/platform/pricing
+  - type: StatusPage
+    url: https://status.cultureamp.com
+  - type: Plans
+    url: plans/culture-amp-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/culture-amp-rate-limits.yml
+  - type: FinOps
+    url: finops/culture-amp-finops.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

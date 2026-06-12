@@ -1,0 +1,71 @@
+spec: FinOps Framework 1.0
+provider: Culture Amp
+providerId: culture-amp
+created: 2026-06-12
+modified: 2026-06-12
+description: >
+  Culture Amp follows a per-employee-per-month (PEPM) billing model with
+  annual subscriptions. API access is bundled at no additional cost within
+  all subscription tiers. Pricing is quote-based and not publicly listed;
+  costs scale primarily with employee headcount and the combination of
+  modules (Engage, Perform, Develop, People Analytics) selected.
+billingModel:
+  type: subscription
+  cadence: annual
+  unit: per-employee-per-month
+  currency: USD
+  note: >
+    All pricing is quote-based. No self-serve checkout is available.
+    Contracts are negotiated directly with Culture Amp sales.
+focusColumns:
+  - ChargeType: Usage
+  - BillingPeriod: Annual
+  - PricingUnit: Employee/Month
+  - ConsumedUnit: Employee
+  - ResourceType: Platform Subscription
+  - ServiceName: Culture Amp
+  - ServiceCategory: HR Software
+  - ProviderName: Culture Amp
+meters:
+  - name: Employee Count
+    description: Number of active employees tracked on the platform
+    unit: employee
+    billingImpact: true
+    note: Primary cost driver; price per employee decreases at higher volumes
+  - name: Module Selection
+    description: Combination of Engage, Perform, Develop, and People Analytics modules
+    unit: module
+    billingImpact: true
+    note: Each module adds to per-employee cost; bundles may be discounted
+  - name: API Calls
+    description: Calls made to the Culture Amp Public API
+    unit: request
+    billingImpact: false
+    note: API access is included in the base subscription with no per-call charge
+  - name: Contract Term
+    description: Length of subscription agreement
+    unit: months
+    billingImpact: true
+    note: Multi-year contracts typically yield better per-employee pricing
+principles:
+  Visibility:
+    description: >
+      Culture Amp does not provide a public pricing calculator or self-serve
+      cost estimator. Cost visibility requires engaging with their sales team.
+      Customers should request detailed line-item quotes showing per-employee
+      costs by module to understand total spend.
+    recommendations:
+      - Request itemized quotes broken down by module and employee count
+      - Negotiate annual minimum commitments to establish budget certainty
+      - Monitor employee count changes that may trigger contract renegotiation
+  Optimization:
+    description: >
+      Cost optimization focuses on right-sizing module selection to actual
+      organizational needs and negotiating volume discounts for larger employee
+      counts. API usage does not incur additional cost, removing a common
+      FinOps variable.
+    recommendations:
+      - Start with required modules only; add Perform or Develop incrementally
+      - Negotiate multi-year contracts for lower per-employee rates
+      - Consolidate HR tooling to maximize value from the Culture Amp platform
+      - API access is free—maximize programmatic data use at no additional cost

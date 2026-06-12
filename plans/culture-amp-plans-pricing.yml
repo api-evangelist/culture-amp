@@ -1,0 +1,129 @@
+spec: API Commons Plans 0.1
+provider: Culture Amp
+providerId: culture-amp
+created: 2026-06-12
+modified: 2026-06-12
+reconciled: true
+description: >
+  Culture Amp does not publish list prices publicly. All pricing is
+  quote-based and varies by module selection, employee count, contract term,
+  and add-ons. API access is bundled into standard subscription fees with no
+  additional charge. There is no free tier or freemium offering.
+plans:
+  - name: Engage
+    description: >
+      Employee engagement surveys and insights. Includes survey design,
+      benchmarking, and reporting for HR teams.
+    type: paid
+    pricing:
+      model: per-employee-per-month
+      currency: USD
+      range:
+        min: 9
+        max: 14
+      billingCycle: annual
+      note: Quote-based; price varies by employee count and contract term
+    features:
+      - type: boolean
+        name: API Access
+        value: true
+        note: Included at no additional charge
+      - type: boolean
+        name: Employee Engagement Surveys
+        value: true
+      - type: boolean
+        name: Benchmarking
+        value: true
+      - type: boolean
+        name: Reporting
+        value: true
+      - type: boolean
+        name: Performance Management
+        value: false
+      - type: boolean
+        name: Development Tools
+        value: false
+
+  - name: Perform
+    description: >
+      Performance management including review cycles, goal tracking, and
+      manager effectiveness tools.
+    type: paid
+    pricing:
+      model: per-employee-per-month
+      currency: USD
+      note: Quote-based; price varies by employee count and contract term
+    features:
+      - type: boolean
+        name: API Access
+        value: true
+        note: Included at no additional charge
+      - type: boolean
+        name: Performance Cycles
+        value: true
+      - type: boolean
+        name: Manager Reviews
+        value: true
+      - type: boolean
+        name: Goal Tracking
+        value: true
+      - type: boolean
+        name: Employee Engagement Surveys
+        value: false
+
+  - name: Develop
+    description: >
+      Employee development and career growth tools including skills assessments
+      and development planning.
+    type: paid
+    pricing:
+      model: per-employee-per-month
+      currency: USD
+      note: Quote-based; price varies by employee count and contract term
+    features:
+      - type: boolean
+        name: API Access
+        value: true
+        note: Included at no additional charge
+      - type: boolean
+        name: Skills Assessments
+        value: true
+      - type: boolean
+        name: Development Planning
+        value: true
+      - type: boolean
+        name: Learning Integrations
+        value: true
+
+  - name: People Analytics
+    description: >
+      Advanced people analytics and workforce intelligence. Includes custom
+      dashboards, data exports, and deeper analytical capabilities.
+    type: enterprise
+    pricing:
+      model: per-employee-per-month
+      currency: USD
+      range:
+        min: 118
+        max: 122
+      billingCycle: annual
+      note: Enterprise pricing; quote-based
+    features:
+      - type: boolean
+        name: API Access
+        value: true
+        note: Included at no additional charge
+      - type: boolean
+        name: Custom Dashboards
+        value: true
+      - type: boolean
+        name: Advanced Analytics
+        value: true
+      - type: boolean
+        name: Data Export
+        value: true
+      - type: quota
+        name: Annual Minimum
+        value: 4500
+        unit: USD
+        note: Minimum annual subscription approximately $4,500
