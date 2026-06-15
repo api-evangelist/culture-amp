@@ -1,0 +1,1349 @@
+"""
+Culture Amp GraphQL API Schema
+Conceptual schema derived from Culture Amp REST API covering employee surveys,
+engagement scores, performance reviews, goal tracking, 1-on-1 meetings,
+action plans, and workforce analytics for HR teams.
+"""
+
+schema {
+  query: Query
+  mutation: Mutation
+}
+
+# ─── Root Types ───────────────────────────────────────────────────────────────
+
+type Query {
+  # Employee queries
+  employee(id: ID!): Employee
+  employees(filter: EmployeeFilter, pagination: PaginationInput): EmployeeConnection
+
+  # Survey queries
+  survey(id: ID!): Survey
+  surveys(filter: SurveyFilter, pagination: PaginationInput): SurveyConnection
+  surveyResponse(id: ID!): SurveyResponse
+  surveyResponses(surveyId: ID!, pagination: PaginationInput): SurveyResponseConnection
+
+  # Engagement queries
+  engagementScore(surveyId: ID!, groupId: ID): EngagementScore
+  engagementScores(filter: EngagementScoreFilter): [EngagementScore!]!
+  engagementBenchmark(industry: String, size: OrganizationSize): EngagementBenchmark
+
+  # Performance queries
+  performanceCycle(id: ID!): PerformanceCycle
+  performanceCycles(filter: PerformanceCycleFilter, pagination: PaginationInput): PerformanceCycleConnection
+  performanceReview(id: ID!): PerformanceReview
+  performanceReviews(cycleId: ID!, pagination: PaginationInput): PerformanceReviewConnection
+
+  # Goal queries
+  goal(id: ID!): Goal
+  goals(filter: GoalFilter, pagination: PaginationInput): GoalConnection
+
+  # 1-on-1 queries
+  oneOnOne(id: ID!): OneOnOne
+  oneOnOnes(filter: OneOnOneFilter, pagination: PaginationInput): OneOnOneConnection
+
+  # Action plan queries
+  actionPlan(id: ID!): ActionPlan
+  actionPlans(filter: ActionPlanFilter, pagination: PaginationInput): ActionPlanConnection
+
+  # Department/Group queries
+  department(id: ID!): Department
+  departments(pagination: PaginationInput): DepartmentConnection
+  group(id: ID!): Group
+  groups(filter: GroupFilter, pagination: PaginationInput): GroupConnection
+
+  # Analytics queries
+  workforceAnalytics(filter: AnalyticsFilter): WorkforceAnalytics
+  turnoverAnalytics(filter: TurnoverFilter): TurnoverAnalytics
+  diversityReport(filter: DiversityFilter): DiversityReport
+
+  # Manager queries
+  managerReview(id: ID!): ManagerReview
+  managerReviews(cycleId: ID!, pagination: PaginationInput): ManagerReviewConnection
+
+  # Competency queries
+  competency(id: ID!): Competency
+  competencies(pagination: PaginationInput): CompetencyConnection
+
+  # Feedback queries
+  feedbackRequest(id: ID!): FeedbackRequest
+  feedbackRequests(filter: FeedbackFilter, pagination: PaginationInput): FeedbackRequestConnection
+
+  # Organization
+  organization: Organization
+  currentUser: User
+}
+
+type Mutation {
+  # Goal mutations
+  createGoal(input: CreateGoalInput!): GoalPayload!
+  updateGoal(id: ID!, input: UpdateGoalInput!): GoalPayload!
+  deleteGoal(id: ID!): DeletePayload!
+  updateGoalProgress(id: ID!, progress: Float!): GoalPayload!
+
+  # 1-on-1 mutations
+  createOneOnOne(input: CreateOneOnOneInput!): OneOnOnePayload!
+  updateOneOnOne(id: ID!, input: UpdateOneOnOneInput!): OneOnOnePayload!
+  addOneOnOneAgendaItem(oneOnOneId: ID!, input: AgendaItemInput!): AgendaItemPayload!
+  completeOneOnOneAgendaItem(id: ID!): AgendaItemPayload!
+
+  # Action plan mutations
+  createActionPlan(input: CreateActionPlanInput!): ActionPlanPayload!
+  updateActionPlan(id: ID!, input: UpdateActionPlanInput!): ActionPlanPayload!
+  createActionItem(planId: ID!, input: CreateActionItemInput!): ActionItemPayload!
+  updateActionItem(id: ID!, input: UpdateActionItemInput!): ActionItemPayload!
+  completeActionItem(id: ID!): ActionItemPayload!
+
+  # Feedback mutations
+  requestFeedback(input: FeedbackRequestInput!): FeedbackRequestPayload!
+  submitFeedback(requestId: ID!, input: FeedbackSubmissionInput!): FeedbackPayload!
+
+  # Performance mutations
+  submitSelfReview(cycleId: ID!, input: SelfReviewInput!): PerformanceReviewPayload!
+  submitPeerReview(revieweeId: ID!, cycleId: ID!, input: PeerReviewInput!): PeerReviewPayload!
+}
+
+# ─── Employee Types ───────────────────────────────────────────────────────────
+
+type Employee {
+  id: ID!
+  externalId: String
+  email: String!
+  firstName: String!
+  lastName: String!
+  fullName: String!
+  status: EmployeeStatus!
+  jobTitle: String
+  department: Department
+  manager: Employee
+  directReports: [Employee!]!
+  location: Location
+  startDate: Date
+  endDate: Date
+  gender: String
+  ethnicity: String
+  ageRange: String
+  employmentType: EmploymentType
+  demographics: Demographics
+  surveys: [SurveyParticipation!]!
+  goals(filter: GoalFilter): [Goal!]!
+  performanceReviews: [PerformanceReview!]!
+  oneOnOnes: [OneOnOne!]!
+  actionPlans: [ActionPlan!]!
+  engagementHistory: [EngagementDataPoint!]!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type EmployeeConnection {
+  nodes: [Employee!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type Demographics {
+  gender: String
+  ethnicity: String
+  ageRange: String
+  yearsOfService: Float
+  educationLevel: String
+}
+
+enum EmployeeStatus {
+  ACTIVE
+  INACTIVE
+  ON_LEAVE
+  TERMINATED
+}
+
+enum EmploymentType {
+  FULL_TIME
+  PART_TIME
+  CONTRACT
+  INTERN
+  TEMPORARY
+}
+
+# ─── Survey Types ─────────────────────────────────────────────────────────────
+
+type Survey {
+  id: ID!
+  name: String!
+  type: SurveyType!
+  status: SurveyStatus!
+  description: String
+  createdAt: DateTime!
+  launchedAt: DateTime
+  closedAt: DateTime
+  questions: [SurveyQuestion!]!
+  participants: [SurveyParticipation!]!
+  responseRate: Float
+  engagementScore: EngagementScore
+  results: SurveyResults
+  confidentialityThreshold: Int
+}
+
+type SurveyConnection {
+  nodes: [Survey!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type SurveyQuestion {
+  id: ID!
+  text: String!
+  type: QuestionType!
+  category: String
+  subcategory: String
+  order: Int!
+  required: Boolean!
+  options: [QuestionOption!]
+  scale: LikertScale
+}
+
+type QuestionOption {
+  id: ID!
+  text: String!
+  value: Int
+}
+
+type LikertScale {
+  min: Int!
+  max: Int!
+  labels: [ScaleLabel!]!
+}
+
+type ScaleLabel {
+  value: Int!
+  label: String!
+}
+
+type SurveyParticipation {
+  employee: Employee!
+  survey: Survey!
+  status: ParticipationStatus!
+  submittedAt: DateTime
+  isAnonymous: Boolean!
+}
+
+type SurveyResponse {
+  id: ID!
+  survey: Survey!
+  submittedAt: DateTime!
+  answers: [SurveyAnswer!]!
+  isAnonymous: Boolean!
+}
+
+type SurveyResponseConnection {
+  nodes: [SurveyResponse!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type SurveyAnswer {
+  question: SurveyQuestion!
+  numericValue: Int
+  textValue: String
+  selectedOptions: [QuestionOption!]
+}
+
+type SurveyResults {
+  survey: Survey!
+  responseCount: Int!
+  responseRate: Float!
+  questionResults: [QuestionResult!]!
+  categoryScores: [CategoryScore!]!
+  favorabilityScore: Float
+  engagementScore: Float
+}
+
+type QuestionResult {
+  question: SurveyQuestion!
+  averageScore: Float
+  favorabilityRate: Float
+  responseDistribution: [ResponseDistributionItem!]!
+  commentCount: Int
+}
+
+type ResponseDistributionItem {
+  value: Int!
+  label: String!
+  count: Int!
+  percentage: Float!
+}
+
+type CategoryScore {
+  category: String!
+  averageScore: Float!
+  favorabilityRate: Float!
+  questionCount: Int!
+  benchmark: Float
+}
+
+enum SurveyType {
+  ENGAGEMENT
+  ONBOARDING
+  EXIT
+  PULSE
+  EFFECTIVENESS
+  DEI
+  CUSTOM
+  LIFECYCLE
+}
+
+enum SurveyStatus {
+  DRAFT
+  SCHEDULED
+  ACTIVE
+  CLOSED
+  ARCHIVED
+}
+
+enum QuestionType {
+  LIKERT_SCALE
+  MULTIPLE_CHOICE
+  OPEN_TEXT
+  YES_NO
+  NET_PROMOTER_SCORE
+  RATING
+}
+
+enum ParticipationStatus {
+  INVITED
+  IN_PROGRESS
+  COMPLETED
+  OPTED_OUT
+}
+
+# ─── Engagement Types ─────────────────────────────────────────────────────────
+
+type EngagementScore {
+  id: ID!
+  survey: Survey!
+  score: Float!
+  responseCount: Int!
+  responseRate: Float!
+  group: Group
+  benchmark: EngagementBenchmark
+  trend: Float
+  calculatedAt: DateTime!
+  drivers: [EngagementDriver!]!
+}
+
+type EngagementDriver {
+  name: String!
+  score: Float!
+  impact: Float!
+  category: String!
+  benchmark: Float
+  trend: Float
+}
+
+type EngagementBenchmark {
+  industry: String
+  organizationSize: OrganizationSize
+  overallScore: Float!
+  topQuartileScore: Float!
+  medianScore: Float!
+  bottomQuartileScore: Float!
+}
+
+type EngagementDataPoint {
+  survey: Survey!
+  score: Float!
+  date: Date!
+}
+
+enum OrganizationSize {
+  SMALL
+  MEDIUM
+  LARGE
+  ENTERPRISE
+}
+
+# ─── Performance Types ────────────────────────────────────────────────────────
+
+type PerformanceCycle {
+  id: ID!
+  name: String!
+  status: CycleStatus!
+  type: PerformanceCycleType!
+  startDate: Date!
+  endDate: Date!
+  selfReviewDueDate: Date
+  managerReviewDueDate: Date
+  peerNominationDueDate: Date
+  peerReviewDueDate: Date
+  reviews: [PerformanceReview!]!
+  completionRate: Float
+  createdAt: DateTime!
+}
+
+type PerformanceCycleConnection {
+  nodes: [PerformanceCycle!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type PerformanceReview {
+  id: ID!
+  cycle: PerformanceCycle!
+  employee: Employee!
+  reviewer: Employee
+  type: ReviewType!
+  status: ReviewStatus!
+  overallRating: PerformanceRating
+  competencyRatings: [CompetencyRating!]!
+  selfReview: SelfReview
+  managerReview: ManagerReview
+  peerReviews: [PeerReview!]!
+  goals: [Goal!]!
+  strengths: String
+  areasForGrowth: String
+  submittedAt: DateTime
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type PerformanceReviewConnection {
+  nodes: [PerformanceReview!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type SelfReview {
+  id: ID!
+  review: PerformanceReview!
+  responses: [ReviewResponse!]!
+  overallRating: PerformanceRating
+  submittedAt: DateTime
+}
+
+type ManagerReview {
+  id: ID!
+  employee: Employee!
+  manager: Employee!
+  cycle: PerformanceCycle!
+  responses: [ReviewResponse!]!
+  overallRating: PerformanceRating
+  competencyRatings: [CompetencyRating!]!
+  calibrationRating: PerformanceRating
+  promotionRecommendation: Boolean
+  retentionRisk: RetentionRisk
+  comments: String
+  submittedAt: DateTime
+}
+
+type ManagerReviewConnection {
+  nodes: [ManagerReview!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type PeerReview {
+  id: ID!
+  reviewee: Employee!
+  reviewer: Employee!
+  cycle: PerformanceCycle!
+  relationship: PeerRelationship!
+  responses: [ReviewResponse!]!
+  submittedAt: DateTime
+}
+
+type PeerReviewPayload {
+  peerReview: PeerReview
+  errors: [Error!]!
+}
+
+type ReviewResponse {
+  question: ReviewQuestion!
+  textResponse: String
+  ratingResponse: PerformanceRating
+  numericResponse: Float
+}
+
+type ReviewQuestion {
+  id: ID!
+  text: String!
+  type: ReviewQuestionType!
+  category: String
+  required: Boolean!
+  ratingScale: [RatingOption!]
+}
+
+type RatingOption {
+  value: String!
+  label: String!
+  description: String
+  numericValue: Int!
+}
+
+type CompetencyRating {
+  competency: Competency!
+  rating: PerformanceRating!
+  comments: String
+}
+
+type PerformanceRating {
+  label: String!
+  value: Int!
+  description: String
+}
+
+enum CycleStatus {
+  DRAFT
+  ACTIVE
+  CALIBRATION
+  COMPLETED
+  ARCHIVED
+}
+
+enum PerformanceCycleType {
+  ANNUAL
+  MID_YEAR
+  QUARTERLY
+  PROBATION
+  CUSTOM
+}
+
+enum ReviewType {
+  SELF
+  MANAGER
+  PEER
+  UPWARD
+  CALIBRATION
+}
+
+enum ReviewStatus {
+  NOT_STARTED
+  IN_PROGRESS
+  SUBMITTED
+  CALIBRATED
+  SHARED
+}
+
+enum ReviewQuestionType {
+  OPEN_TEXT
+  RATING_SCALE
+  MULTIPLE_CHOICE
+  COMPETENCY_RATING
+}
+
+enum PeerRelationship {
+  PEER
+  CROSS_FUNCTIONAL
+  DIRECT_REPORT
+  STAKEHOLDER
+}
+
+enum RetentionRisk {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+# ─── Goal Types ───────────────────────────────────────────────────────────────
+
+type Goal {
+  id: ID!
+  title: String!
+  description: String
+  owner: Employee!
+  collaborators: [Employee!]!
+  status: GoalStatus!
+  priority: GoalPriority
+  type: GoalType
+  progress: Float!
+  dueDate: Date
+  startDate: Date
+  parentGoal: Goal
+  childGoals: [Goal!]!
+  keyResults: [KeyResult!]!
+  tags: [String!]!
+  visibility: GoalVisibility!
+  performanceCycle: PerformanceCycle
+  comments: [GoalComment!]!
+  updates: [GoalUpdate!]!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type GoalConnection {
+  nodes: [Goal!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type KeyResult {
+  id: ID!
+  goal: Goal!
+  title: String!
+  description: String
+  currentValue: Float!
+  targetValue: Float!
+  startValue: Float
+  unit: String
+  progress: Float!
+  status: KeyResultStatus!
+  dueDate: Date
+}
+
+type GoalComment {
+  id: ID!
+  author: Employee!
+  content: String!
+  createdAt: DateTime!
+}
+
+type GoalUpdate {
+  id: ID!
+  author: Employee!
+  previousProgress: Float!
+  newProgress: Float!
+  note: String
+  createdAt: DateTime!
+}
+
+enum GoalStatus {
+  DRAFT
+  ON_TRACK
+  AT_RISK
+  BEHIND
+  COMPLETED
+  CANCELLED
+  NOT_STARTED
+}
+
+enum GoalPriority {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+enum GoalType {
+  COMPANY
+  TEAM
+  INDIVIDUAL
+  STRETCH
+  DEVELOPMENT
+}
+
+enum GoalVisibility {
+  PUBLIC
+  TEAM
+  MANAGER
+  PRIVATE
+}
+
+enum KeyResultStatus {
+  ON_TRACK
+  AT_RISK
+  BEHIND
+  COMPLETED
+}
+
+# ─── 1-on-1 Types ─────────────────────────────────────────────────────────────
+
+type OneOnOne {
+  id: ID!
+  employee: Employee!
+  manager: Employee!
+  scheduledAt: DateTime
+  completedAt: DateTime
+  status: OneOnOneStatus!
+  recurrence: RecurrencePattern
+  agendaItems: [AgendaItem!]!
+  sharedNotes: String
+  privateNotes: String
+  actionItems: [ActionItem!]!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type OneOnOneConnection {
+  nodes: [OneOnOne!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type AgendaItem {
+  id: ID!
+  oneOnOne: OneOnOne!
+  title: String!
+  description: String
+  addedBy: Employee!
+  isCompleted: Boolean!
+  completedAt: DateTime
+  order: Int!
+}
+
+type RecurrencePattern {
+  frequency: RecurrenceFrequency!
+  interval: Int!
+  endDate: Date
+}
+
+enum OneOnOneStatus {
+  SCHEDULED
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+  SKIPPED
+}
+
+enum RecurrenceFrequency {
+  DAILY
+  WEEKLY
+  BIWEEKLY
+  MONTHLY
+}
+
+# ─── Action Plan Types ────────────────────────────────────────────────────────
+
+type ActionPlan {
+  id: ID!
+  title: String!
+  description: String
+  owner: Employee!
+  team: Group
+  status: ActionPlanStatus!
+  surveyInsight: SurveyInsight
+  actionItems: [ActionItem!]!
+  dueDate: Date
+  completionRate: Float!
+  visibility: ActionPlanVisibility!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type ActionPlanConnection {
+  nodes: [ActionPlan!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type ActionItem {
+  id: ID!
+  plan: ActionPlan
+  title: String!
+  description: String
+  assignee: Employee
+  dueDate: Date
+  status: ActionItemStatus!
+  priority: ActionItemPriority
+  completedAt: DateTime
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type SurveyInsight {
+  survey: Survey!
+  category: String!
+  finding: String!
+  score: Float!
+  benchmark: Float
+}
+
+enum ActionPlanStatus {
+  DRAFT
+  ACTIVE
+  COMPLETED
+  ARCHIVED
+  CANCELLED
+}
+
+enum ActionItemStatus {
+  TODO
+  IN_PROGRESS
+  COMPLETED
+  BLOCKED
+  CANCELLED
+}
+
+enum ActionItemPriority {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+enum ActionPlanVisibility {
+  PUBLIC
+  TEAM
+  MANAGER
+  PRIVATE
+}
+
+# ─── Department & Group Types ─────────────────────────────────────────────────
+
+type Department {
+  id: ID!
+  name: String!
+  code: String
+  parentDepartment: Department
+  subDepartments: [Department!]!
+  employees: [Employee!]!
+  headCount: Int!
+  manager: Employee
+  location: Location
+  createdAt: DateTime!
+}
+
+type DepartmentConnection {
+  nodes: [Department!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type Group {
+  id: ID!
+  name: String!
+  type: GroupType!
+  description: String
+  members: [Employee!]!
+  memberCount: Int!
+  owner: Employee
+  createdAt: DateTime!
+}
+
+type GroupConnection {
+  nodes: [Group!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+enum GroupType {
+  DEPARTMENT
+  TEAM
+  LOCATION
+  CUSTOM
+  DEMOGRAPHIC
+}
+
+# ─── Location Types ───────────────────────────────────────────────────────────
+
+type Location {
+  id: ID!
+  name: String!
+  city: String
+  state: String
+  country: String!
+  timezone: String
+  isRemote: Boolean!
+  employeeCount: Int!
+}
+
+# ─── Competency Types ─────────────────────────────────────────────────────────
+
+type Competency {
+  id: ID!
+  name: String!
+  description: String!
+  category: CompetencyCategory!
+  level: CompetencyLevel
+  behaviors: [CompetencyBehavior!]!
+  isActive: Boolean!
+}
+
+type CompetencyConnection {
+  nodes: [Competency!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type CompetencyBehavior {
+  id: ID!
+  description: String!
+  level: CompetencyLevel
+  examples: [String!]
+}
+
+enum CompetencyCategory {
+  LEADERSHIP
+  TECHNICAL
+  INTERPERSONAL
+  FUNCTIONAL
+  CORE
+  VALUES
+}
+
+enum CompetencyLevel {
+  ENTRY
+  DEVELOPING
+  PROFICIENT
+  ADVANCED
+  EXPERT
+}
+
+# ─── Feedback Types ───────────────────────────────────────────────────────────
+
+type FeedbackRequest {
+  id: ID!
+  requester: Employee!
+  recipient: Employee!
+  type: FeedbackType!
+  questions: [FeedbackQuestion!]!
+  status: FeedbackRequestStatus!
+  dueDate: Date
+  feedback: Feedback
+  message: String
+  isAnonymous: Boolean!
+  createdAt: DateTime!
+}
+
+type FeedbackRequestConnection {
+  nodes: [FeedbackRequest!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type FeedbackQuestion {
+  id: ID!
+  text: String!
+  type: QuestionType!
+  required: Boolean!
+}
+
+type Feedback {
+  id: ID!
+  request: FeedbackRequest!
+  responses: [FeedbackResponse!]!
+  submittedAt: DateTime!
+  isAnonymous: Boolean!
+}
+
+type FeedbackResponse {
+  question: FeedbackQuestion!
+  textResponse: String
+  ratingResponse: Int
+}
+
+enum FeedbackType {
+  PRAISE
+  CONSTRUCTIVE
+  DEVELOPMENT
+  PEER
+  UPWARD
+  DOWNWARD
+  SKIP_LEVEL
+}
+
+enum FeedbackRequestStatus {
+  PENDING
+  SUBMITTED
+  DECLINED
+  EXPIRED
+}
+
+# ─── Analytics Types ──────────────────────────────────────────────────────────
+
+type WorkforceAnalytics {
+  totalHeadCount: Int!
+  activeEmployees: Int!
+  newHires: Int!
+  terminations: Int!
+  turnoverRate: Float!
+  avgTenure: Float!
+  genderDistribution: [DemographicBreakdown!]!
+  ethnicityDistribution: [DemographicBreakdown!]!
+  departmentBreakdown: [DepartmentMetric!]!
+  locationBreakdown: [LocationMetric!]!
+  period: DateRange!
+}
+
+type TurnoverAnalytics {
+  voluntaryTurnoverRate: Float!
+  involuntaryTurnoverRate: Float!
+  totalTurnoverRate: Float!
+  regrettableTurnoverRate: Float!
+  byDepartment: [DepartmentTurnover!]!
+  byTenure: [TenureTurnover!]!
+  period: DateRange!
+}
+
+type DiversityReport {
+  genderParity: Float!
+  ethnicityDiversity: Float!
+  leadershipDiversity: [DemographicBreakdown!]!
+  hireDiversity: [DemographicBreakdown!]!
+  promotionDiversity: [DemographicBreakdown!]!
+  payEquityScore: Float
+  period: DateRange!
+}
+
+type DemographicBreakdown {
+  label: String!
+  count: Int!
+  percentage: Float!
+}
+
+type DepartmentMetric {
+  department: Department!
+  headCount: Int!
+  openPositions: Int!
+  avgEngagementScore: Float
+}
+
+type LocationMetric {
+  location: Location!
+  headCount: Int!
+  percentage: Float!
+}
+
+type DepartmentTurnover {
+  department: Department!
+  turnoverRate: Float!
+  count: Int!
+}
+
+type TenureTurnover {
+  tenureRange: String!
+  turnoverRate: Float!
+  count: Int!
+}
+
+type DateRange {
+  startDate: Date!
+  endDate: Date!
+}
+
+# ─── Organization & User Types ────────────────────────────────────────────────
+
+type Organization {
+  id: ID!
+  name: String!
+  industry: String
+  size: OrganizationSize!
+  country: String
+  departments: [Department!]!
+  locations: [Location!]!
+  totalEmployeeCount: Int!
+  createdAt: DateTime!
+}
+
+type User {
+  id: ID!
+  email: String!
+  firstName: String!
+  lastName: String!
+  role: UserRole!
+  employee: Employee
+  permissions: [Permission!]!
+  lastLoginAt: DateTime
+}
+
+enum UserRole {
+  ADMIN
+  HR_MANAGER
+  MANAGER
+  EMPLOYEE
+  ANALYST
+  EXECUTIVE
+  EXTERNAL
+}
+
+type Permission {
+  resource: String!
+  actions: [String!]!
+}
+
+# ─── Payload / Response Types ─────────────────────────────────────────────────
+
+type GoalPayload {
+  goal: Goal
+  errors: [Error!]!
+}
+
+type OneOnOnePayload {
+  oneOnOne: OneOnOne
+  errors: [Error!]!
+}
+
+type AgendaItemPayload {
+  agendaItem: AgendaItem
+  errors: [Error!]!
+}
+
+type ActionPlanPayload {
+  actionPlan: ActionPlan
+  errors: [Error!]!
+}
+
+type ActionItemPayload {
+  actionItem: ActionItem
+  errors: [Error!]!
+}
+
+type FeedbackRequestPayload {
+  feedbackRequest: FeedbackRequest
+  errors: [Error!]!
+}
+
+type FeedbackPayload {
+  feedback: Feedback
+  errors: [Error!]!
+}
+
+type PerformanceReviewPayload {
+  performanceReview: PerformanceReview
+  errors: [Error!]!
+}
+
+type DeletePayload {
+  success: Boolean!
+  errors: [Error!]!
+}
+
+type Error {
+  field: String
+  message: String!
+  code: String
+}
+
+# ─── Pagination Types ─────────────────────────────────────────────────────────
+
+type PageInfo {
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+  endCursor: String
+}
+
+# ─── Input Types ──────────────────────────────────────────────────────────────
+
+input PaginationInput {
+  first: Int
+  after: String
+  last: Int
+  before: String
+}
+
+input EmployeeFilter {
+  status: EmployeeStatus
+  departmentId: ID
+  managerId: ID
+  locationId: ID
+  employmentType: EmploymentType
+  startDateAfter: Date
+  startDateBefore: Date
+  searchTerm: String
+}
+
+input SurveyFilter {
+  type: SurveyType
+  status: SurveyStatus
+  createdAfter: Date
+  createdBefore: Date
+}
+
+input EngagementScoreFilter {
+  surveyId: ID
+  groupId: ID
+  departmentId: ID
+  minScore: Float
+  maxScore: Float
+}
+
+input PerformanceCycleFilter {
+  status: CycleStatus
+  type: PerformanceCycleType
+  startDateAfter: Date
+  endDateBefore: Date
+}
+
+input GoalFilter {
+  status: GoalStatus
+  type: GoalType
+  ownerId: ID
+  priority: GoalPriority
+  dueDateAfter: Date
+  dueDateBefore: Date
+  performanceCycleId: ID
+}
+
+input OneOnOneFilter {
+  employeeId: ID
+  managerId: ID
+  status: OneOnOneStatus
+  scheduledAfter: DateTime
+  scheduledBefore: DateTime
+}
+
+input ActionPlanFilter {
+  status: ActionPlanStatus
+  ownerId: ID
+  teamId: ID
+}
+
+input FeedbackFilter {
+  requesterId: ID
+  recipientId: ID
+  type: FeedbackType
+  status: FeedbackRequestStatus
+}
+
+input GroupFilter {
+  type: GroupType
+  memberId: ID
+}
+
+input AnalyticsFilter {
+  startDate: Date!
+  endDate: Date!
+  departmentId: ID
+  locationId: ID
+  employmentType: EmploymentType
+}
+
+input TurnoverFilter {
+  startDate: Date!
+  endDate: Date!
+  departmentId: ID
+  voluntary: Boolean
+}
+
+input DiversityFilter {
+  startDate: Date!
+  endDate: Date!
+  departmentId: ID
+  includeLeadership: Boolean
+}
+
+input CreateGoalInput {
+  title: String!
+  description: String
+  ownerId: ID!
+  collaboratorIds: [ID!]
+  type: GoalType
+  priority: GoalPriority
+  dueDate: Date
+  startDate: Date
+  parentGoalId: ID
+  visibility: GoalVisibility
+  performanceCycleId: ID
+  tags: [String!]
+  keyResults: [CreateKeyResultInput!]
+}
+
+input UpdateGoalInput {
+  title: String
+  description: String
+  status: GoalStatus
+  priority: GoalPriority
+  dueDate: Date
+  visibility: GoalVisibility
+  tags: [String!]
+}
+
+input CreateKeyResultInput {
+  title: String!
+  description: String
+  targetValue: Float!
+  startValue: Float
+  unit: String
+  dueDate: Date
+}
+
+input CreateOneOnOneInput {
+  employeeId: ID!
+  managerId: ID!
+  scheduledAt: DateTime
+  recurrence: RecurrenceInput
+}
+
+input UpdateOneOnOneInput {
+  scheduledAt: DateTime
+  status: OneOnOneStatus
+  sharedNotes: String
+  privateNotes: String
+}
+
+input RecurrenceInput {
+  frequency: RecurrenceFrequency!
+  interval: Int!
+  endDate: Date
+}
+
+input AgendaItemInput {
+  title: String!
+  description: String
+  order: Int
+}
+
+input CreateActionPlanInput {
+  title: String!
+  description: String
+  ownerId: ID!
+  teamId: ID
+  dueDate: Date
+  visibility: ActionPlanVisibility
+}
+
+input UpdateActionPlanInput {
+  title: String
+  description: String
+  status: ActionPlanStatus
+  dueDate: Date
+  visibility: ActionPlanVisibility
+}
+
+input CreateActionItemInput {
+  title: String!
+  description: String
+  assigneeId: ID
+  dueDate: Date
+  priority: ActionItemPriority
+}
+
+input UpdateActionItemInput {
+  title: String
+  description: String
+  assigneeId: ID
+  dueDate: Date
+  status: ActionItemStatus
+  priority: ActionItemPriority
+}
+
+input FeedbackRequestInput {
+  requesterId: ID!
+  recipientId: ID!
+  type: FeedbackType!
+  questionIds: [ID!]
+  dueDate: Date
+  message: String
+  isAnonymous: Boolean
+}
+
+input FeedbackSubmissionInput {
+  responses: [FeedbackResponseInput!]!
+}
+
+input FeedbackResponseInput {
+  questionId: ID!
+  textResponse: String
+  ratingResponse: Int
+}
+
+input SelfReviewInput {
+  responses: [ReviewResponseInput!]!
+  overallRating: String
+}
+
+input PeerReviewInput {
+  responses: [ReviewResponseInput!]!
+  relationship: PeerRelationship!
+}
+
+input ReviewResponseInput {
+  questionId: ID!
+  textResponse: String
+  ratingResponse: String
+  numericResponse: Float
+}
+
+# ─── Scalar Types ─────────────────────────────────────────────────────────────
+
+scalar Date
+scalar DateTime
+scalar JSON

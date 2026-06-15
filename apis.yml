@@ -66,6 +66,8 @@ apis:
         url: examples/culture-amp-performance-cycle-example.json
       - type: Example
         url: examples/culture-amp-manager-review-example.json
+      - type: GraphQL
+        url: graphql/culture-amp-graphql.md
 common:
   - type: Website
     url: https://www.cultureamp.com
