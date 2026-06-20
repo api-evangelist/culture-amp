@@ -1,7 +1,7 @@
 aid: culture-amp
 name: Culture Amp
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/culture-amp/refs/heads/main/apis.yml
 created: 2026-06-12
 modified: 2026-06-12
@@ -35,7 +35,7 @@ apis:
       It follows OAuth 2.0 Client Credentials Flow authentication and returns
       paginated JSON responses. The API enables integration with HRIS systems,
       custom dashboards, and automated data pipelines.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://www.cultureamp.com/company/api
     baseURL: https://api.cultureamp.com
     tags:
