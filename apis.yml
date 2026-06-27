@@ -58,13 +58,13 @@ apis:
         url: json-schema/culture-amp-performance-cycle-schema.json
       - type: JSONSchema
         url: json-schema/culture-amp-manager-review-schema.json
-      - type: Example
+      - type: Examples
         url: examples/culture-amp-employee-example.json
-      - type: Example
+      - type: Examples
         url: examples/culture-amp-employees-list-example.json
-      - type: Example
+      - type: Examples
         url: examples/culture-amp-performance-cycle-example.json
-      - type: Example
+      - type: Examples
         url: examples/culture-amp-manager-review-example.json
       - type: GraphQL
         url: graphql/culture-amp-graphql.md
