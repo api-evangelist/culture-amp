@@ -1,0 +1,31 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/culture-amp-public-api-openapi.yml
+schemes:
+- name: Oauth2
+  source: openapi/culture-amp-public-api-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: /oauth2/token
+scopes:
+- scope: employee-demographics-read
+  description: Grants access to employee demographics
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/culture-amp-public-api-openapi.yml
+- scope: employees-read
+  description: Grants read access to employees resources
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/culture-amp-public-api-openapi.yml
+- scope: performance-evaluations-read
+  description: Grants access to employee performance evaluations
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/culture-amp-public-api-openapi.yml
+- scope: surveys-read
+  sources:
+  - openapi/culture-amp-public-api-openapi.yml

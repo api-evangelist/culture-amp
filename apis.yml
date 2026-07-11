@@ -69,6 +69,8 @@ apis:
       - type: GraphQL
         url: graphql/culture-amp-graphql.md
 common:
+  - type: OAuthScopes
+    url: scopes/culture-amp-scopes.yml
   - type: Website
     url: https://www.cultureamp.com
   - type: Documentation
