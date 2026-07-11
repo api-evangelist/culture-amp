@@ -1,0 +1,18 @@
+generated: '2026-07-11'
+method: searched
+probe: true
+source: https://security.cultureamp.com/
+url: https://security.cultureamp.com/
+certifications:
+- SOC 2
+- ISO 27001
+- GDPR
+- CSA STAR
+evidence:
+- source: https://security.cultureamp.com/
+  keywords:
+  - soc 2
+  - iso/iec 27001
+  - trust centre
+  - gdpr
+  - csa star

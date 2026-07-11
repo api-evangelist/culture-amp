@@ -1,0 +1,17 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/culture-amp-public-api-openapi.yml
+summary:
+  types:
+  - oauth2
+  oauth2_flows:
+  - clientCredentials
+schemes:
+- name: Oauth2
+  type: oauth2
+  flows:
+  - flow: clientCredentials
+    tokenUrl: /oauth2/token
+    scopes: 3
+  sources:
+  - openapi/culture-amp-public-api-openapi.yml
