@@ -1,0 +1,242 @@
+generated: '2026-07-15'
+method: generated
+source: openapi/culture-amp-public-api-openapi.yml
+description: Recommended x-agentic-access execution contracts, classified heuristically from
+  the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
+  audience per deployment. See research/curity/agentic-governance/.
+summary:
+  operations: 19
+  by_action_class:
+    connected: 19
+  by_consequence:
+    read: 19
+  human_in_the_loop_required: 0
+operations:
+- path: /employees
+  method: get
+  operationId: list-employees
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - employees-read
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /employees/{id}
+  method: get
+  operationId: get-employee
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - employees-read
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /employees/{id}/demographics
+  method: get
+  operationId: list-demographics-by-employee
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - employee-demographics-read
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /employees/{id}/manager-reviews
+  method: get
+  operationId: list-manager-reviews-by-employee
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - performance-evaluations-read
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /performance-cycles
+  method: get
+  operationId: list-performance-cycles
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - performance-evaluations-read
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /performance-cycles/{id}
+  method: get
+  operationId: get-performance-cycle
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - performance-evaluations-read
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /performance-cycles/{id}/manager-reviews
+  method: get
+  operationId: list-manager-reviews-by-performance-cycle
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - performance-evaluations-read
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /manager-reviews
+  method: get
+  operationId: list-manager-reviews
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - performance-evaluations-read
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /manager-reviews/{id}
+  method: get
+  operationId: get-manager-review
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - performance-evaluations-read
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /surveys
+  method: get
+  operationId: list-surveys
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - surveys-read
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /surveys/{id}
+  method: get
+  operationId: get-survey
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - surveys-read
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /surveys/{id}/questions
+  method: get
+  operationId: list-survey-questions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - surveys-read
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /surveys/{survey_id}/question/{question_id}
+  method: get
+  operationId: get-survey-question
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - surveys-read
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /surveys/{id}/responses
+  method: get
+  operationId: list-survey-responses
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - surveys-read
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /surveys/{survey_id}/responses/{response_id}
+  method: get
+  operationId: get-survey-response
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - surveys-read
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /surveys/{id}/factors
+  method: get
+  operationId: list-survey-factors
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - surveys-read
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /surveys/{survey_id}/factors/{factor_id}
+  method: get
+  operationId: get-survey-factor
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - surveys-read
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /surveys/{id}/sections
+  method: get
+  operationId: list-survey-sections
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - surveys-read
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /surveys/{survey_id}/sections/{section_id}
+  method: get
+  operationId: get-survey-section
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - surveys-read
+    token:
+      max-ttl: 3600
+    audit: none

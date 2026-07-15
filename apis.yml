@@ -69,6 +69,8 @@ apis:
       - type: GraphQL
         url: graphql/culture-amp-graphql.md
 common:
+  - type: AgenticAccess
+    url: agentic-access/culture-amp-agentic-access.yml
   - type: TrustCenter
     url: security/culture-amp-trust-center.yml
   - type: DomainSecurity
