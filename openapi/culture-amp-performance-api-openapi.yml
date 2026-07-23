@@ -1,0 +1,715 @@
+openapi: 3.0.1
+info:
+  title: Culture Amp Public Employees Performance API
+  description: This Open API specification describes the interface for the Culture Amp public API service
+  contact:
+    name: Culture Amp Support
+    email: support@cultureamp.com
+  license:
+    name: CultureAmp
+  version: 0.0.1
+servers:
+- url: https://api.cultureamp.com/v1
+  description: Production
+- url: https://sandbox.public-api.development.cultureamp.net/v1
+  description: Development
+tags:
+- name: Performance
+paths:
+  /employees/{id}/manager-reviews:
+    get:
+      tags:
+      - Performance
+      summary: List manager reviews by employee
+      description: Returns manager reviews for a given employee
+      operationId: list-manager-reviews-by-employee
+      parameters:
+      - name: id
+        in: path
+        description: the Culture Amp employee identifier
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/CursorQueryParam'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ManagerReviewsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+      security:
+      - Oauth2:
+        - performance-evaluations-read
+  /performance-cycles:
+    get:
+      tags:
+      - Performance
+      summary: List performance cycles
+      description: 'Returns all performance cycles in the account.
+
+
+        If both `cursor` and `state` are provided in a request, `cursor` takes precedence.'
+      operationId: list-performance-cycles
+      parameters:
+      - $ref: '#/components/parameters/AfterDateQueryParam'
+      - $ref: '#/components/parameters/CursorQueryParam'
+      - name: state
+        in: query
+        description: the state of the performance cycles to be returned
+        schema:
+          $ref: '#/components/schemas/PerformanceCycleState'
+        example: active
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PerformanceCyclesResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+      security:
+      - Oauth2:
+        - performance-evaluations-read
+  /performance-cycles/{id}:
+    get:
+      tags:
+      - Performance
+      summary: Get performance cycle
+      description: Returns the details of a performance cycle by its id
+      operationId: get-performance-cycle
+      parameters:
+      - name: id
+        in: path
+        description: performance cycle id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PerformanceCycleResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+      security:
+      - Oauth2:
+        - performance-evaluations-read
+  /performance-cycles/{id}/manager-reviews:
+    get:
+      tags:
+      - Performance
+      summary: List manager reviews by performance cycle
+      description: Returns manager reviews for a given performance cycle
+      operationId: list-manager-reviews-by-performance-cycle
+      parameters:
+      - name: id
+        in: path
+        description: performance cycle id
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/CursorQueryParam'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ManagerReviewsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+      security:
+      - Oauth2:
+        - performance-evaluations-read
+  /manager-reviews:
+    get:
+      tags:
+      - Performance
+      summary: List manager reviews
+      description: Returns all manager reviews in the account
+      operationId: list-manager-reviews
+      parameters:
+      - $ref: '#/components/parameters/AfterDateQueryParam'
+      - $ref: '#/components/parameters/CursorQueryParam'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ManagerReviewsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+      security:
+      - Oauth2:
+        - performance-evaluations-read
+  /manager-reviews/{id}:
+    get:
+      tags:
+      - Performance
+      summary: Get manager review
+      description: Returns the details of a manager review corresponding to the provided id
+      operationId: get-manager-review
+      parameters:
+      - name: id
+        in: path
+        description: manager review id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ManagerReviewResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+      security:
+      - Oauth2:
+        - performance-evaluations-read
+components:
+  schemas:
+    OpenTextQuestion:
+      type: object
+      description: The open text questions corresponding to a review
+      properties:
+        id:
+          type: string
+        text:
+          type: string
+        answer:
+          type: string
+      required:
+      - id
+      - text
+    PerformanceCyclesResponse:
+      title: PerformanceCycleResponse
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/PerformanceCycle'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+      required:
+      - data
+    MultipleChoiceMultiSelectQuestion:
+      type: object
+      description: The multiple choice multi-select questions corresponding to a review
+      properties:
+        id:
+          type: string
+        text:
+          type: string
+        options:
+          description: All the available answer options that can be selected
+          type: array
+          items:
+            type: string
+        answers:
+          description: All the selected answers
+          type: array
+          items:
+            type: string
+      required:
+      - id
+      - text
+      - options
+    ManagerReview:
+      title: ManagerReview
+      type: object
+      properties:
+        performanceCycleId:
+          type: string
+        managerReviewId:
+          type: string
+        employeeId:
+          description: The identifier used by Culture Amp to identify the employee
+          type: string
+        managerId:
+          description: The employee identifier used by Culture Amp to identify the manager performing the review
+          type: string
+        performanceRating:
+          $ref: '#/components/schemas/PerformanceRating'
+        openTextQuestions:
+          type: array
+          items:
+            $ref: '#/components/schemas/OpenTextQuestion'
+        multipleChoiceQuestions:
+          type: array
+          items:
+            $ref: '#/components/schemas/MultipleChoiceQuestion'
+        multipleChoiceMultiSelectQuestions:
+          type: array
+          items:
+            $ref: '#/components/schemas/MultipleChoiceMultiSelectQuestion'
+        reviewAcknowledged:
+          type: boolean
+          description: Indicates whether the review has been shared with the employee and acknowledged by them
+        status:
+          type: string
+          $ref: '#/components/schemas/PerformanceReviewStatus'
+        links:
+          type: array
+          description: links to data related to the manager review
+          items:
+            $ref: '#/components/schemas/Link'
+        completedAt:
+          type: string
+          description: The date the manager review was completed in the source system
+          format: date-time
+          nullable: true
+        createdAt:
+          type: string
+          description: The date the manager review was created in the source system
+          format: date-time
+        updatedAt:
+          type: string
+          description: The date the manager review was last updated in the source system
+          format: date-time
+        processedAt:
+          type: string
+          description: The date the manager review was last processed by the public API. This may be used by consumers to determine if the manager review has been updated since the last time they retrieved it.
+          format: date-time
+      required:
+      - cycleId
+      - reviewId
+      - employeeId
+      - createdAt
+      - updatedAt
+      - processedAt
+      example:
+        performanceCycleId: b6505a73-d45f-4091-b3fb-74997de4cd01
+        managerReviewId: b6505a73-d45f-4091-b3fb-74997de4cd02
+        employeeId: b6505a73-d45f-4091-b3fb-74997de4cd03
+        managerId: b6505a73-d45f-4091-b3fb-74997de4cd04
+        performanceRating:
+          ratingQuestion:
+            title: How would you rate the employee's performance?
+            description: Please rate the employee's overall performance, consider the impact they have had as well as how they live our values
+          ratingBuckets:
+          - id: b6505a73-d45f-4091-b3fb-74997de4cd03
+            title: Outstanding
+            value: 2
+            description: The employee has exceeded expectations and has had a significant impact on the team and the company
+            createdAt: '2022-04-28T02:14:10+00:00'
+            updatedAt: '2022-08-02T02:14:10+00:00'
+          - id: b6505a73-d45f-4091-b3fb-74997de4cd04
+            title: Good
+            value: 1
+            description: The employee has met expectations and has had a positive impact on the team and the company
+            createdAt: '2022-04-28T02:14:10+00:00'
+            updatedAt: '2022-08-02T02:14:10+00:00'
+          - id: b6505a73-d45f-4091-b3fb-74997de4cd05
+            title: Needs Improvement
+            value: 0
+            description: The employee has not met expectations and has had a negative impact on the team and the company
+            createdAt: '2022-04-28T02:14:10+00:00'
+            updatedAt: '2022-08-02T02:14:10+00:00'
+          rating:
+            id: b6505a73-d45f-4091-b3fb-74997de4cd06
+            title: Outstanding
+            description: The employee has exceeded expectations and has had a significant impact on the team and the company
+            value: 5
+            createdAt: '2022-04-28T02:14:10+00:00'
+            updatedAt: '2022-08-02T02:14:10+00:00'
+        openTextQuestions:
+        - id: e79b5eed-c761-4d3a-b91e-5906ff0b7954
+          text: What should this employee celebrate this year?
+          answer: Breaking a record for sales
+        - id: e79b5eed-c761-4d3a-b91e-5906ff0b7955
+          text: What should this employee focus on next year?
+          answer: Upskilling in Power BI
+        multipleChoiceQuestions:
+        - id: addc75b3-9a0d-4567-bdde-190b575835c0
+          text: 'Does this employee embody company value #1?'
+          options:
+          - 'yes'
+          - 'no'
+          - often
+          - sometimes
+          answer: 'yes'
+        - id: addc75b3-9a0d-4567-bdde-190b575835c1
+          text: 'Does this employee embody company value #2?'
+          options:
+          - 'yes'
+          - 'no'
+          - often
+          - sometimes
+          answer: sometimes
+        multipleChoiceMultiSelectQuestions:
+        - id: addc75b3-9a0d-4567-bdde-190b575835c2
+          text: Which company values does this employee demonstrate?
+          options:
+          - integrity
+          - collaboration
+          - innovation
+          - accountability
+          answers:
+          - integrity
+          - collaboration
+        reviewAcknowledged: true
+        status: completed
+        links:
+        - rel: employee
+          uri: /v1/employees/b6505a73-d45f-4091-b3fb-74997de4cd03
+        - rel: performance-cycle
+          uri: /v1/performance-cycles/b6505a73-d45f-4091-b3fb-74997de4cd01
+        processedAt: '2022-08-02T02:15:10+00:00'
+        createdAt: '2022-04-28T02:14:10+00:00'
+        updatedAt: '2022-08-02T02:14:10+00:00'
+        completedAt: '2022-08-02T02:14:10+00:00'
+    Link:
+      title: Link
+      type: object
+      properties:
+        rel:
+          type: string
+          description: the type of related data e.g. demographics, goals, performance
+        uri:
+          type: string
+          description: the relative url that points to the data
+      description: Link to related data
+      required:
+      - rel
+      - uri
+    PerformanceRating:
+      title: PerformanceRating
+      type: object
+      description: Describes a performance rating for an employee
+      properties:
+        ratingQuestion:
+          $ref: '#/components/schemas/RatingQuestion'
+        ratingBuckets:
+          type: array
+          items:
+            $ref: '#/components/schemas/RatingBucket'
+        rating:
+          $ref: '#/components/schemas/Rating'
+      required:
+      - ratingBuckets
+    Error:
+      required:
+      - code
+      - message
+      type: object
+      properties:
+        code:
+          type: integer
+          description: the HTTP status code of the error
+          format: int32
+        message:
+          type: string
+          description: a description of the error
+      description: an object describing an API error
+    PerformanceReviewStatus:
+      type: string
+      description: 'The status of the performance review.
+
+        \
+
+        **Note:** data from manager reviews with ‘dirty’ status is not served from this API.'
+      enum:
+      - completed
+      - shared
+      - dirty
+      - incomplete
+    ManagerReviewResponse:
+      title: ManagerReviewResponse
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/ManagerReview'
+      required:
+      - data
+    PerformanceCycleState:
+      type: string
+      enum:
+      - active
+      - closed
+      - ready
+    RatingQuestion:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+      required:
+      - title
+    Pagination:
+      title: Pagination
+      type: object
+      example:
+        afterKey: ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J
+        nextPath: /<path>?cursor=ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J
+      properties:
+        afterKey:
+          type: string
+          description: The pagination key to use for the next page of results
+        nextPath:
+          type: string
+          description: the relative url for the next page of data
+      required:
+      - nextPath
+    Rating:
+      title: Rating
+      type: object
+      description: Describes a performance rating for an employee
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        value:
+          type: integer
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      required:
+      - id
+      - title
+      - value
+      - createdAt
+      - updatedAt
+    PerformanceCycle:
+      title: PerformanceCycle
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        state:
+          $ref: '#/components/schemas/PerformanceCycleState'
+        createdAt:
+          type: string
+          description: The date the performance cycle was created in the source system
+          format: date-time
+        updatedAt:
+          type: string
+          description: The date the performance cycle was last updated in the source system
+          format: date-time
+        processedAt:
+          type: string
+          description: The date the performance cycle was last processed by the public API. This can be used by consumers to determine if the performance cycle has been updated since the last time they retrieved it.
+          format: date-time
+      required:
+      - id
+      - name
+      - state
+      - createdAt
+      - updatedAt
+      - processedAt
+      description: Describes a performance cycle
+      example:
+        id: b6505a73-d45f-4091-b3fb-74997de4cdc6
+        name: H1 2022 Pied Piper engineering performance cycle
+        state: active
+        createdAt: '2022-04-28T02:14:10+00:00'
+        updatedAt: '2022-08-02T02:14:10+00:00'
+        processedAt: '2022-08-02T02:15:10+00:00'
+    PerformanceCycleResponse:
+      title: PerformanceCycleResponse
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/PerformanceCycle'
+      required:
+      - data
+    MultipleChoiceQuestion:
+      type: object
+      description: The multiple choice questions corresponding to a review
+      properties:
+        id:
+          type: string
+        text:
+          type: string
+        options:
+          type: array
+          items:
+            type: string
+        answer:
+          type: string
+      required:
+      - id
+      - text
+      - options
+    ManagerReviewsResponse:
+      title: ManagerReviewsResponse
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ManagerReview'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+      required:
+      - data
+    RatingBucket:
+      title: RatingBucket
+      type: object
+      description: Describes a performance rating bucket that an employee may be assigned to
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        value:
+          type: integer
+      required:
+      - title
+      - value
+  responses:
+    NotFound:
+      description: The specified resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ServiceUnavailable:
+      description: Service Unavailable - endpoint rate limit exceeded
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    InternalServerError:
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Forbidden:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    TooManyRequests:
+      description: Too Many Requests - client rate limit exceeded
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: The request path parameters, query parameters or headers are not valid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  parameters:
+    AfterDateQueryParam:
+      name: after_date
+      in: query
+      description: "Only returns resources processed by the public API after the date-time provided.\n\nUses the date-time format specified in [RFC 3339 section 5.6, Internet Date/Time Format](https://tools.ietf.org/html/rfc3339#section-5.6). \n\nThe value cannot contain spaces, and date and time should be separated by \"T\". \n\nFor example:\n* UTC time \"2023-05-01T00:00:00Z\".\n* An offset from UTC time to indicate a time zone, such as \"2023-05-01T00:00:00%2B08:00\" (for 8 hours ahead of UTC time). \n\nNote that query parameters should be properly escaped, last example is equivalent to \"2023-05-01T00:00:00+08:00\"."
+      schema:
+        type: string
+      example: '2013-01-15T00:00:00+08:00'
+    CursorQueryParam:
+      name: cursor
+      in: query
+      description: "The pagination key to use for the next page of results. \n\nThe last successful call will include this in the response body in `pagination.afterKey`.\n\nNote:\n* Pagination also works using the `after_key` query parameter. However, if both `cursor` and `after_key` are \nprovided, `cursor` will take precedence."
+      schema:
+        type: string
+      example: ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J
+  securitySchemes:
+    Oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: /oauth2/token
+          scopes:
+            employees-read: Grants read access to employees resources
+            employee-demographics-read: Grants access to employee demographics
+            performance-evaluations-read: Grants access to employee performance evaluations
+x-readme:
+  explorer-enabled: false

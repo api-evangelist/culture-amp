@@ -1,0 +1,360 @@
+openapi: 3.0.1
+info:
+  title: Culture Amp Public Employees API
+  description: This Open API specification describes the interface for the Culture Amp public API service
+  contact:
+    name: Culture Amp Support
+    email: support@cultureamp.com
+  license:
+    name: CultureAmp
+  version: 0.0.1
+servers:
+- url: https://api.cultureamp.com/v1
+  description: Production
+- url: https://sandbox.public-api.development.cultureamp.net/v1
+  description: Development
+tags:
+- name: Employees
+paths:
+  /employees:
+    get:
+      tags:
+      - Employees
+      summary: List employees
+      description: 'Returns all employees in the account.
+
+
+        If both `email` and `employee_identifier` are provided, `employee_identifier` will take precedence.
+
+
+        `cursor` is optional and used for pagination.'
+      operationId: list-employees
+      parameters:
+      - name: email
+        in: query
+        description: The email of the employees to retrieve
+        schema:
+          type: string
+          format: email
+      - name: employee_identifier
+        in: query
+        description: The unique id used by the employees company to identify the employee
+        schema:
+          type: string
+      - $ref: '#/components/parameters/CursorQueryParam'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmployeesResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+      security:
+      - Oauth2:
+        - employees-read
+  /employees/{id}:
+    get:
+      tags:
+      - Employees
+      summary: Get employee
+      description: Returns the details of an employee corresponding to the provided Culture Amp employee identifier
+      operationId: get-employee
+      parameters:
+      - name: id
+        in: path
+        description: the Culture Amp employee identifier
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmployeeByIDResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+      security:
+      - Oauth2:
+        - employees-read
+  /employees/{id}/demographics:
+    get:
+      tags:
+      - Employees
+      summary: List demographics by employee
+      description: Returns the demographic assignments for a given employee
+      operationId: list-demographics-by-employee
+      parameters:
+      - name: id
+        in: path
+        description: the Culture Amp employee identifier
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DemographicsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+      security:
+      - Oauth2:
+        - employee-demographics-read
+components:
+  schemas:
+    DemographicsResponse:
+      title: DemographicsResponse
+      type: object
+      description: container object for multiple demographics response
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Demographic'
+      required:
+      - data
+    EmployeesResponse:
+      title: EmployeesResponse
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Employee'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+      description: container object for multiple employees response
+      required:
+      - data
+    Pagination:
+      title: Pagination
+      type: object
+      example:
+        afterKey: ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J
+        nextPath: /<path>?cursor=ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J
+      properties:
+        afterKey:
+          type: string
+          description: The pagination key to use for the next page of results
+        nextPath:
+          type: string
+          description: the relative url for the next page of data
+      required:
+      - nextPath
+    Link:
+      title: Link
+      type: object
+      properties:
+        rel:
+          type: string
+          description: the type of related data e.g. demographics, goals, performance
+        uri:
+          type: string
+          description: the relative url that points to the data
+      description: Link to related data
+      required:
+      - rel
+      - uri
+    Error:
+      required:
+      - code
+      - message
+      type: object
+      properties:
+        code:
+          type: integer
+          description: the HTTP status code of the error
+          format: int32
+        message:
+          type: string
+          description: a description of the error
+      description: an object describing an API error
+    EmployeeByIDResponse:
+      title: EmployeeByIDResponse
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Employee'
+      description: container object for a single employee response
+      required:
+      - data
+    Employee:
+      title: Employee
+      type: object
+      description: The employee data record
+      properties:
+        id:
+          type: string
+          description: the identifier used by Culture Amp to identify the employee
+        employeeIdentifier:
+          type: string
+          description: the identifier used by the employee's organization to identify the employee
+        email:
+          type: string
+          description: the employee's email address
+        name:
+          type: string
+          description: the name of the employee
+        preferredName:
+          type: string
+          description: the employee preferred name
+        birthDate:
+          type: string
+          description: the date of birth in YYYY-MM-DD format
+          format: date
+        startDate:
+          type: string
+          description: the date the employee started in the company, in YYYY-MM-DD format
+          format: date
+        endDate:
+          type: string
+          description: the date the employee left the company, in YYYY-MM-DD format
+          format: date
+        links:
+          type: array
+          description: links to data related to the employee
+          items:
+            $ref: '#/components/schemas/Link'
+        processedAt:
+          type: string
+          description: The date the employee was last processed by the public API. This can be used by consumers to determine if the employee has been updated since the last time they retrieved it.
+          format: date-time
+      required:
+      - id
+      - name
+      - processedAt
+      example:
+        id: 96b1cff7-3099-44a9-bd28-0292be8aff7f
+        name: Bertram Gilfoyle
+        preferredName: Gilfoyle
+        birthDate: '1980-08-24'
+        startDate: '2015-07-19'
+        endDate: '2019-08-01'
+        employeeIdentifier: '2'
+        email: gilfoyle@piedpiper.com
+        links:
+        - rel: demographics
+          uri: /v1/employees/96b1cff7-3099-44a9-bd28-0292be8aff7f/demographics
+        - rel: manager-reviews
+          uri: /v1/employees/96b1cff7-3099-44a9-bd28-0292be8aff7f/manager-reviews
+        processedAt: '2019-08-01T12:00:00Z'
+    Demographic:
+      title: Demographic
+      type: object
+      example:
+        name: star sign
+        value: capricorn
+      properties:
+        name:
+          type: string
+          description: the name of the demographic
+        value:
+          type: string
+          description: the value of the demographic
+      required:
+      - name
+      - value
+  parameters:
+    CursorQueryParam:
+      name: cursor
+      in: query
+      description: "The pagination key to use for the next page of results. \n\nThe last successful call will include this in the response body in `pagination.afterKey`.\n\nNote:\n* Pagination also works using the `after_key` query parameter. However, if both `cursor` and `after_key` are \nprovided, `cursor` will take precedence."
+      schema:
+        type: string
+      example: ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J
+  responses:
+    Forbidden:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The specified resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ServiceUnavailable:
+      description: Service Unavailable - endpoint rate limit exceeded
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: The request path parameters, query parameters or headers are not valid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    TooManyRequests:
+      description: Too Many Requests - client rate limit exceeded
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    InternalServerError:
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    Oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: /oauth2/token
+          scopes:
+            employees-read: Grants read access to employees resources
+            employee-demographics-read: Grants access to employee demographics
+            performance-evaluations-read: Grants access to employee performance evaluations
+x-readme:
+  explorer-enabled: false

@@ -1,0 +1,1085 @@
+openapi: 3.0.1
+info:
+  title: Culture Amp Public Employees Surveys API
+  description: This Open API specification describes the interface for the Culture Amp public API service
+  contact:
+    name: Culture Amp Support
+    email: support@cultureamp.com
+  license:
+    name: CultureAmp
+  version: 0.0.1
+servers:
+- url: https://api.cultureamp.com/v1
+  description: Production
+- url: https://sandbox.public-api.development.cultureamp.net/v1
+  description: Development
+tags:
+- name: Surveys
+paths:
+  /surveys:
+    get:
+      tags:
+      - Surveys
+      summary: List surveys
+      deprecated: true
+      description: 'Returns a list of all surveys in the account
+
+
+        > 🛑 Deprecated API - No Longer Available
+
+        >
+
+        > This API is no longer available to setup. Please use the [Reporting API](https://support.cultureamp.com/en/articles/9232738-reporting-api) for access to RDE enabled Survey data which is available now.
+
+        '
+      operationId: list-surveys
+      parameters:
+      - $ref: '#/components/parameters/CursorQueryParam'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SurveysResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+      security:
+      - Oauth2:
+        - surveys-read
+  /surveys/{id}:
+    get:
+      tags:
+      - Surveys
+      summary: Get survey
+      deprecated: true
+      description: 'Retrieves the details of an individual survey
+
+
+        > 🛑 Deprecated API - No Longer Available
+
+        >
+
+        > This API is no longer available to setup. Please use the [Reporting API](https://support.cultureamp.com/en/articles/9232738-reporting-api) for access to RDE enabled Survey data which is available now.
+
+        '
+      operationId: get-survey
+      parameters:
+      - name: id
+        in: path
+        description: survey id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SurveyResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+      security:
+      - Oauth2:
+        - surveys-read
+  /surveys/{id}/questions:
+    get:
+      tags:
+      - Surveys
+      summary: List questions
+      deprecated: true
+      description: 'Returns a list of all questions from an individual survey
+
+
+        > 🛑 Deprecated API - No Longer Available
+
+        >
+
+        > This API is no longer available to setup. Please use the [Reporting API](https://support.cultureamp.com/en/articles/9232738-reporting-api) for access to RDE enabled Survey data which is available now.
+
+        '
+      operationId: list-survey-questions
+      parameters:
+      - $ref: '#/components/parameters/CursorQueryParam'
+      - name: id
+        in: path
+        description: survey id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SurveyQuestionsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+      security:
+      - Oauth2:
+        - surveys-read
+  /surveys/{survey_id}/question/{question_id}:
+    get:
+      tags:
+      - Surveys
+      summary: Get question
+      deprecated: true
+      description: 'Retrieves the details of an individual question from a survey
+
+
+        > 🛑 Deprecated API - No Longer Available
+
+        >
+
+        > This API is no longer available to setup. Please use the [Reporting API](https://support.cultureamp.com/en/articles/9232738-reporting-api) for access to RDE enabled Survey data which is available now.
+
+        '
+      operationId: get-survey-question
+      parameters:
+      - $ref: '#/components/parameters/CursorQueryParam'
+      - name: survey_id
+        in: path
+        description: survey id
+        required: true
+        schema:
+          type: string
+      - name: question_id
+        in: path
+        description: question id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SurveyQuestionResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+      security:
+      - Oauth2:
+        - surveys-read
+  /surveys/{id}/responses:
+    get:
+      tags:
+      - Surveys
+      summary: List responses
+      deprecated: true
+      description: 'Returns a list of all responses from an individual survey
+
+
+        > 🛑 Deprecated API - No Longer Available
+
+        >
+
+        > This API is no longer available to setup. Please use the [Reporting API](https://support.cultureamp.com/en/articles/9232738-reporting-api) for access to RDE enabled Survey data which is available now.
+
+        '
+      operationId: list-survey-responses
+      parameters:
+      - $ref: '#/components/parameters/CursorQueryParam'
+      - name: id
+        in: path
+        description: survey id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SurveyRespsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+      security:
+      - Oauth2:
+        - surveys-read
+  /surveys/{survey_id}/responses/{response_id}:
+    get:
+      tags:
+      - Surveys
+      summary: Get response
+      deprecated: true
+      description: 'Retrieves the details of an individual response from a survey
+
+
+        > 🛑 Deprecated API - No Longer Available
+
+        >
+
+        > This API is no longer available to setup. Please use the [Reporting API](https://support.cultureamp.com/en/articles/9232738-reporting-api) for access to RDE enabled Survey data which is available now.
+
+        '
+      operationId: get-survey-response
+      parameters:
+      - name: survey_id
+        in: path
+        description: survey id
+        required: true
+        schema:
+          type: string
+      - name: response_id
+        in: path
+        description: response id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SurveyRespResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+      security:
+      - Oauth2:
+        - surveys-read
+  /surveys/{id}/factors:
+    get:
+      tags:
+      - Surveys
+      summary: List factors
+      deprecated: true
+      description: 'Returns a list of all factors from an individual survey
+
+
+        > 🛑 Deprecated API - No Longer Available
+
+        >
+
+        > This API is no longer available to setup. Please use the [Reporting API](https://support.cultureamp.com/en/articles/9232738-reporting-api) for access to RDE enabled Survey data which is available now.
+
+        '
+      operationId: list-survey-factors
+      parameters:
+      - $ref: '#/components/parameters/CursorQueryParam'
+      - name: id
+        in: path
+        description: factor id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SurveyFactorsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+      security:
+      - Oauth2:
+        - surveys-read
+  /surveys/{survey_id}/factors/{factor_id}:
+    get:
+      tags:
+      - Surveys
+      summary: Get factor
+      deprecated: true
+      description: 'Retrieves the details of an individual factor from a survey
+
+
+        > 🛑 Deprecated API - No Longer Available
+
+        >
+
+        > This API is no longer available to setup. Please use the [Reporting API](https://support.cultureamp.com/en/articles/9232738-reporting-api) for access to RDE enabled Survey data which is available now.
+
+        '
+      operationId: get-survey-factor
+      parameters:
+      - name: survey_id
+        in: path
+        description: survey id
+        required: true
+        schema:
+          type: string
+      - name: factor_id
+        in: path
+        description: Unique identifiers of the factors associated with this question.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SurveyFactorResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+      security:
+      - Oauth2:
+        - surveys-read
+  /surveys/{id}/sections:
+    get:
+      tags:
+      - Surveys
+      summary: List sections
+      deprecated: true
+      description: 'Returns a list of all sections from an individual survey
+
+
+        > 🛑 Deprecated API - No Longer Available
+
+        >
+
+        > This API is no longer available to setup. Please use the [Reporting API](https://support.cultureamp.com/en/articles/9232738-reporting-api) for access to RDE enabled Survey data which is available now.
+
+        '
+      operationId: list-survey-sections
+      parameters:
+      - $ref: '#/components/parameters/CursorQueryParam'
+      - name: id
+        in: path
+        description: survey id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SurveySectionsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+      security:
+      - Oauth2:
+        - surveys-read
+  /surveys/{survey_id}/sections/{section_id}:
+    get:
+      tags:
+      - Surveys
+      summary: Get section
+      deprecated: true
+      description: 'Retrieves the details of an individual section from a survey
+
+
+        > 🛑 Deprecated API - No Longer Available
+
+        >
+
+        > This API is no longer available to setup. Please use the [Reporting API](https://support.cultureamp.com/en/articles/9232738-reporting-api) for access to RDE enabled Survey data which is available now.
+
+        '
+      operationId: get-survey-section
+      parameters:
+      - name: survey_id
+        in: path
+        description: survey id
+        required: true
+        schema:
+          type: string
+      - name: section_id
+        in: path
+        description: Unique identifier for the section associated with this question
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SurveySectionResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+      security:
+      - Oauth2:
+        - surveys-read
+components:
+  schemas:
+    SurveyRespResponse:
+      title: SurveyRespResponse
+      type: object
+      description: container object for a Survey Response
+      properties:
+        data:
+          $ref: '#/components/schemas/SurveyResp'
+      required:
+      - data
+    Error:
+      required:
+      - code
+      - message
+      type: object
+      properties:
+        code:
+          type: integer
+          description: the HTTP status code of the error
+          format: int32
+        message:
+          type: string
+          description: a description of the error
+      description: an object describing an API error
+    Survey:
+      title: Survey
+      type: object
+      description: The Survey record
+      properties:
+        id:
+          type: string
+          description: the identifier used by Culture Amp to identify the Survey
+        name:
+          type: object
+          additionalProperties:
+            type: string
+          description: The locale informed name of the Survey
+          example:
+            en: Hello!
+            fr: Bonjour!
+        status:
+          type: string
+          description: 'The status of the survey.
+
+            Surveys that are still being drafted are not surfaced in the API.
+
+            For more information about draft surveys, please refer to the following support guide: https://support.cultureamp.com/en/articles/7048518-surveys-and-programs-page#h_71149c7700
+
+            '
+        rdeEnabled:
+          type: boolean
+          description: A boolean describing the RDE Enabled status of the survey
+        owner:
+          type: string
+          description: The Culture Amp ID identifying the user who owns the Survey
+        workflow:
+          type: string
+          description: The workflow of the survey
+        launchedAt:
+          type: string
+          description: The date the Survey was launched
+          format: date-time
+          nullable: true
+        closedAt:
+          type: string
+          description: The date the Survey was closed
+          format: date-time
+          nullable: true
+        createdAt:
+          type: string
+          description: The date the Survey was created
+          format: date-time
+        updatedAt:
+          type: string
+          description: The date the Survey was last updated
+          format: date-time
+        processedAt:
+          type: string
+          description: The date the survey was last processed by the public API. This can be used by consumers to determine if the survey has been updated since the last time it was retrieved.
+          format: date-time
+        communicatedClosedAt:
+          type: string
+          description: The timestamp when the closure of the survey was communicated.
+          format: date-time
+          nullable: true
+        surveyDueDays:
+          type: integer
+          description: How many days from survey launch that the survey is due.
+        kioskModeEnabled:
+          type: boolean
+          description: Indicates whether the survey is being run in kiosk mode.
+        excludeParticipantsAfter:
+          type: string
+          description: The date at which this survey will no longer include participants.
+          format: date-time
+          nullable: true
+      required:
+      - id
+      - processedAt
+      - rdeEnabled
+    SurveySectionResponse:
+      title: SurveySectionResponse
+      type: object
+      description: container object for a single Section
+      properties:
+        data:
+          $ref: '#/components/schemas/SurveySection'
+      required:
+      - data
+    SurveyQuestionsResponse:
+      title: SurveyQuestionsResponse
+      type: object
+      description: container object for multiple Survey questions
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/SurveyQuestion'
+        pagination:
+          $ref: '#/components/schemas/PaginationV2'
+      required:
+      - data
+    SurveyQuestion:
+      title: SurveyQuestion
+      type: object
+      description: The Survey Question record
+      properties:
+        id:
+          type: string
+          description: the identifier used by Culture Amp to identify the Survey
+        code:
+          type: string
+          description: The unique question code
+        questionType:
+          type: string
+          description: The type of the survey question eg. culture, segment
+        label:
+          type: object
+          additionalProperties:
+            type: string
+          description: The localised label of the survey question
+          example:
+            en: Hello!
+            fr: Bonjour!
+        description:
+          type: object
+          additionalProperties:
+            type: string
+          description: The localised description of the survey question
+          example:
+            en: Hello!
+            fr: Bonjour!
+        ratingScale:
+          type: string
+          description: The rating scale of the survey question
+        selectOptions:
+          type: array
+          items:
+            $ref: '#/components/schemas/SurveyQuestionSelectOption'
+        otherOption:
+          type: boolean
+          description: The flag for other select option
+        status:
+          type: string
+          description: The status of the survey question, active or deleted
+        sectionId:
+          type: string
+          description: The ID of a section the survey question belongs to
+        factorIds:
+          type: array
+          description: The IDs of factors associated with the survey question
+          items:
+            type: string
+        createdAt:
+          type: string
+          description: The date the Survey question was created
+          format: date-time
+        updatedAt:
+          type: string
+          description: The date the Survey question was last updated
+          format: date-time
+        processedAt:
+          type: string
+          description: The date the survey question was last processed by the public API. This can be used by consumers to determine if the question has been updated since the last time it was retrieved.
+          format: date-time
+      required:
+      - id
+      - otherOption
+      - processedAt
+    PaginationV2:
+      title: Pagination
+      type: object
+      example:
+        nextPath: /<path>?cursor=ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J
+      properties:
+        nextPath:
+          type: string
+          description: the relative url for the next page of data
+    SurveyRespAnswer:
+      type: object
+      properties:
+        questionId:
+          type: string
+          description: the id of the question being answered
+        textValue:
+          type: string
+          description: The comment left for a free text style question, or the answer a user left when the "other" option is picked on a select question
+        ratingScore:
+          type: integer
+          description: The rating in the range 1..5 or -1 if it was not answered
+        selectOptions:
+          type: array
+          items:
+            $ref: '#/components/schemas/SurveyRespAnswerSelectOption'
+        answered:
+          type: boolean
+          description: Whether or not this answer was completed
+        additionalComment:
+          type: string
+          description: the comment text left against select questions as an additional input to the option chosen
+        mandatory:
+          type: boolean
+          description: Whether or not the question was made mandatory
+        createdAt:
+          type: string
+          description: The date the answer was created
+          format: date-time
+        updatedAt:
+          type: string
+          description: The date the answer was last updated
+          format: date-time
+      required:
+      - answered
+      - mandatory
+    SurveyRespAnswerSelectOption:
+      title: SurveyResponseAnswerSelectOption
+      type: object
+      description: A chosen select option in a survey response answer
+      properties:
+        id:
+          type: string
+          description: ID of a select option chosen as part of the response
+        label:
+          type: object
+          additionalProperties:
+            type: string
+          description: The localised label of a select option chosen as part of the response
+          example:
+            en: Hello!
+            fr: Bonjour!
+    SurveyRespsResponse:
+      title: SurveyRespsResponse
+      type: object
+      description: container object for multiple Survey Responses
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/SurveyResp'
+        pagination:
+          $ref: '#/components/schemas/PaginationV2'
+      required:
+      - data
+    SurveyFactor:
+      title: SurveyFactor
+      type: object
+      description: A Factor is an aspect that one seeks to measure in a Survey
+      properties:
+        id:
+          type: string
+          description: Unique identifier for this reporting factor
+        name:
+          type: object
+          additionalProperties:
+            type: string
+          description: Text name set by the survey admin for this reporting factor
+          example:
+            en: Hello!
+            fr: Bonjour!
+        type:
+          type: string
+          description: Defines the type of the reporting factor and how it will be used in survey reporting
+        code:
+          type: string
+          description: Auto-generated code for the reporting factor
+        indexFactor:
+          type: boolean
+          description: Whether the reporting factor is used as an index or not
+        customFactor:
+          type: boolean
+          description: Whether the reporting factor was created via the reporting factors page or not
+        shortDescription:
+          type: string
+          description: Short text label which describes the reporting factor
+        longDescription:
+          type: string
+          description: Long text label which describes the reporting factor
+        status:
+          type: string
+          description: Whether this reporting factor is active or deleted
+        order:
+          type: integer
+          description: Order of the factor as configured in the survey
+          format: int32
+        createdAt:
+          type: string
+          description: When this factor was created
+          format: date-time
+        updatedAt:
+          type: string
+          description: When the factor was last updated
+          format: date-time
+    SurveyQuestionResponse:
+      title: SurveyQuestionResponse
+      type: object
+      description: container object for a single Survey question
+      properties:
+        data:
+          $ref: '#/components/schemas/SurveyQuestion'
+      required:
+      - data
+    SurveyFactorResponse:
+      title: SurveyFactorResponse
+      type: object
+      description: container object for a single Factor
+      properties:
+        data:
+          $ref: '#/components/schemas/SurveyFactor'
+      required:
+      - data
+    SurveyQuestionSelectOption:
+      type: object
+      description: a survey question's select option
+      properties:
+        id:
+          type: string
+          description: originated from a demographic_value_id or select_option_id
+        label:
+          type: object
+          additionalProperties:
+            type: string
+          description: The localised label of the option
+          example:
+            en: Hello!
+            fr: Bonjour!
+        value:
+          type: object
+          additionalProperties:
+            type: string
+          description: The localised value of the option
+          example:
+            en: Hello!
+            fr: Bonjour!
+        status:
+          type: string
+          description: Select option status, active or deleted
+        createdAt:
+          type: string
+          description: The date the option was created
+          format: date-time
+        updatedAt:
+          type: string
+          description: The date the option was last updated
+          format: date-time
+    SurveysResponse:
+      title: SurveysResponse
+      type: object
+      description: container object for multiple Surveys
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Survey'
+        pagination:
+          $ref: '#/components/schemas/PaginationV2'
+      required:
+      - data
+    SurveyFactorsResponse:
+      title: SurveyFactorsResponse
+      type: object
+      description: container object for multiple Factors
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/SurveyFactor'
+        pagination:
+          $ref: '#/components/schemas/PaginationV2'
+    SurveySectionsResponse:
+      title: SurveySectionsResponse
+      type: object
+      description: container object for multiple Sections
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/SurveySection'
+        pagination:
+          $ref: '#/components/schemas/PaginationV2'
+    SurveySection:
+      title: SurveySection
+      type: object
+      description: A section is a grouping of questions in a survey
+      properties:
+        id:
+          type: string
+          description: Unique identifier for this section.
+        name:
+          type: string
+          description: Name of this section
+        type:
+          type: string
+          description: Defines the type category of the section, including how it will display to respondents
+        code:
+          type: string
+          description: Auto-generated code for the section
+        shortDescription:
+          type: string
+          description: Short text label which describes the section
+        longDescription:
+          type: string
+          description: Long text label which describes the section
+        status:
+          type: string
+          description: Whether the section is active or deleted
+        order:
+          type: integer
+          description: Order of the section as configured in the survey
+          format: int32
+        createdAt:
+          type: string
+          description: When this section was created
+          format: date-time
+        updatedAt:
+          type: string
+          description: When this Section was last updated
+          format: date-time
+    SurveyResponse:
+      title: SurveyResponse
+      type: object
+      description: container object for a single Survey
+      properties:
+        data:
+          $ref: '#/components/schemas/Survey'
+      required:
+      - data
+    SurveyResp:
+      title: SurveyResponse
+      type: object
+      description: The Survey Response record
+      properties:
+        id:
+          type: string
+          description: the identifier used by Culture Amp to identify the Survey
+        employeeId:
+          type: string
+          description: The unique employee ID
+        answers:
+          type: array
+          items:
+            $ref: '#/components/schemas/SurveyRespAnswer'
+        rdeEnabled:
+          type: boolean
+          description: Identifies whether a survey was launched with `raw data extract` enabled (true/false).
+        captureLocale:
+          type: string
+          description: The the locale in which capture was completed
+        surveySubmittedBy:
+          type: string
+          description: The ID of the employee who submitted this response
+        startedAt:
+          type: string
+          description: The date the Survey response was started
+          format: date-time
+          nullable: true
+        submittedAt:
+          type: string
+          description: The date the Survey response was submitted
+          format: date-time
+          nullable: true
+        expiredAt:
+          type: string
+          description: The date the Survey response expires
+          format: date-time
+          nullable: true
+        createdAt:
+          type: string
+          description: The date the Survey response was created
+          format: date-time
+        updatedAt:
+          type: string
+          description: The date the Survey response was last updated
+          format: date-time
+        processedAt:
+          type: string
+          description: The date the survey response was last processed by the public API. This can be used by consumers to determine if the response has been updated since the last time it was retrieved.
+          format: date-time
+      required:
+      - id
+      - processedAt
+      - rdeEnabled
+  responses:
+    NotFound:
+      description: The specified resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ServiceUnavailable:
+      description: Service Unavailable - endpoint rate limit exceeded
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    InternalServerError:
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Forbidden:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    TooManyRequests:
+      description: Too Many Requests - client rate limit exceeded
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: The request path parameters, query parameters or headers are not valid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  parameters:
+    CursorQueryParam:
+      name: cursor
+      in: query
+      description: "The pagination key to use for the next page of results. \n\nThe last successful call will include this in the response body in `pagination.afterKey`.\n\nNote:\n* Pagination also works using the `after_key` query parameter. However, if both `cursor` and `after_key` are \nprovided, `cursor` will take precedence."
+      schema:
+        type: string
+      example: ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J
+  securitySchemes:
+    Oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: /oauth2/token
+          scopes:
+            employees-read: Grants read access to employees resources
+            employee-demographics-read: Grants access to employee demographics
+            performance-evaluations-read: Grants access to employee performance evaluations
+x-readme:
+  explorer-enabled: false
