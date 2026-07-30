@@ -1,7 +1,20 @@
 aid: culture-amp
 name: Culture Amp
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/culture-amp.png
 url: https://raw.githubusercontent.com/api-evangelist/culture-amp/refs/heads/main/apis.yml
 created: 2026-06-12
 modified: 2026-06-12
@@ -26,49 +39,105 @@ tags:
   - Surveys
   - Human Resources
 apis:
-  - aid: culture-amp:culture-amp-public-api
-    name: Culture Amp Public API
-    type: RESTful
-    description: >
-      The Culture Amp Public API provides read-only programmatic access to
-      employee data, performance cycles, manager reviews, and survey data.
-      It follows OAuth 2.0 Client Credentials Flow authentication and returns
-      paginated JSON responses. The API enables integration with HRIS systems,
-      custom dashboards, and automated data pipelines.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://www.cultureamp.com/company/api
-    baseURL: https://api.cultureamp.com
-    tags:
-      - Employee Engagement
-      - Performance Management
-      - Surveys
-      - People Analytics
-    properties:
-      - type: Documentation
-        url: https://docs.api.cultureamp.com/docs/resources-getting-started
-      - type: OpenAPI
-        url: https://api.cultureamp.com/spec
-      - type: Authentication
-        url: https://docs.api.cultureamp.com/docs/resources-getting-started
-      - type: OpenAPILocal
-        url: openapi/culture-amp-public-api-openapi.yml
-      - type: JSONSchema
-        url: json-schema/culture-amp-employee-schema.json
-      - type: JSONSchema
-        url: json-schema/culture-amp-performance-cycle-schema.json
-      - type: JSONSchema
-        url: json-schema/culture-amp-manager-review-schema.json
-      - type: Examples
-        url: examples/culture-amp-employee-example.json
-      - type: Examples
-        url: examples/culture-amp-employees-list-example.json
-      - type: Examples
-        url: examples/culture-amp-performance-cycle-example.json
-      - type: Examples
-        url: examples/culture-amp-manager-review-example.json
-      - type: GraphQL
-        url: graphql/culture-amp-graphql.md
+- aid: culture-amp:culture-amp-employees-api
+  name: Culture Amp Employees API
+  description: The Employees API from Culture Amp — 3 operation(s) for employees.
+  humanURL: https://www.cultureamp.com/company/api
+  baseURL: https://api.cultureamp.com
+  tags:
+  - Employees
+  properties:
+  - type: OpenAPI
+    url: openapi/culture-amp-employees-api-openapi.yml
+  - type: Documentation
+    url: https://docs.api.cultureamp.com/docs/resources-getting-started
+  - type: Authentication
+    url: https://docs.api.cultureamp.com/docs/resources-getting-started
+  - type: OpenAPILocal
+    url: openapi/culture-amp-public-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/culture-amp-employee-schema.json
+  - type: JSONSchema
+    url: json-schema/culture-amp-performance-cycle-schema.json
+  - type: JSONSchema
+    url: json-schema/culture-amp-manager-review-schema.json
+  - type: Examples
+    url: examples/culture-amp-employee-example.json
+  - type: Examples
+    url: examples/culture-amp-employees-list-example.json
+  - type: Examples
+    url: examples/culture-amp-performance-cycle-example.json
+  - type: Examples
+    url: examples/culture-amp-manager-review-example.json
+  - type: GraphQL
+    url: graphql/culture-amp-graphql.md
+- aid: culture-amp:culture-amp-performance-api
+  name: Culture Amp Performance API
+  description: The Performance API from Culture Amp — 6 operation(s) for performance.
+  humanURL: https://www.cultureamp.com/company/api
+  baseURL: https://api.cultureamp.com
+  tags:
+  - Performance
+  properties:
+  - type: OpenAPI
+    url: openapi/culture-amp-performance-api-openapi.yml
+  - type: Documentation
+    url: https://docs.api.cultureamp.com/docs/resources-getting-started
+  - type: Authentication
+    url: https://docs.api.cultureamp.com/docs/resources-getting-started
+  - type: OpenAPILocal
+    url: openapi/culture-amp-public-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/culture-amp-employee-schema.json
+  - type: JSONSchema
+    url: json-schema/culture-amp-performance-cycle-schema.json
+  - type: JSONSchema
+    url: json-schema/culture-amp-manager-review-schema.json
+  - type: Examples
+    url: examples/culture-amp-employee-example.json
+  - type: Examples
+    url: examples/culture-amp-employees-list-example.json
+  - type: Examples
+    url: examples/culture-amp-performance-cycle-example.json
+  - type: Examples
+    url: examples/culture-amp-manager-review-example.json
+  - type: GraphQL
+    url: graphql/culture-amp-graphql.md
+- aid: culture-amp:culture-amp-surveys-api
+  name: Culture Amp Surveys API
+  description: The Surveys API from Culture Amp — 10 operation(s) for surveys.
+  humanURL: https://www.cultureamp.com/company/api
+  baseURL: https://api.cultureamp.com
+  tags:
+  - Surveys
+  properties:
+  - type: OpenAPI
+    url: openapi/culture-amp-surveys-api-openapi.yml
+  - type: Documentation
+    url: https://docs.api.cultureamp.com/docs/resources-getting-started
+  - type: Authentication
+    url: https://docs.api.cultureamp.com/docs/resources-getting-started
+  - type: OpenAPILocal
+    url: openapi/culture-amp-public-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/culture-amp-employee-schema.json
+  - type: JSONSchema
+    url: json-schema/culture-amp-performance-cycle-schema.json
+  - type: JSONSchema
+    url: json-schema/culture-amp-manager-review-schema.json
+  - type: Examples
+    url: examples/culture-amp-employee-example.json
+  - type: Examples
+    url: examples/culture-amp-employees-list-example.json
+  - type: Examples
+    url: examples/culture-amp-performance-cycle-example.json
+  - type: Examples
+    url: examples/culture-amp-manager-review-example.json
+  - type: GraphQL
+    url: graphql/culture-amp-graphql.md
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/culture-amp/overview
   - type: AgenticAccess
     url: agentic-access/culture-amp-agentic-access.yml
   - type: TrustCenter
