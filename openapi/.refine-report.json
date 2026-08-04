@@ -1,0 +1,18 @@
+{
+  "provider": "culture-amp",
+  "sources": [
+    "culture-amp-employees-api-openapi.yml",
+    "culture-amp-performance-api-openapi.yml",
+    "culture-amp-surveys-api-openapi.yml"
+  ],
+  "outputs": [
+    "culture-amp-employees-api-openapi.yml",
+    "culture-amp-performance-api-openapi.yml",
+    "culture-amp-surveys-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

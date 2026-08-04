@@ -1,0 +1,2951 @@
+{
+  "info": {
+    "_postman_id": "7d0b9dd3-cb7b-4658-9ad4-54058b358ce6",
+    "name": "Culture Amp Public Employees Performance API",
+    "description": "This Open API specification describes the interface for the Culture Amp public API service\n\nContact Support:\n Name: Culture Amp Support\n Email: support@cultureamp.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:27:28.000Z",
+    "updatedAt": "2026-07-28T01:27:29.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-7d0b9dd3-cb7b-4658-9ad4-54058b358ce6"
+  },
+  "item": [
+    {
+      "name": "employees",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "manager-reviews",
+              "item": [
+                {
+                  "name": "List manager reviews by employee",
+                  "id": "c7a0552a-1b30-48d8-9b6d-e5dad8085a87",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "employees-read employee-demographics-read performance-evaluations-read",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "/oauth2/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "client_credentials",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/employees/:id/manager-reviews?cursor=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "employees",
+                        ":id",
+                        "manager-reviews"
+                      ],
+                      "query": [
+                        {
+                          "description": "The pagination key to use for the next page of results. \n\nThe last successful call will include this in the response body in `pagination.afterKey`.\n\nNote:\n* Pagination also works using the `after_key` query parameter. However, if both `cursor` and `after_key` are \nprovided, `cursor` will take precedence.",
+                          "key": "cursor",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "7dd434b1-aa76-48f1-a48a-a233ff218c31",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) the Culture Amp employee identifier"
+                        }
+                      ]
+                    },
+                    "description": "Returns manager reviews for a given employee"
+                  },
+                  "response": [
+                    {
+                      "id": "76d1902b-723a-4cdc-9d9a-944e0ab1364b",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/employees/:id/manager-reviews?cursor=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "employees",
+                            ":id",
+                            "manager-reviews"
+                          ],
+                          "query": [
+                            {
+                              "description": "The pagination key to use for the next page of results. \n\nThe last successful call will include this in the response body in `pagination.afterKey`.\n\nNote:\n* Pagination also works using the `after_key` query parameter. However, if both `cursor` and `after_key` are \nprovided, `cursor` will take precedence.",
+                              "key": "cursor",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"data\": [\n    {\n      \"employeeId\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"updatedAt\": \"<dateTime>\",\n      \"processedAt\": \"<dateTime>\",\n      \"performanceCycleId\": \"<string>\",\n      \"managerReviewId\": \"<string>\",\n      \"managerId\": \"<string>\",\n      \"performanceRating\": {\n        \"ratingBuckets\": [\n          {\n            \"title\": \"<string>\",\n            \"value\": \"<integer>\",\n            \"description\": \"<string>\"\n          },\n          {\n            \"title\": \"<string>\",\n            \"value\": \"<integer>\",\n            \"description\": \"<string>\"\n          }\n        ],\n        \"ratingQuestion\": {\n          \"title\": \"<string>\",\n          \"description\": \"<string>\"\n        },\n        \"rating\": {\n          \"id\": \"<string>\",\n          \"title\": \"<string>\",\n          \"value\": \"<integer>\",\n          \"createdAt\": \"<dateTime>\",\n          \"updatedAt\": \"<dateTime>\",\n          \"description\": \"<string>\"\n        }\n      },\n      \"openTextQuestions\": [\n        {\n          \"id\": \"<string>\",\n          \"text\": \"<string>\",\n          \"answer\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"text\": \"<string>\",\n          \"answer\": \"<string>\"\n        }\n      ],\n      \"multipleChoiceQuestions\": [\n        {\n          \"id\": \"<string>\",\n          \"text\": \"<string>\",\n          \"options\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"answer\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"text\": \"<string>\",\n          \"options\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"answer\": \"<string>\"\n        }\n      ],\n      \"multipleChoiceMultiSelectQuestions\": [\n        {\n          \"id\": \"<string>\",\n          \"text\": \"<string>\",\n          \"options\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"answers\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"id\": \"<string>\",\n          \"text\": \"<string>\",\n          \"options\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"answers\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"reviewAcknowledged\": \"<boolean>\",\n      \"status\": \"dirty\",\n      \"links\": [\n        {\n          \"rel\": \"<string>\",\n          \"uri\": \"<string>\"\n        },\n        {\n          \"rel\": \"<string>\",\n          \"uri\": \"<string>\"\n        }\n      ],\n      \"completedAt\": \"<dateTime>\"\n    },\n    {\n      \"employeeId\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"updatedAt\": \"<dateTime>\",\n      \"processedAt\": \"<dateTime>\",\n      \"performanceCycleId\": \"<string>\",\n      \"managerReviewId\": \"<string>\",\n      \"managerId\": \"<string>\",\n      \"performanceRating\": {\n        \"ratingBuckets\": [\n          {\n            \"title\": \"<string>\",\n            \"value\": \"<integer>\",\n            \"description\": \"<string>\"\n          },\n          {\n            \"title\": \"<string>\",\n            \"value\": \"<integer>\",\n            \"description\": \"<string>\"\n          }\n        ],\n        \"ratingQuestion\": {\n          \"title\": \"<string>\",\n          \"description\": \"<string>\"\n        },\n        \"rating\": {\n          \"id\": \"<string>\",\n          \"title\": \"<string>\",\n          \"value\": \"<integer>\",\n          \"createdAt\": \"<dateTime>\",\n          \"updatedAt\": \"<dateTime>\",\n          \"description\": \"<string>\"\n        }\n      },\n      \"openTextQuestions\": [\n        {\n          \"id\": \"<string>\",\n          \"text\": \"<string>\",\n          \"answer\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"text\": \"<string>\",\n          \"answer\": \"<string>\"\n        }\n      ],\n      \"multipleChoiceQuestions\": [\n        {\n          \"id\": \"<string>\",\n          \"text\": \"<string>\",\n          \"options\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"answer\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"text\": \"<string>\",\n          \"options\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"answer\": \"<string>\"\n        }\n      ],\n      \"multipleChoiceMultiSelectQuestions\": [\n        {\n          \"id\": \"<string>\",\n          \"text\": \"<string>\",\n          \"options\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"answers\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"id\": \"<string>\",\n          \"text\": \"<string>\",\n          \"options\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"answers\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"reviewAcknowledged\": \"<boolean>\",\n      \"status\": \"incomplete\",\n      \"links\": [\n        {\n          \"rel\": \"<string>\",\n          \"uri\": \"<string>\"\n        },\n        {\n          \"rel\": \"<string>\",\n          \"uri\": \"<string>\"\n        }\n      ],\n      \"completedAt\": \"<dateTime>\"\n    }\n  ],\n  \"pagination\": {\n    \"nextPath\": \"<string>\",\n    \"afterKey\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:27:29.000Z",
+                      "updatedAt": "2026-07-28T01:27:29.000Z",
+                      "uid": "35240-76d1902b-723a-4cdc-9d9a-944e0ab1364b"
+                    },
+                    {
+                      "id": "6cc0e6d9-4dd9-42fd-b0bc-d1e0725f2f65",
+                      "name": "The request path parameters, query parameters or headers are not valid",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/employees/:id/manager-reviews?cursor=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "employees",
+                            ":id",
+                            "manager-reviews"
+                          ],
+                          "query": [
+                            {
+                              "description": "The pagination key to use for the next page of results. \n\nThe last successful call will include this in the response body in `pagination.afterKey`.\n\nNote:\n* Pagination also works using the `after_key` query parameter. However, if both `cursor` and `after_key` are \nprovided, `cursor` will take precedence.",
+                              "key": "cursor",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:27:29.000Z",
+                      "updatedAt": "2026-07-28T01:27:29.000Z",
+                      "uid": "35240-6cc0e6d9-4dd9-42fd-b0bc-d1e0725f2f65"
+                    },
+                    {
+                      "id": "7dc710fc-d60c-4f67-9911-87160c121f72",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/employees/:id/manager-reviews?cursor=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "employees",
+                            ":id",
+                            "manager-reviews"
+                          ],
+                          "query": [
+                            {
+                              "description": "The pagination key to use for the next page of results. \n\nThe last successful call will include this in the response body in `pagination.afterKey`.\n\nNote:\n* Pagination also works using the `after_key` query parameter. However, if both `cursor` and `after_key` are \nprovided, `cursor` will take precedence.",
+                              "key": "cursor",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:27:29.000Z",
+                      "updatedAt": "2026-07-28T01:27:29.000Z",
+                      "uid": "35240-7dc710fc-d60c-4f67-9911-87160c121f72"
+                    },
+                    {
+                      "id": "897907f5-9e75-4f35-90bc-126e7c4b4b62",
+                      "name": "Forbidden",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/employees/:id/manager-reviews?cursor=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "employees",
+                            ":id",
+                            "manager-reviews"
+                          ],
+                          "query": [
+                            {
+                              "description": "The pagination key to use for the next page of results. \n\nThe last successful call will include this in the response body in `pagination.afterKey`.\n\nNote:\n* Pagination also works using the `after_key` query parameter. However, if both `cursor` and `after_key` are \nprovided, `cursor` will take precedence.",
+                              "key": "cursor",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:27:29.000Z",
+                      "updatedAt": "2026-07-28T01:27:29.000Z",
+                      "uid": "35240-897907f5-9e75-4f35-90bc-126e7c4b4b62"
+                    },
+                    {
+                      "id": "d119a434-320b-49cc-849b-1a449e4c1f3b",
+                      "name": "The specified resource was not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/employees/:id/manager-reviews?cursor=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "employees",
+                            ":id",
+                            "manager-reviews"
+                          ],
+                          "query": [
+                            {
+                              "description": "The pagination key to use for the next page of results. \n\nThe last successful call will include this in the response body in `pagination.afterKey`.\n\nNote:\n* Pagination also works using the `after_key` query parameter. However, if both `cursor` and `after_key` are \nprovided, `cursor` will take precedence.",
+                              "key": "cursor",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:27:29.000Z",
+                      "updatedAt": "2026-07-28T01:27:29.000Z",
+                      "uid": "35240-d119a434-320b-49cc-849b-1a449e4c1f3b"
+                    },
+                    {
+                      "id": "998be4a4-6376-4f1b-9d6c-8ec47301a187",
+                      "name": "Too Many Requests - client rate limit exceeded",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/employees/:id/manager-reviews?cursor=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "employees",
+                            ":id",
+                            "manager-reviews"
+                          ],
+                          "query": [
+                            {
+                              "description": "The pagination key to use for the next page of results. \n\nThe last successful call will include this in the response body in `pagination.afterKey`.\n\nNote:\n* Pagination also works using the `after_key` query parameter. However, if both `cursor` and `after_key` are \nprovided, `cursor` will take precedence.",
+                              "key": "cursor",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:27:29.000Z",
+                      "updatedAt": "2026-07-28T01:27:29.000Z",
+                      "uid": "35240-998be4a4-6376-4f1b-9d6c-8ec47301a187"
+                    },
+                    {
+                      "id": "14520912-85c5-4026-80ba-98e8f55b1b4d",
+                      "name": "Internal Server Error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/employees/:id/manager-reviews?cursor=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "employees",
+                            ":id",
+                            "manager-reviews"
+                          ],
+                          "query": [
+                            {
+                              "description": "The pagination key to use for the next page of results. \n\nThe last successful call will include this in the response body in `pagination.afterKey`.\n\nNote:\n* Pagination also works using the `after_key` query parameter. However, if both `cursor` and `after_key` are \nprovided, `cursor` will take precedence.",
+                              "key": "cursor",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:27:29.000Z",
+                      "updatedAt": "2026-07-28T01:27:29.000Z",
+                      "uid": "35240-14520912-85c5-4026-80ba-98e8f55b1b4d"
+                    },
+                    {
+                      "id": "89c07513-e156-4694-a856-2a71e2947e08",
+                      "name": "Service Unavailable - endpoint rate limit exceeded",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/employees/:id/manager-reviews?cursor=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "employees",
+                            ":id",
+                            "manager-reviews"
+                          ],
+                          "query": [
+                            {
+                              "description": "The pagination key to use for the next page of results. \n\nThe last successful call will include this in the response body in `pagination.afterKey`.\n\nNote:\n* Pagination also works using the `after_key` query parameter. However, if both `cursor` and `after_key` are \nprovided, `cursor` will take precedence.",
+                              "key": "cursor",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Service Unavailable",
+                      "code": 503,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:27:29.000Z",
+                      "updatedAt": "2026-07-28T01:27:29.000Z",
+                      "uid": "35240-89c07513-e156-4694-a856-2a71e2947e08"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:27:29.000Z",
+                  "updatedAt": "2026-07-28T01:27:29.000Z",
+                  "uid": "35240-c7a0552a-1b30-48d8-9b6d-e5dad8085a87"
+                }
+              ],
+              "id": "1a5e4d74-4a34-4ee2-b885-f588c064934f",
+              "createdAt": "2026-07-28T01:27:29.000Z",
+              "updatedAt": "2026-07-28T01:27:29.000Z",
+              "uid": "35240-1a5e4d74-4a34-4ee2-b885-f588c064934f"
+            }
+          ],
+          "id": "9ddef739-6468-4942-aa32-5938c04e4d51",
+          "createdAt": "2026-07-28T01:27:29.000Z",
+          "updatedAt": "2026-07-28T01:27:29.000Z",
+          "uid": "35240-9ddef739-6468-4942-aa32-5938c04e4d51"
+        }
+      ],
+      "id": "79f9383e-dc1a-4425-bb9f-2ac1c6967bc2",
+      "createdAt": "2026-07-28T01:27:29.000Z",
+      "updatedAt": "2026-07-28T01:27:29.000Z",
+      "uid": "35240-79f9383e-dc1a-4425-bb9f-2ac1c6967bc2"
+    },
+    {
+      "name": "performance-cycles",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "manager-reviews",
+              "item": [
+                {
+                  "name": "List manager reviews by performance cycle",
+                  "id": "e2840310-c823-4386-9801-245c1b67ef0c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "employees-read employee-demographics-read performance-evaluations-read",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "/oauth2/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "client_credentials",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/performance-cycles/:id/manager-reviews?cursor=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "performance-cycles",
+                        ":id",
+                        "manager-reviews"
+                      ],
+                      "query": [
+                        {
+                          "description": "The pagination key to use for the next page of results. \n\nThe last successful call will include this in the response body in `pagination.afterKey`.\n\nNote:\n* Pagination also works using the `after_key` query parameter. However, if both `cursor` and `after_key` are \nprovided, `cursor` will take precedence.",
+                          "key": "cursor",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "4c0653aa-6e06-4574-ad57-02940a6ab7a2",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) performance cycle id"
+                        }
+                      ]
+                    },
+                    "description": "Returns manager reviews for a given performance cycle"
+                  },
+                  "response": [
+                    {
+                      "id": "f640be96-39fe-4e74-bf75-b507887f7bdc",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/performance-cycles/:id/manager-reviews?cursor=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "performance-cycles",
+                            ":id",
+                            "manager-reviews"
+                          ],
+                          "query": [
+                            {
+                              "description": "The pagination key to use for the next page of results. \n\nThe last successful call will include this in the response body in `pagination.afterKey`.\n\nNote:\n* Pagination also works using the `after_key` query parameter. However, if both `cursor` and `after_key` are \nprovided, `cursor` will take precedence.",
+                              "key": "cursor",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"data\": [\n    {\n      \"employeeId\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"updatedAt\": \"<dateTime>\",\n      \"processedAt\": \"<dateTime>\",\n      \"performanceCycleId\": \"<string>\",\n      \"managerReviewId\": \"<string>\",\n      \"managerId\": \"<string>\",\n      \"performanceRating\": {\n        \"ratingBuckets\": [\n          {\n            \"title\": \"<string>\",\n            \"value\": \"<integer>\",\n            \"description\": \"<string>\"\n          },\n          {\n            \"title\": \"<string>\",\n            \"value\": \"<integer>\",\n            \"description\": \"<string>\"\n          }\n        ],\n        \"ratingQuestion\": {\n          \"title\": \"<string>\",\n          \"description\": \"<string>\"\n        },\n        \"rating\": {\n          \"id\": \"<string>\",\n          \"title\": \"<string>\",\n          \"value\": \"<integer>\",\n          \"createdAt\": \"<dateTime>\",\n          \"updatedAt\": \"<dateTime>\",\n          \"description\": \"<string>\"\n        }\n      },\n      \"openTextQuestions\": [\n        {\n          \"id\": \"<string>\",\n          \"text\": \"<string>\",\n          \"answer\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"text\": \"<string>\",\n          \"answer\": \"<string>\"\n        }\n      ],\n      \"multipleChoiceQuestions\": [\n        {\n          \"id\": \"<string>\",\n          \"text\": \"<string>\",\n          \"options\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"answer\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"text\": \"<string>\",\n          \"options\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"answer\": \"<string>\"\n        }\n      ],\n      \"multipleChoiceMultiSelectQuestions\": [\n        {\n          \"id\": \"<string>\",\n          \"text\": \"<string>\",\n          \"options\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"answers\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"id\": \"<string>\",\n          \"text\": \"<string>\",\n          \"options\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"answers\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"reviewAcknowledged\": \"<boolean>\",\n      \"status\": \"dirty\",\n      \"links\": [\n        {\n          \"rel\": \"<string>\",\n          \"uri\": \"<string>\"\n        },\n        {\n          \"rel\": \"<string>\",\n          \"uri\": \"<string>\"\n        }\n      ],\n      \"completedAt\": \"<dateTime>\"\n    },\n    {\n      \"employeeId\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"updatedAt\": \"<dateTime>\",\n      \"processedAt\": \"<dateTime>\",\n      \"performanceCycleId\": \"<string>\",\n      \"managerReviewId\": \"<string>\",\n      \"managerId\": \"<string>\",\n      \"performanceRating\": {\n        \"ratingBuckets\": [\n          {\n            \"title\": \"<string>\",\n            \"value\": \"<integer>\",\n            \"description\": \"<string>\"\n          },\n          {\n            \"title\": \"<string>\",\n            \"value\": \"<integer>\",\n            \"description\": \"<string>\"\n          }\n        ],\n        \"ratingQuestion\": {\n          \"title\": \"<string>\",\n          \"description\": \"<string>\"\n        },\n        \"rating\": {\n          \"id\": \"<string>\",\n          \"title\": \"<string>\",\n          \"value\": \"<integer>\",\n          \"createdAt\": \"<dateTime>\",\n          \"updatedAt\": \"<dateTime>\",\n          \"description\": \"<string>\"\n        }\n      },\n      \"openTextQuestions\": [\n        {\n          \"id\": \"<string>\",\n          \"text\": \"<string>\",\n          \"answer\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"text\": \"<string>\",\n          \"answer\": \"<string>\"\n        }\n      ],\n      \"multipleChoiceQuestions\": [\n        {\n          \"id\": \"<string>\",\n          \"text\": \"<string>\",\n          \"options\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"answer\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"text\": \"<string>\",\n          \"options\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"answer\": \"<string>\"\n        }\n      ],\n      \"multipleChoiceMultiSelectQuestions\": [\n        {\n          \"id\": \"<string>\",\n          \"text\": \"<string>\",\n          \"options\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"answers\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"id\": \"<string>\",\n          \"text\": \"<string>\",\n          \"options\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"answers\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"reviewAcknowledged\": \"<boolean>\",\n      \"status\": \"incomplete\",\n      \"links\": [\n        {\n          \"rel\": \"<string>\",\n          \"uri\": \"<string>\"\n        },\n        {\n          \"rel\": \"<string>\",\n          \"uri\": \"<string>\"\n        }\n      ],\n      \"completedAt\": \"<dateTime>\"\n    }\n  ],\n  \"pagination\": {\n    \"nextPath\": \"<string>\",\n    \"afterKey\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:27:29.000Z",
+                      "updatedAt": "2026-07-28T01:27:29.000Z",
+                      "uid": "35240-f640be96-39fe-4e74-bf75-b507887f7bdc"
+                    },
+                    {
+                      "id": "5bd83b9b-0266-4d48-8cd4-430b2c0fef05",
+                      "name": "The request path parameters, query parameters or headers are not valid",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/performance-cycles/:id/manager-reviews?cursor=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "performance-cycles",
+                            ":id",
+                            "manager-reviews"
+                          ],
+                          "query": [
+                            {
+                              "description": "The pagination key to use for the next page of results. \n\nThe last successful call will include this in the response body in `pagination.afterKey`.\n\nNote:\n* Pagination also works using the `after_key` query parameter. However, if both `cursor` and `after_key` are \nprovided, `cursor` will take precedence.",
+                              "key": "cursor",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:27:29.000Z",
+                      "updatedAt": "2026-07-28T01:27:29.000Z",
+                      "uid": "35240-5bd83b9b-0266-4d48-8cd4-430b2c0fef05"
+                    },
+                    {
+                      "id": "27639b91-b744-42c6-b23e-f53431e59fee",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/performance-cycles/:id/manager-reviews?cursor=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "performance-cycles",
+                            ":id",
+                            "manager-reviews"
+                          ],
+                          "query": [
+                            {
+                              "description": "The pagination key to use for the next page of results. \n\nThe last successful call will include this in the response body in `pagination.afterKey`.\n\nNote:\n* Pagination also works using the `after_key` query parameter. However, if both `cursor` and `after_key` are \nprovided, `cursor` will take precedence.",
+                              "key": "cursor",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:27:29.000Z",
+                      "updatedAt": "2026-07-28T01:27:29.000Z",
+                      "uid": "35240-27639b91-b744-42c6-b23e-f53431e59fee"
+                    },
+                    {
+                      "id": "a4bb61bf-fd00-44ac-b11f-5075aea641da",
+                      "name": "Forbidden",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/performance-cycles/:id/manager-reviews?cursor=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "performance-cycles",
+                            ":id",
+                            "manager-reviews"
+                          ],
+                          "query": [
+                            {
+                              "description": "The pagination key to use for the next page of results. \n\nThe last successful call will include this in the response body in `pagination.afterKey`.\n\nNote:\n* Pagination also works using the `after_key` query parameter. However, if both `cursor` and `after_key` are \nprovided, `cursor` will take precedence.",
+                              "key": "cursor",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:27:29.000Z",
+                      "updatedAt": "2026-07-28T01:27:29.000Z",
+                      "uid": "35240-a4bb61bf-fd00-44ac-b11f-5075aea641da"
+                    },
+                    {
+                      "id": "8f68700f-52c5-4134-9620-2a30dc68ef31",
+                      "name": "The specified resource was not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/performance-cycles/:id/manager-reviews?cursor=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "performance-cycles",
+                            ":id",
+                            "manager-reviews"
+                          ],
+                          "query": [
+                            {
+                              "description": "The pagination key to use for the next page of results. \n\nThe last successful call will include this in the response body in `pagination.afterKey`.\n\nNote:\n* Pagination also works using the `after_key` query parameter. However, if both `cursor` and `after_key` are \nprovided, `cursor` will take precedence.",
+                              "key": "cursor",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:27:29.000Z",
+                      "updatedAt": "2026-07-28T01:27:29.000Z",
+                      "uid": "35240-8f68700f-52c5-4134-9620-2a30dc68ef31"
+                    },
+                    {
+                      "id": "2f8f0307-1c87-461f-8595-4ba75cc6780f",
+                      "name": "Too Many Requests - client rate limit exceeded",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/performance-cycles/:id/manager-reviews?cursor=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "performance-cycles",
+                            ":id",
+                            "manager-reviews"
+                          ],
+                          "query": [
+                            {
+                              "description": "The pagination key to use for the next page of results. \n\nThe last successful call will include this in the response body in `pagination.afterKey`.\n\nNote:\n* Pagination also works using the `after_key` query parameter. However, if both `cursor` and `after_key` are \nprovided, `cursor` will take precedence.",
+                              "key": "cursor",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:27:29.000Z",
+                      "updatedAt": "2026-07-28T01:27:29.000Z",
+                      "uid": "35240-2f8f0307-1c87-461f-8595-4ba75cc6780f"
+                    },
+                    {
+                      "id": "97ad4b7c-88cf-44e7-8690-d1ece7b3290b",
+                      "name": "Internal Server Error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/performance-cycles/:id/manager-reviews?cursor=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "performance-cycles",
+                            ":id",
+                            "manager-reviews"
+                          ],
+                          "query": [
+                            {
+                              "description": "The pagination key to use for the next page of results. \n\nThe last successful call will include this in the response body in `pagination.afterKey`.\n\nNote:\n* Pagination also works using the `after_key` query parameter. However, if both `cursor` and `after_key` are \nprovided, `cursor` will take precedence.",
+                              "key": "cursor",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:27:29.000Z",
+                      "updatedAt": "2026-07-28T01:27:29.000Z",
+                      "uid": "35240-97ad4b7c-88cf-44e7-8690-d1ece7b3290b"
+                    },
+                    {
+                      "id": "910a0aa8-d8f2-4138-8c91-f8fb9b84eb9b",
+                      "name": "Service Unavailable - endpoint rate limit exceeded",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/performance-cycles/:id/manager-reviews?cursor=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "performance-cycles",
+                            ":id",
+                            "manager-reviews"
+                          ],
+                          "query": [
+                            {
+                              "description": "The pagination key to use for the next page of results. \n\nThe last successful call will include this in the response body in `pagination.afterKey`.\n\nNote:\n* Pagination also works using the `after_key` query parameter. However, if both `cursor` and `after_key` are \nprovided, `cursor` will take precedence.",
+                              "key": "cursor",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Service Unavailable",
+                      "code": 503,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:27:29.000Z",
+                      "updatedAt": "2026-07-28T01:27:29.000Z",
+                      "uid": "35240-910a0aa8-d8f2-4138-8c91-f8fb9b84eb9b"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:27:29.000Z",
+                  "updatedAt": "2026-07-28T01:27:29.000Z",
+                  "uid": "35240-e2840310-c823-4386-9801-245c1b67ef0c"
+                }
+              ],
+              "id": "5f94e110-96b1-4939-b9e8-a16fb2e6656d",
+              "createdAt": "2026-07-28T01:27:29.000Z",
+              "updatedAt": "2026-07-28T01:27:29.000Z",
+              "uid": "35240-5f94e110-96b1-4939-b9e8-a16fb2e6656d"
+            },
+            {
+              "name": "Get performance cycle",
+              "id": "b46e0810-a531-4e10-b06f-9b481c37b244",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "employees-read employee-demographics-read performance-evaluations-read",
+                      "type": "string"
+                    },
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "/oauth2/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "client_credentials",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/performance-cycles/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "performance-cycles",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "9c953efc-fae2-45b9-ad90-1f352c14c685",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) performance cycle id"
+                    }
+                  ]
+                },
+                "description": "Returns the details of a performance cycle by its id"
+              },
+              "response": [
+                {
+                  "id": "c96ffe87-755b-4fa4-b2b7-815de749626e",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/performance-cycles/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "performance-cycles",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"data\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"state\": \"closed\",\n    \"createdAt\": \"<dateTime>\",\n    \"updatedAt\": \"<dateTime>\",\n    \"processedAt\": \"<dateTime>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:27:29.000Z",
+                  "updatedAt": "2026-07-28T01:27:29.000Z",
+                  "uid": "35240-c96ffe87-755b-4fa4-b2b7-815de749626e"
+                },
+                {
+                  "id": "37afc723-747c-4ae5-8619-84cc210cfaed",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/performance-cycles/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "performance-cycles",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:27:29.000Z",
+                  "updatedAt": "2026-07-28T01:27:29.000Z",
+                  "uid": "35240-37afc723-747c-4ae5-8619-84cc210cfaed"
+                },
+                {
+                  "id": "e9f2df12-9e28-4e18-8d94-5a0b397a67d9",
+                  "name": "Forbidden",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/performance-cycles/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "performance-cycles",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:27:29.000Z",
+                  "updatedAt": "2026-07-28T01:27:29.000Z",
+                  "uid": "35240-e9f2df12-9e28-4e18-8d94-5a0b397a67d9"
+                },
+                {
+                  "id": "c784095c-86f5-4826-b0f1-5a75c0964f4a",
+                  "name": "The specified resource was not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/performance-cycles/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "performance-cycles",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:27:29.000Z",
+                  "updatedAt": "2026-07-28T01:27:29.000Z",
+                  "uid": "35240-c784095c-86f5-4826-b0f1-5a75c0964f4a"
+                },
+                {
+                  "id": "aa8c4625-28af-47dc-8da6-1014bdd2a0b3",
+                  "name": "Too Many Requests - client rate limit exceeded",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/performance-cycles/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "performance-cycles",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:27:29.000Z",
+                  "updatedAt": "2026-07-28T01:27:29.000Z",
+                  "uid": "35240-aa8c4625-28af-47dc-8da6-1014bdd2a0b3"
+                },
+                {
+                  "id": "0303eed9-8055-4d89-a060-47d61c77651a",
+                  "name": "Internal Server Error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/performance-cycles/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "performance-cycles",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:27:29.000Z",
+                  "updatedAt": "2026-07-28T01:27:29.000Z",
+                  "uid": "35240-0303eed9-8055-4d89-a060-47d61c77651a"
+                },
+                {
+                  "id": "77739c4e-644e-4087-a678-99ea7b15e781",
+                  "name": "Service Unavailable - endpoint rate limit exceeded",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/performance-cycles/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "performance-cycles",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Service Unavailable",
+                  "code": 503,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:27:29.000Z",
+                  "updatedAt": "2026-07-28T01:27:29.000Z",
+                  "uid": "35240-77739c4e-644e-4087-a678-99ea7b15e781"
+                }
+              ],
+              "createdAt": "2026-07-28T01:27:29.000Z",
+              "updatedAt": "2026-07-28T01:27:29.000Z",
+              "uid": "35240-b46e0810-a531-4e10-b06f-9b481c37b244"
+            }
+          ],
+          "id": "054a11a7-10bd-4467-a7d8-1a9ce05fccee",
+          "createdAt": "2026-07-28T01:27:29.000Z",
+          "updatedAt": "2026-07-28T01:27:29.000Z",
+          "uid": "35240-054a11a7-10bd-4467-a7d8-1a9ce05fccee"
+        },
+        {
+          "name": "List performance cycles",
+          "id": "042fae92-7959-44e4-b2bf-03fd05fe5aa3",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "employees-read employee-demographics-read performance-evaluations-read",
+                  "type": "string"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "/oauth2/token",
+                  "type": "string"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/performance-cycles?after_date=<string>&cursor=<string>&state=ready",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "performance-cycles"
+              ],
+              "query": [
+                {
+                  "description": "Only returns resources processed by the public API after the date-time provided.\n\nUses the date-time format specified in [RFC 3339 section 5.6, Internet Date/Time Format](https://tools.ietf.org/html/rfc3339#section-5.6). \n\nThe value cannot contain spaces, and date and time should be separated by \"T\". \n\nFor example:\n* UTC time \"2023-05-01T00:00:00Z\".\n* An offset from UTC time to indicate a time zone, such as \"2023-05-01T00:00:00%2B08:00\" (for 8 hours ahead of UTC time). \n\nNote that query parameters should be properly escaped, last example is equivalent to \"2023-05-01T00:00:00+08:00\".",
+                  "key": "after_date",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The pagination key to use for the next page of results. \n\nThe last successful call will include this in the response body in `pagination.afterKey`.\n\nNote:\n* Pagination also works using the `after_key` query parameter. However, if both `cursor` and `after_key` are \nprovided, `cursor` will take precedence.",
+                  "key": "cursor",
+                  "value": "<string>"
+                },
+                {
+                  "description": "the state of the performance cycles to be returned",
+                  "key": "state",
+                  "value": "ready"
+                }
+              ]
+            },
+            "description": "Returns all performance cycles in the account.\n\nIf both `cursor` and `state` are provided in a request, `cursor` takes precedence."
+          },
+          "response": [
+            {
+              "id": "8142cfa1-9a2e-4bfa-8384-ee23a633733c",
+              "name": "OK",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/performance-cycles?after_date=<string>&cursor=<string>&state=ready",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "performance-cycles"
+                  ],
+                  "query": [
+                    {
+                      "description": "Only returns resources processed by the public API after the date-time provided.\n\nUses the date-time format specified in [RFC 3339 section 5.6, Internet Date/Time Format](https://tools.ietf.org/html/rfc3339#section-5.6). \n\nThe value cannot contain spaces, and date and time should be separated by \"T\". \n\nFor example:\n* UTC time \"2023-05-01T00:00:00Z\".\n* An offset from UTC time to indicate a time zone, such as \"2023-05-01T00:00:00%2B08:00\" (for 8 hours ahead of UTC time). \n\nNote that query parameters should be properly escaped, last example is equivalent to \"2023-05-01T00:00:00+08:00\".",
+                      "key": "after_date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The pagination key to use for the next page of results. \n\nThe last successful call will include this in the response body in `pagination.afterKey`.\n\nNote:\n* Pagination also works using the `after_key` query parameter. However, if both `cursor` and `after_key` are \nprovided, `cursor` will take precedence.",
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "the state of the performance cycles to be returned",
+                      "key": "state",
+                      "value": "ready"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"state\": \"ready\",\n      \"createdAt\": \"<dateTime>\",\n      \"updatedAt\": \"<dateTime>\",\n      \"processedAt\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"state\": \"ready\",\n      \"createdAt\": \"<dateTime>\",\n      \"updatedAt\": \"<dateTime>\",\n      \"processedAt\": \"<dateTime>\"\n    }\n  ],\n  \"pagination\": {\n    \"nextPath\": \"<string>\",\n    \"afterKey\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:27:29.000Z",
+              "updatedAt": "2026-07-28T01:27:29.000Z",
+              "uid": "35240-8142cfa1-9a2e-4bfa-8384-ee23a633733c"
+            },
+            {
+              "id": "6adeb83b-a236-4491-ad69-b19aef2d7e7f",
+              "name": "The request path parameters, query parameters or headers are not valid",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/performance-cycles?after_date=<string>&cursor=<string>&state=ready",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "performance-cycles"
+                  ],
+                  "query": [
+                    {
+                      "description": "Only returns resources processed by the public API after the date-time provided.\n\nUses the date-time format specified in [RFC 3339 section 5.6, Internet Date/Time Format](https://tools.ietf.org/html/rfc3339#section-5.6). \n\nThe value cannot contain spaces, and date and time should be separated by \"T\". \n\nFor example:\n* UTC time \"2023-05-01T00:00:00Z\".\n* An offset from UTC time to indicate a time zone, such as \"2023-05-01T00:00:00%2B08:00\" (for 8 hours ahead of UTC time). \n\nNote that query parameters should be properly escaped, last example is equivalent to \"2023-05-01T00:00:00+08:00\".",
+                      "key": "after_date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The pagination key to use for the next page of results. \n\nThe last successful call will include this in the response body in `pagination.afterKey`.\n\nNote:\n* Pagination also works using the `after_key` query parameter. However, if both `cursor` and `after_key` are \nprovided, `cursor` will take precedence.",
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "the state of the performance cycles to be returned",
+                      "key": "state",
+                      "value": "ready"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:27:29.000Z",
+              "updatedAt": "2026-07-28T01:27:29.000Z",
+              "uid": "35240-6adeb83b-a236-4491-ad69-b19aef2d7e7f"
+            },
+            {
+              "id": "2e83eec7-a496-4358-8d25-e0df1f11cff6",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/performance-cycles?after_date=<string>&cursor=<string>&state=ready",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "performance-cycles"
+                  ],
+                  "query": [
+                    {
+                      "description": "Only returns resources processed by the public API after the date-time provided.\n\nUses the date-time format specified in [RFC 3339 section 5.6, Internet Date/Time Format](https://tools.ietf.org/html/rfc3339#section-5.6). \n\nThe value cannot contain spaces, and date and time should be separated by \"T\". \n\nFor example:\n* UTC time \"2023-05-01T00:00:00Z\".\n* An offset from UTC time to indicate a time zone, such as \"2023-05-01T00:00:00%2B08:00\" (for 8 hours ahead of UTC time). \n\nNote that query parameters should be properly escaped, last example is equivalent to \"2023-05-01T00:00:00+08:00\".",
+                      "key": "after_date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The pagination key to use for the next page of results. \n\nThe last successful call will include this in the response body in `pagination.afterKey`.\n\nNote:\n* Pagination also works using the `after_key` query parameter. However, if both `cursor` and `after_key` are \nprovided, `cursor` will take precedence.",
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "the state of the performance cycles to be returned",
+                      "key": "state",
+                      "value": "ready"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:27:29.000Z",
+              "updatedAt": "2026-07-28T01:27:29.000Z",
+              "uid": "35240-2e83eec7-a496-4358-8d25-e0df1f11cff6"
+            },
+            {
+              "id": "26e90d91-7703-4be9-9669-2b881396641a",
+              "name": "Forbidden",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/performance-cycles?after_date=<string>&cursor=<string>&state=ready",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "performance-cycles"
+                  ],
+                  "query": [
+                    {
+                      "description": "Only returns resources processed by the public API after the date-time provided.\n\nUses the date-time format specified in [RFC 3339 section 5.6, Internet Date/Time Format](https://tools.ietf.org/html/rfc3339#section-5.6). \n\nThe value cannot contain spaces, and date and time should be separated by \"T\". \n\nFor example:\n* UTC time \"2023-05-01T00:00:00Z\".\n* An offset from UTC time to indicate a time zone, such as \"2023-05-01T00:00:00%2B08:00\" (for 8 hours ahead of UTC time). \n\nNote that query parameters should be properly escaped, last example is equivalent to \"2023-05-01T00:00:00+08:00\".",
+                      "key": "after_date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The pagination key to use for the next page of results. \n\nThe last successful call will include this in the response body in `pagination.afterKey`.\n\nNote:\n* Pagination also works using the `after_key` query parameter. However, if both `cursor` and `after_key` are \nprovided, `cursor` will take precedence.",
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "the state of the performance cycles to be returned",
+                      "key": "state",
+                      "value": "ready"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:27:29.000Z",
+              "updatedAt": "2026-07-28T01:27:29.000Z",
+              "uid": "35240-26e90d91-7703-4be9-9669-2b881396641a"
+            },
+            {
+              "id": "c5a51757-9b46-4c61-b47e-2b5f0305ee64",
+              "name": "The specified resource was not found",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/performance-cycles?after_date=<string>&cursor=<string>&state=ready",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "performance-cycles"
+                  ],
+                  "query": [
+                    {
+                      "description": "Only returns resources processed by the public API after the date-time provided.\n\nUses the date-time format specified in [RFC 3339 section 5.6, Internet Date/Time Format](https://tools.ietf.org/html/rfc3339#section-5.6). \n\nThe value cannot contain spaces, and date and time should be separated by \"T\". \n\nFor example:\n* UTC time \"2023-05-01T00:00:00Z\".\n* An offset from UTC time to indicate a time zone, such as \"2023-05-01T00:00:00%2B08:00\" (for 8 hours ahead of UTC time). \n\nNote that query parameters should be properly escaped, last example is equivalent to \"2023-05-01T00:00:00+08:00\".",
+                      "key": "after_date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The pagination key to use for the next page of results. \n\nThe last successful call will include this in the response body in `pagination.afterKey`.\n\nNote:\n* Pagination also works using the `after_key` query parameter. However, if both `cursor` and `after_key` are \nprovided, `cursor` will take precedence.",
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "the state of the performance cycles to be returned",
+                      "key": "state",
+                      "value": "ready"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:27:29.000Z",
+              "updatedAt": "2026-07-28T01:27:29.000Z",
+              "uid": "35240-c5a51757-9b46-4c61-b47e-2b5f0305ee64"
+            },
+            {
+              "id": "6e93ce54-5138-4d80-ab5e-64b781e8db33",
+              "name": "Too Many Requests - client rate limit exceeded",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/performance-cycles?after_date=<string>&cursor=<string>&state=ready",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "performance-cycles"
+                  ],
+                  "query": [
+                    {
+                      "description": "Only returns resources processed by the public API after the date-time provided.\n\nUses the date-time format specified in [RFC 3339 section 5.6, Internet Date/Time Format](https://tools.ietf.org/html/rfc3339#section-5.6). \n\nThe value cannot contain spaces, and date and time should be separated by \"T\". \n\nFor example:\n* UTC time \"2023-05-01T00:00:00Z\".\n* An offset from UTC time to indicate a time zone, such as \"2023-05-01T00:00:00%2B08:00\" (for 8 hours ahead of UTC time). \n\nNote that query parameters should be properly escaped, last example is equivalent to \"2023-05-01T00:00:00+08:00\".",
+                      "key": "after_date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The pagination key to use for the next page of results. \n\nThe last successful call will include this in the response body in `pagination.afterKey`.\n\nNote:\n* Pagination also works using the `after_key` query parameter. However, if both `cursor` and `after_key` are \nprovided, `cursor` will take precedence.",
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "the state of the performance cycles to be returned",
+                      "key": "state",
+                      "value": "ready"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:27:29.000Z",
+              "updatedAt": "2026-07-28T01:27:29.000Z",
+              "uid": "35240-6e93ce54-5138-4d80-ab5e-64b781e8db33"
+            },
+            {
+              "id": "72a821ea-40c4-447c-abf6-eed9afa16d93",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/performance-cycles?after_date=<string>&cursor=<string>&state=ready",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "performance-cycles"
+                  ],
+                  "query": [
+                    {
+                      "description": "Only returns resources processed by the public API after the date-time provided.\n\nUses the date-time format specified in [RFC 3339 section 5.6, Internet Date/Time Format](https://tools.ietf.org/html/rfc3339#section-5.6). \n\nThe value cannot contain spaces, and date and time should be separated by \"T\". \n\nFor example:\n* UTC time \"2023-05-01T00:00:00Z\".\n* An offset from UTC time to indicate a time zone, such as \"2023-05-01T00:00:00%2B08:00\" (for 8 hours ahead of UTC time). \n\nNote that query parameters should be properly escaped, last example is equivalent to \"2023-05-01T00:00:00+08:00\".",
+                      "key": "after_date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The pagination key to use for the next page of results. \n\nThe last successful call will include this in the response body in `pagination.afterKey`.\n\nNote:\n* Pagination also works using the `after_key` query parameter. However, if both `cursor` and `after_key` are \nprovided, `cursor` will take precedence.",
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "the state of the performance cycles to be returned",
+                      "key": "state",
+                      "value": "ready"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:27:29.000Z",
+              "updatedAt": "2026-07-28T01:27:29.000Z",
+              "uid": "35240-72a821ea-40c4-447c-abf6-eed9afa16d93"
+            },
+            {
+              "id": "af14ac76-94bc-41bc-b072-57d7af697b91",
+              "name": "Service Unavailable - endpoint rate limit exceeded",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/performance-cycles?after_date=<string>&cursor=<string>&state=ready",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "performance-cycles"
+                  ],
+                  "query": [
+                    {
+                      "description": "Only returns resources processed by the public API after the date-time provided.\n\nUses the date-time format specified in [RFC 3339 section 5.6, Internet Date/Time Format](https://tools.ietf.org/html/rfc3339#section-5.6). \n\nThe value cannot contain spaces, and date and time should be separated by \"T\". \n\nFor example:\n* UTC time \"2023-05-01T00:00:00Z\".\n* An offset from UTC time to indicate a time zone, such as \"2023-05-01T00:00:00%2B08:00\" (for 8 hours ahead of UTC time). \n\nNote that query parameters should be properly escaped, last example is equivalent to \"2023-05-01T00:00:00+08:00\".",
+                      "key": "after_date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The pagination key to use for the next page of results. \n\nThe last successful call will include this in the response body in `pagination.afterKey`.\n\nNote:\n* Pagination also works using the `after_key` query parameter. However, if both `cursor` and `after_key` are \nprovided, `cursor` will take precedence.",
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "the state of the performance cycles to be returned",
+                      "key": "state",
+                      "value": "ready"
+                    }
+                  ]
+                }
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:27:29.000Z",
+              "updatedAt": "2026-07-28T01:27:29.000Z",
+              "uid": "35240-af14ac76-94bc-41bc-b072-57d7af697b91"
+            }
+          ],
+          "createdAt": "2026-07-28T01:27:29.000Z",
+          "updatedAt": "2026-07-28T01:27:29.000Z",
+          "uid": "35240-042fae92-7959-44e4-b2bf-03fd05fe5aa3"
+        }
+      ],
+      "id": "23612502-04c8-4bc6-a4ff-889f7e16e9c9",
+      "createdAt": "2026-07-28T01:27:29.000Z",
+      "updatedAt": "2026-07-28T01:27:29.000Z",
+      "uid": "35240-23612502-04c8-4bc6-a4ff-889f7e16e9c9"
+    },
+    {
+      "name": "manager-reviews",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "Get manager review",
+              "id": "aa6c8d10-8da3-4854-a081-3d1a83bc313e",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "employees-read employee-demographics-read performance-evaluations-read",
+                      "type": "string"
+                    },
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "/oauth2/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "client_credentials",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/manager-reviews/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "manager-reviews",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "da345f4f-b0bf-4493-9cb0-5f4e91f12a61",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) manager review id"
+                    }
+                  ]
+                },
+                "description": "Returns the details of a manager review corresponding to the provided id"
+              },
+              "response": [
+                {
+                  "id": "f39fec31-0a97-4bf2-bca8-7182d327f16e",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/manager-reviews/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "manager-reviews",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"data\": {\n    \"employeeId\": \"<string>\",\n    \"createdAt\": \"<dateTime>\",\n    \"updatedAt\": \"<dateTime>\",\n    \"processedAt\": \"<dateTime>\",\n    \"performanceCycleId\": \"<string>\",\n    \"managerReviewId\": \"<string>\",\n    \"managerId\": \"<string>\",\n    \"performanceRating\": {\n      \"ratingBuckets\": [\n        {\n          \"title\": \"<string>\",\n          \"value\": \"<integer>\",\n          \"description\": \"<string>\"\n        },\n        {\n          \"title\": \"<string>\",\n          \"value\": \"<integer>\",\n          \"description\": \"<string>\"\n        }\n      ],\n      \"ratingQuestion\": {\n        \"title\": \"<string>\",\n        \"description\": \"<string>\"\n      },\n      \"rating\": {\n        \"id\": \"<string>\",\n        \"title\": \"<string>\",\n        \"value\": \"<integer>\",\n        \"createdAt\": \"<dateTime>\",\n        \"updatedAt\": \"<dateTime>\",\n        \"description\": \"<string>\"\n      }\n    },\n    \"openTextQuestions\": [\n      {\n        \"id\": \"<string>\",\n        \"text\": \"<string>\",\n        \"answer\": \"<string>\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"text\": \"<string>\",\n        \"answer\": \"<string>\"\n      }\n    ],\n    \"multipleChoiceQuestions\": [\n      {\n        \"id\": \"<string>\",\n        \"text\": \"<string>\",\n        \"options\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"answer\": \"<string>\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"text\": \"<string>\",\n        \"options\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"answer\": \"<string>\"\n      }\n    ],\n    \"multipleChoiceMultiSelectQuestions\": [\n      {\n        \"id\": \"<string>\",\n        \"text\": \"<string>\",\n        \"options\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"answers\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"id\": \"<string>\",\n        \"text\": \"<string>\",\n        \"options\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"answers\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ],\n    \"reviewAcknowledged\": \"<boolean>\",\n    \"status\": \"dirty\",\n    \"links\": [\n      {\n        \"rel\": \"<string>\",\n        \"uri\": \"<string>\"\n      },\n      {\n        \"rel\": \"<string>\",\n        \"uri\": \"<string>\"\n      }\n    ],\n    \"completedAt\": \"<dateTime>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:27:29.000Z",
+                  "updatedAt": "2026-07-28T01:27:29.000Z",
+                  "uid": "35240-f39fec31-0a97-4bf2-bca8-7182d327f16e"
+                },
+                {
+                  "id": "079aac17-bcc5-45ed-8d26-6109fcb81a36",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/manager-reviews/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "manager-reviews",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:27:29.000Z",
+                  "updatedAt": "2026-07-28T01:27:29.000Z",
+                  "uid": "35240-079aac17-bcc5-45ed-8d26-6109fcb81a36"
+                },
+                {
+                  "id": "0b11594f-c84f-415d-a4ca-06840eaf26d8",
+                  "name": "Forbidden",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/manager-reviews/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "manager-reviews",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:27:29.000Z",
+                  "updatedAt": "2026-07-28T01:27:29.000Z",
+                  "uid": "35240-0b11594f-c84f-415d-a4ca-06840eaf26d8"
+                },
+                {
+                  "id": "1dd233d3-4819-4cf0-86e5-537f629adde1",
+                  "name": "The specified resource was not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/manager-reviews/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "manager-reviews",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:27:29.000Z",
+                  "updatedAt": "2026-07-28T01:27:29.000Z",
+                  "uid": "35240-1dd233d3-4819-4cf0-86e5-537f629adde1"
+                },
+                {
+                  "id": "3532d7ea-6ecd-474e-ab26-8915751916cb",
+                  "name": "Too Many Requests - client rate limit exceeded",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/manager-reviews/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "manager-reviews",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:27:29.000Z",
+                  "updatedAt": "2026-07-28T01:27:29.000Z",
+                  "uid": "35240-3532d7ea-6ecd-474e-ab26-8915751916cb"
+                },
+                {
+                  "id": "80d93174-b126-467a-abf7-18e537073b89",
+                  "name": "Internal Server Error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/manager-reviews/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "manager-reviews",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:27:29.000Z",
+                  "updatedAt": "2026-07-28T01:27:29.000Z",
+                  "uid": "35240-80d93174-b126-467a-abf7-18e537073b89"
+                },
+                {
+                  "id": "eeb1e675-d8e9-4fd2-8b00-635e0ff7b7ca",
+                  "name": "Service Unavailable - endpoint rate limit exceeded",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/manager-reviews/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "manager-reviews",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Service Unavailable",
+                  "code": 503,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:27:29.000Z",
+                  "updatedAt": "2026-07-28T01:27:29.000Z",
+                  "uid": "35240-eeb1e675-d8e9-4fd2-8b00-635e0ff7b7ca"
+                }
+              ],
+              "createdAt": "2026-07-28T01:27:29.000Z",
+              "updatedAt": "2026-07-28T01:27:29.000Z",
+              "uid": "35240-aa6c8d10-8da3-4854-a081-3d1a83bc313e"
+            }
+          ],
+          "id": "44f90bf5-26c4-447f-831a-325bae69f573",
+          "createdAt": "2026-07-28T01:27:29.000Z",
+          "updatedAt": "2026-07-28T01:27:29.000Z",
+          "uid": "35240-44f90bf5-26c4-447f-831a-325bae69f573"
+        },
+        {
+          "name": "List manager reviews",
+          "id": "52b972ff-fd21-49f5-adcc-d695ec6363e1",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "employees-read employee-demographics-read performance-evaluations-read",
+                  "type": "string"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "/oauth2/token",
+                  "type": "string"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/manager-reviews?after_date=<string>&cursor=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "manager-reviews"
+              ],
+              "query": [
+                {
+                  "description": "Only returns resources processed by the public API after the date-time provided.\n\nUses the date-time format specified in [RFC 3339 section 5.6, Internet Date/Time Format](https://tools.ietf.org/html/rfc3339#section-5.6). \n\nThe value cannot contain spaces, and date and time should be separated by \"T\". \n\nFor example:\n* UTC time \"2023-05-01T00:00:00Z\".\n* An offset from UTC time to indicate a time zone, such as \"2023-05-01T00:00:00%2B08:00\" (for 8 hours ahead of UTC time). \n\nNote that query parameters should be properly escaped, last example is equivalent to \"2023-05-01T00:00:00+08:00\".",
+                  "key": "after_date",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The pagination key to use for the next page of results. \n\nThe last successful call will include this in the response body in `pagination.afterKey`.\n\nNote:\n* Pagination also works using the `after_key` query parameter. However, if both `cursor` and `after_key` are \nprovided, `cursor` will take precedence.",
+                  "key": "cursor",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns all manager reviews in the account"
+          },
+          "response": [
+            {
+              "id": "6cfae0f6-afcc-45c0-b99e-b3d14b32f8ad",
+              "name": "OK",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/manager-reviews?after_date=<string>&cursor=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "manager-reviews"
+                  ],
+                  "query": [
+                    {
+                      "description": "Only returns resources processed by the public API after the date-time provided.\n\nUses the date-time format specified in [RFC 3339 section 5.6, Internet Date/Time Format](https://tools.ietf.org/html/rfc3339#section-5.6). \n\nThe value cannot contain spaces, and date and time should be separated by \"T\". \n\nFor example:\n* UTC time \"2023-05-01T00:00:00Z\".\n* An offset from UTC time to indicate a time zone, such as \"2023-05-01T00:00:00%2B08:00\" (for 8 hours ahead of UTC time). \n\nNote that query parameters should be properly escaped, last example is equivalent to \"2023-05-01T00:00:00+08:00\".",
+                      "key": "after_date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The pagination key to use for the next page of results. \n\nThe last successful call will include this in the response body in `pagination.afterKey`.\n\nNote:\n* Pagination also works using the `after_key` query parameter. However, if both `cursor` and `after_key` are \nprovided, `cursor` will take precedence.",
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": [\n    {\n      \"employeeId\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"updatedAt\": \"<dateTime>\",\n      \"processedAt\": \"<dateTime>\",\n      \"performanceCycleId\": \"<string>\",\n      \"managerReviewId\": \"<string>\",\n      \"managerId\": \"<string>\",\n      \"performanceRating\": {\n        \"ratingBuckets\": [\n          {\n            \"title\": \"<string>\",\n            \"value\": \"<integer>\",\n            \"description\": \"<string>\"\n          },\n          {\n            \"title\": \"<string>\",\n            \"value\": \"<integer>\",\n            \"description\": \"<string>\"\n          }\n        ],\n        \"ratingQuestion\": {\n          \"title\": \"<string>\",\n          \"description\": \"<string>\"\n        },\n        \"rating\": {\n          \"id\": \"<string>\",\n          \"title\": \"<string>\",\n          \"value\": \"<integer>\",\n          \"createdAt\": \"<dateTime>\",\n          \"updatedAt\": \"<dateTime>\",\n          \"description\": \"<string>\"\n        }\n      },\n      \"openTextQuestions\": [\n        {\n          \"id\": \"<string>\",\n          \"text\": \"<string>\",\n          \"answer\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"text\": \"<string>\",\n          \"answer\": \"<string>\"\n        }\n      ],\n      \"multipleChoiceQuestions\": [\n        {\n          \"id\": \"<string>\",\n          \"text\": \"<string>\",\n          \"options\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"answer\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"text\": \"<string>\",\n          \"options\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"answer\": \"<string>\"\n        }\n      ],\n      \"multipleChoiceMultiSelectQuestions\": [\n        {\n          \"id\": \"<string>\",\n          \"text\": \"<string>\",\n          \"options\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"answers\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"id\": \"<string>\",\n          \"text\": \"<string>\",\n          \"options\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"answers\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"reviewAcknowledged\": \"<boolean>\",\n      \"status\": \"dirty\",\n      \"links\": [\n        {\n          \"rel\": \"<string>\",\n          \"uri\": \"<string>\"\n        },\n        {\n          \"rel\": \"<string>\",\n          \"uri\": \"<string>\"\n        }\n      ],\n      \"completedAt\": \"<dateTime>\"\n    },\n    {\n      \"employeeId\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"updatedAt\": \"<dateTime>\",\n      \"processedAt\": \"<dateTime>\",\n      \"performanceCycleId\": \"<string>\",\n      \"managerReviewId\": \"<string>\",\n      \"managerId\": \"<string>\",\n      \"performanceRating\": {\n        \"ratingBuckets\": [\n          {\n            \"title\": \"<string>\",\n            \"value\": \"<integer>\",\n            \"description\": \"<string>\"\n          },\n          {\n            \"title\": \"<string>\",\n            \"value\": \"<integer>\",\n            \"description\": \"<string>\"\n          }\n        ],\n        \"ratingQuestion\": {\n          \"title\": \"<string>\",\n          \"description\": \"<string>\"\n        },\n        \"rating\": {\n          \"id\": \"<string>\",\n          \"title\": \"<string>\",\n          \"value\": \"<integer>\",\n          \"createdAt\": \"<dateTime>\",\n          \"updatedAt\": \"<dateTime>\",\n          \"description\": \"<string>\"\n        }\n      },\n      \"openTextQuestions\": [\n        {\n          \"id\": \"<string>\",\n          \"text\": \"<string>\",\n          \"answer\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"text\": \"<string>\",\n          \"answer\": \"<string>\"\n        }\n      ],\n      \"multipleChoiceQuestions\": [\n        {\n          \"id\": \"<string>\",\n          \"text\": \"<string>\",\n          \"options\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"answer\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"text\": \"<string>\",\n          \"options\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"answer\": \"<string>\"\n        }\n      ],\n      \"multipleChoiceMultiSelectQuestions\": [\n        {\n          \"id\": \"<string>\",\n          \"text\": \"<string>\",\n          \"options\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"answers\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"id\": \"<string>\",\n          \"text\": \"<string>\",\n          \"options\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"answers\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"reviewAcknowledged\": \"<boolean>\",\n      \"status\": \"incomplete\",\n      \"links\": [\n        {\n          \"rel\": \"<string>\",\n          \"uri\": \"<string>\"\n        },\n        {\n          \"rel\": \"<string>\",\n          \"uri\": \"<string>\"\n        }\n      ],\n      \"completedAt\": \"<dateTime>\"\n    }\n  ],\n  \"pagination\": {\n    \"nextPath\": \"<string>\",\n    \"afterKey\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:27:29.000Z",
+              "updatedAt": "2026-07-28T01:27:29.000Z",
+              "uid": "35240-6cfae0f6-afcc-45c0-b99e-b3d14b32f8ad"
+            },
+            {
+              "id": "ec1659a3-06a9-4cb9-98bf-b8994f93c208",
+              "name": "The request path parameters, query parameters or headers are not valid",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/manager-reviews?after_date=<string>&cursor=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "manager-reviews"
+                  ],
+                  "query": [
+                    {
+                      "description": "Only returns resources processed by the public API after the date-time provided.\n\nUses the date-time format specified in [RFC 3339 section 5.6, Internet Date/Time Format](https://tools.ietf.org/html/rfc3339#section-5.6). \n\nThe value cannot contain spaces, and date and time should be separated by \"T\". \n\nFor example:\n* UTC time \"2023-05-01T00:00:00Z\".\n* An offset from UTC time to indicate a time zone, such as \"2023-05-01T00:00:00%2B08:00\" (for 8 hours ahead of UTC time). \n\nNote that query parameters should be properly escaped, last example is equivalent to \"2023-05-01T00:00:00+08:00\".",
+                      "key": "after_date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The pagination key to use for the next page of results. \n\nThe last successful call will include this in the response body in `pagination.afterKey`.\n\nNote:\n* Pagination also works using the `after_key` query parameter. However, if both `cursor` and `after_key` are \nprovided, `cursor` will take precedence.",
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:27:29.000Z",
+              "updatedAt": "2026-07-28T01:27:29.000Z",
+              "uid": "35240-ec1659a3-06a9-4cb9-98bf-b8994f93c208"
+            },
+            {
+              "id": "991bde4b-b709-4fe4-a803-ec21dd5b1cf8",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/manager-reviews?after_date=<string>&cursor=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "manager-reviews"
+                  ],
+                  "query": [
+                    {
+                      "description": "Only returns resources processed by the public API after the date-time provided.\n\nUses the date-time format specified in [RFC 3339 section 5.6, Internet Date/Time Format](https://tools.ietf.org/html/rfc3339#section-5.6). \n\nThe value cannot contain spaces, and date and time should be separated by \"T\". \n\nFor example:\n* UTC time \"2023-05-01T00:00:00Z\".\n* An offset from UTC time to indicate a time zone, such as \"2023-05-01T00:00:00%2B08:00\" (for 8 hours ahead of UTC time). \n\nNote that query parameters should be properly escaped, last example is equivalent to \"2023-05-01T00:00:00+08:00\".",
+                      "key": "after_date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The pagination key to use for the next page of results. \n\nThe last successful call will include this in the response body in `pagination.afterKey`.\n\nNote:\n* Pagination also works using the `after_key` query parameter. However, if both `cursor` and `after_key` are \nprovided, `cursor` will take precedence.",
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:27:29.000Z",
+              "updatedAt": "2026-07-28T01:27:29.000Z",
+              "uid": "35240-991bde4b-b709-4fe4-a803-ec21dd5b1cf8"
+            },
+            {
+              "id": "a45b58c1-d31b-4108-9271-b7d3a6a02b1f",
+              "name": "Forbidden",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/manager-reviews?after_date=<string>&cursor=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "manager-reviews"
+                  ],
+                  "query": [
+                    {
+                      "description": "Only returns resources processed by the public API after the date-time provided.\n\nUses the date-time format specified in [RFC 3339 section 5.6, Internet Date/Time Format](https://tools.ietf.org/html/rfc3339#section-5.6). \n\nThe value cannot contain spaces, and date and time should be separated by \"T\". \n\nFor example:\n* UTC time \"2023-05-01T00:00:00Z\".\n* An offset from UTC time to indicate a time zone, such as \"2023-05-01T00:00:00%2B08:00\" (for 8 hours ahead of UTC time). \n\nNote that query parameters should be properly escaped, last example is equivalent to \"2023-05-01T00:00:00+08:00\".",
+                      "key": "after_date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The pagination key to use for the next page of results. \n\nThe last successful call will include this in the response body in `pagination.afterKey`.\n\nNote:\n* Pagination also works using the `after_key` query parameter. However, if both `cursor` and `after_key` are \nprovided, `cursor` will take precedence.",
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:27:29.000Z",
+              "updatedAt": "2026-07-28T01:27:29.000Z",
+              "uid": "35240-a45b58c1-d31b-4108-9271-b7d3a6a02b1f"
+            },
+            {
+              "id": "08d3459f-0155-4e27-8a44-2fc72de00276",
+              "name": "The specified resource was not found",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/manager-reviews?after_date=<string>&cursor=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "manager-reviews"
+                  ],
+                  "query": [
+                    {
+                      "description": "Only returns resources processed by the public API after the date-time provided.\n\nUses the date-time format specified in [RFC 3339 section 5.6, Internet Date/Time Format](https://tools.ietf.org/html/rfc3339#section-5.6). \n\nThe value cannot contain spaces, and date and time should be separated by \"T\". \n\nFor example:\n* UTC time \"2023-05-01T00:00:00Z\".\n* An offset from UTC time to indicate a time zone, such as \"2023-05-01T00:00:00%2B08:00\" (for 8 hours ahead of UTC time). \n\nNote that query parameters should be properly escaped, last example is equivalent to \"2023-05-01T00:00:00+08:00\".",
+                      "key": "after_date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The pagination key to use for the next page of results. \n\nThe last successful call will include this in the response body in `pagination.afterKey`.\n\nNote:\n* Pagination also works using the `after_key` query parameter. However, if both `cursor` and `after_key` are \nprovided, `cursor` will take precedence.",
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:27:29.000Z",
+              "updatedAt": "2026-07-28T01:27:29.000Z",
+              "uid": "35240-08d3459f-0155-4e27-8a44-2fc72de00276"
+            },
+            {
+              "id": "0b802f44-16d1-4f76-8f25-256343f65419",
+              "name": "Too Many Requests - client rate limit exceeded",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/manager-reviews?after_date=<string>&cursor=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "manager-reviews"
+                  ],
+                  "query": [
+                    {
+                      "description": "Only returns resources processed by the public API after the date-time provided.\n\nUses the date-time format specified in [RFC 3339 section 5.6, Internet Date/Time Format](https://tools.ietf.org/html/rfc3339#section-5.6). \n\nThe value cannot contain spaces, and date and time should be separated by \"T\". \n\nFor example:\n* UTC time \"2023-05-01T00:00:00Z\".\n* An offset from UTC time to indicate a time zone, such as \"2023-05-01T00:00:00%2B08:00\" (for 8 hours ahead of UTC time). \n\nNote that query parameters should be properly escaped, last example is equivalent to \"2023-05-01T00:00:00+08:00\".",
+                      "key": "after_date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The pagination key to use for the next page of results. \n\nThe last successful call will include this in the response body in `pagination.afterKey`.\n\nNote:\n* Pagination also works using the `after_key` query parameter. However, if both `cursor` and `after_key` are \nprovided, `cursor` will take precedence.",
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:27:29.000Z",
+              "updatedAt": "2026-07-28T01:27:29.000Z",
+              "uid": "35240-0b802f44-16d1-4f76-8f25-256343f65419"
+            },
+            {
+              "id": "7e03b1c3-8afe-4b30-b0e1-f45200be0c57",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/manager-reviews?after_date=<string>&cursor=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "manager-reviews"
+                  ],
+                  "query": [
+                    {
+                      "description": "Only returns resources processed by the public API after the date-time provided.\n\nUses the date-time format specified in [RFC 3339 section 5.6, Internet Date/Time Format](https://tools.ietf.org/html/rfc3339#section-5.6). \n\nThe value cannot contain spaces, and date and time should be separated by \"T\". \n\nFor example:\n* UTC time \"2023-05-01T00:00:00Z\".\n* An offset from UTC time to indicate a time zone, such as \"2023-05-01T00:00:00%2B08:00\" (for 8 hours ahead of UTC time). \n\nNote that query parameters should be properly escaped, last example is equivalent to \"2023-05-01T00:00:00+08:00\".",
+                      "key": "after_date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The pagination key to use for the next page of results. \n\nThe last successful call will include this in the response body in `pagination.afterKey`.\n\nNote:\n* Pagination also works using the `after_key` query parameter. However, if both `cursor` and `after_key` are \nprovided, `cursor` will take precedence.",
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:27:29.000Z",
+              "updatedAt": "2026-07-28T01:27:29.000Z",
+              "uid": "35240-7e03b1c3-8afe-4b30-b0e1-f45200be0c57"
+            },
+            {
+              "id": "fd1d7dad-f319-4f63-868f-ff2adcbd9067",
+              "name": "Service Unavailable - endpoint rate limit exceeded",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/manager-reviews?after_date=<string>&cursor=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "manager-reviews"
+                  ],
+                  "query": [
+                    {
+                      "description": "Only returns resources processed by the public API after the date-time provided.\n\nUses the date-time format specified in [RFC 3339 section 5.6, Internet Date/Time Format](https://tools.ietf.org/html/rfc3339#section-5.6). \n\nThe value cannot contain spaces, and date and time should be separated by \"T\". \n\nFor example:\n* UTC time \"2023-05-01T00:00:00Z\".\n* An offset from UTC time to indicate a time zone, such as \"2023-05-01T00:00:00%2B08:00\" (for 8 hours ahead of UTC time). \n\nNote that query parameters should be properly escaped, last example is equivalent to \"2023-05-01T00:00:00+08:00\".",
+                      "key": "after_date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The pagination key to use for the next page of results. \n\nThe last successful call will include this in the response body in `pagination.afterKey`.\n\nNote:\n* Pagination also works using the `after_key` query parameter. However, if both `cursor` and `after_key` are \nprovided, `cursor` will take precedence.",
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:27:29.000Z",
+              "updatedAt": "2026-07-28T01:27:29.000Z",
+              "uid": "35240-fd1d7dad-f319-4f63-868f-ff2adcbd9067"
+            }
+          ],
+          "createdAt": "2026-07-28T01:27:29.000Z",
+          "updatedAt": "2026-07-28T01:27:29.000Z",
+          "uid": "35240-52b972ff-fd21-49f5-adcc-d695ec6363e1"
+        }
+      ],
+      "id": "064dd4bf-f6f9-4917-aaf9-379f826b57cb",
+      "createdAt": "2026-07-28T01:27:29.000Z",
+      "updatedAt": "2026-07-28T01:27:29.000Z",
+      "uid": "35240-064dd4bf-f6f9-4917-aaf9-379f826b57cb"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.cultureamp.com/v1"
+    }
+  ]
+}

@@ -1,0 +1,1436 @@
+{
+  "info": {
+    "_postman_id": "4591eb69-abfe-4cb0-b3d1-11d9ba291b31",
+    "name": "Culture Amp Public Employees API",
+    "description": "This Open API specification describes the interface for the Culture Amp public API service\n\nContact Support:\n Name: Culture Amp Support\n Email: support@cultureamp.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:27:27.000Z",
+    "updatedAt": "2026-07-28T01:27:27.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-4591eb69-abfe-4cb0-b3d1-11d9ba291b31"
+  },
+  "item": [
+    {
+      "name": "employees",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "demographics",
+              "item": [
+                {
+                  "name": "List demographics by employee",
+                  "id": "47e5cc15-da65-43a4-a44b-5635a9d192e7",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "employees-read employee-demographics-read performance-evaluations-read",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "/oauth2/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "client_credentials",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/employees/:id/demographics",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "employees",
+                        ":id",
+                        "demographics"
+                      ],
+                      "variable": [
+                        {
+                          "id": "9206e316-4c3a-4bbe-8bd8-846652bce557",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) the Culture Amp employee identifier"
+                        }
+                      ]
+                    },
+                    "description": "Returns the demographic assignments for a given employee"
+                  },
+                  "response": [
+                    {
+                      "id": "24d13546-60a1-48e7-8f83-68233310427c",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/employees/:id/demographics",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "employees",
+                            ":id",
+                            "demographics"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"data\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:27:28.000Z",
+                      "updatedAt": "2026-07-28T01:27:28.000Z",
+                      "uid": "35240-24d13546-60a1-48e7-8f83-68233310427c"
+                    },
+                    {
+                      "id": "855a17c7-ffe2-477b-8201-b70be0aa0583",
+                      "name": "The request path parameters, query parameters or headers are not valid",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/employees/:id/demographics",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "employees",
+                            ":id",
+                            "demographics"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:27:28.000Z",
+                      "updatedAt": "2026-07-28T01:27:28.000Z",
+                      "uid": "35240-855a17c7-ffe2-477b-8201-b70be0aa0583"
+                    },
+                    {
+                      "id": "18441c18-ef92-4c0f-91a2-f4785b2cc38f",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/employees/:id/demographics",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "employees",
+                            ":id",
+                            "demographics"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:27:28.000Z",
+                      "updatedAt": "2026-07-28T01:27:28.000Z",
+                      "uid": "35240-18441c18-ef92-4c0f-91a2-f4785b2cc38f"
+                    },
+                    {
+                      "id": "1dfa99ab-e586-49c5-8a69-b3356c2cd38c",
+                      "name": "Forbidden",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/employees/:id/demographics",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "employees",
+                            ":id",
+                            "demographics"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:27:28.000Z",
+                      "updatedAt": "2026-07-28T01:27:28.000Z",
+                      "uid": "35240-1dfa99ab-e586-49c5-8a69-b3356c2cd38c"
+                    },
+                    {
+                      "id": "0b1651be-073f-4f5d-8725-341a21cda40c",
+                      "name": "The specified resource was not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/employees/:id/demographics",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "employees",
+                            ":id",
+                            "demographics"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:27:28.000Z",
+                      "updatedAt": "2026-07-28T01:27:28.000Z",
+                      "uid": "35240-0b1651be-073f-4f5d-8725-341a21cda40c"
+                    },
+                    {
+                      "id": "b6c6626f-1d0a-4dd7-b2e1-bae4bd0a308c",
+                      "name": "Too Many Requests - client rate limit exceeded",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/employees/:id/demographics",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "employees",
+                            ":id",
+                            "demographics"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:27:28.000Z",
+                      "updatedAt": "2026-07-28T01:27:28.000Z",
+                      "uid": "35240-b6c6626f-1d0a-4dd7-b2e1-bae4bd0a308c"
+                    },
+                    {
+                      "id": "2cdbe1bd-9dad-4a69-b472-4fbae3920a38",
+                      "name": "Internal Server Error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/employees/:id/demographics",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "employees",
+                            ":id",
+                            "demographics"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:27:28.000Z",
+                      "updatedAt": "2026-07-28T01:27:28.000Z",
+                      "uid": "35240-2cdbe1bd-9dad-4a69-b472-4fbae3920a38"
+                    },
+                    {
+                      "id": "b6b336d7-8ae7-4e74-86fc-e352f3db48fe",
+                      "name": "Service Unavailable - endpoint rate limit exceeded",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/employees/:id/demographics",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "employees",
+                            ":id",
+                            "demographics"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Service Unavailable",
+                      "code": 503,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:27:28.000Z",
+                      "updatedAt": "2026-07-28T01:27:28.000Z",
+                      "uid": "35240-b6b336d7-8ae7-4e74-86fc-e352f3db48fe"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:27:28.000Z",
+                  "updatedAt": "2026-07-28T01:27:28.000Z",
+                  "uid": "35240-47e5cc15-da65-43a4-a44b-5635a9d192e7"
+                }
+              ],
+              "id": "1ca490ee-e8c9-4bd6-a93b-edf12be0e2ac",
+              "createdAt": "2026-07-28T01:27:28.000Z",
+              "updatedAt": "2026-07-28T01:27:28.000Z",
+              "uid": "35240-1ca490ee-e8c9-4bd6-a93b-edf12be0e2ac"
+            },
+            {
+              "name": "Get employee",
+              "id": "c5bba0f2-8efa-4613-ae2f-8ecfb2f76dc3",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "employees-read employee-demographics-read performance-evaluations-read",
+                      "type": "string"
+                    },
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "/oauth2/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "client_credentials",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/employees/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "employees",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "f877e3be-1a37-440a-8c82-e763e4caca12",
+                      "key": "id",
+                      "value": "<uuid>",
+                      "description": "(Required) the Culture Amp employee identifier"
+                    }
+                  ]
+                },
+                "description": "Returns the details of an employee corresponding to the provided Culture Amp employee identifier"
+              },
+              "response": [
+                {
+                  "id": "2a6aad8e-79d0-4f5d-bd72-3dee20817b48",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/employees/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "employees",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"data\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"processedAt\": \"<dateTime>\",\n    \"employeeIdentifier\": \"<string>\",\n    \"email\": \"<string>\",\n    \"preferredName\": \"<string>\",\n    \"birthDate\": \"<date>\",\n    \"startDate\": \"<date>\",\n    \"endDate\": \"<date>\",\n    \"links\": [\n      {\n        \"rel\": \"<string>\",\n        \"uri\": \"<string>\"\n      },\n      {\n        \"rel\": \"<string>\",\n        \"uri\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-07-28T01:27:28.000Z",
+                  "updatedAt": "2026-07-28T01:27:28.000Z",
+                  "uid": "35240-2a6aad8e-79d0-4f5d-bd72-3dee20817b48"
+                },
+                {
+                  "id": "255d8823-4f02-4157-9048-c45cafe828d5",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/employees/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "employees",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:27:28.000Z",
+                  "updatedAt": "2026-07-28T01:27:28.000Z",
+                  "uid": "35240-255d8823-4f02-4157-9048-c45cafe828d5"
+                },
+                {
+                  "id": "80f69b28-bc0d-4d18-b659-230be01508bb",
+                  "name": "Forbidden",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/employees/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "employees",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:27:28.000Z",
+                  "updatedAt": "2026-07-28T01:27:28.000Z",
+                  "uid": "35240-80f69b28-bc0d-4d18-b659-230be01508bb"
+                },
+                {
+                  "id": "a02e4a0f-a3eb-459d-a10b-1fb9c291c241",
+                  "name": "The specified resource was not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/employees/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "employees",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:27:28.000Z",
+                  "updatedAt": "2026-07-28T01:27:28.000Z",
+                  "uid": "35240-a02e4a0f-a3eb-459d-a10b-1fb9c291c241"
+                },
+                {
+                  "id": "d09cf6c9-46cf-44f2-b6ad-6f389c408df7",
+                  "name": "Too Many Requests - client rate limit exceeded",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/employees/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "employees",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:27:28.000Z",
+                  "updatedAt": "2026-07-28T01:27:28.000Z",
+                  "uid": "35240-d09cf6c9-46cf-44f2-b6ad-6f389c408df7"
+                },
+                {
+                  "id": "f42f34cd-1a2e-4808-9280-bf12741b2318",
+                  "name": "Internal Server Error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/employees/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "employees",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:27:28.000Z",
+                  "updatedAt": "2026-07-28T01:27:28.000Z",
+                  "uid": "35240-f42f34cd-1a2e-4808-9280-bf12741b2318"
+                },
+                {
+                  "id": "74c4da41-224c-4dd4-a01e-25b7c5768ffa",
+                  "name": "Service Unavailable - endpoint rate limit exceeded",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/employees/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "employees",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Service Unavailable",
+                  "code": 503,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:27:28.000Z",
+                  "updatedAt": "2026-07-28T01:27:28.000Z",
+                  "uid": "35240-74c4da41-224c-4dd4-a01e-25b7c5768ffa"
+                }
+              ],
+              "createdAt": "2026-07-28T01:27:28.000Z",
+              "updatedAt": "2026-07-28T01:27:28.000Z",
+              "uid": "35240-c5bba0f2-8efa-4613-ae2f-8ecfb2f76dc3"
+            }
+          ],
+          "id": "c842f0be-06c2-4233-a393-cbc6f1c2cc54",
+          "createdAt": "2026-07-28T01:27:28.000Z",
+          "updatedAt": "2026-07-28T01:27:28.000Z",
+          "uid": "35240-c842f0be-06c2-4233-a393-cbc6f1c2cc54"
+        },
+        {
+          "name": "List employees",
+          "id": "a5c37cd0-6597-40c9-ae41-9ae684f54c14",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "employees-read employee-demographics-read performance-evaluations-read",
+                  "type": "string"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "/oauth2/token",
+                  "type": "string"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/employees?email=<email>&employee_identifier=<string>&cursor=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "employees"
+              ],
+              "query": [
+                {
+                  "description": "The email of the employees to retrieve",
+                  "key": "email",
+                  "value": "<email>"
+                },
+                {
+                  "description": "The unique id used by the employees company to identify the employee",
+                  "key": "employee_identifier",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The pagination key to use for the next page of results. \n\nThe last successful call will include this in the response body in `pagination.afterKey`.\n\nNote:\n* Pagination also works using the `after_key` query parameter. However, if both `cursor` and `after_key` are \nprovided, `cursor` will take precedence.",
+                  "key": "cursor",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns all employees in the account.\n\nIf both `email` and `employee_identifier` are provided, `employee_identifier` will take precedence.\n\n`cursor` is optional and used for pagination."
+          },
+          "response": [
+            {
+              "id": "4ea4f093-1186-4b05-82bb-92c8dfe730ca",
+              "name": "OK",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/employees?email=<email>&employee_identifier=<string>&cursor=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "employees"
+                  ],
+                  "query": [
+                    {
+                      "description": "The email of the employees to retrieve",
+                      "key": "email",
+                      "value": "<email>"
+                    },
+                    {
+                      "description": "The unique id used by the employees company to identify the employee",
+                      "key": "employee_identifier",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The pagination key to use for the next page of results. \n\nThe last successful call will include this in the response body in `pagination.afterKey`.\n\nNote:\n* Pagination also works using the `after_key` query parameter. However, if both `cursor` and `after_key` are \nprovided, `cursor` will take precedence.",
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"processedAt\": \"<dateTime>\",\n      \"employeeIdentifier\": \"<string>\",\n      \"email\": \"<string>\",\n      \"preferredName\": \"<string>\",\n      \"birthDate\": \"<date>\",\n      \"startDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"links\": [\n        {\n          \"rel\": \"<string>\",\n          \"uri\": \"<string>\"\n        },\n        {\n          \"rel\": \"<string>\",\n          \"uri\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"processedAt\": \"<dateTime>\",\n      \"employeeIdentifier\": \"<string>\",\n      \"email\": \"<string>\",\n      \"preferredName\": \"<string>\",\n      \"birthDate\": \"<date>\",\n      \"startDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"links\": [\n        {\n          \"rel\": \"<string>\",\n          \"uri\": \"<string>\"\n        },\n        {\n          \"rel\": \"<string>\",\n          \"uri\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"pagination\": {\n    \"nextPath\": \"<string>\",\n    \"afterKey\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:27:28.000Z",
+              "updatedAt": "2026-07-28T01:27:28.000Z",
+              "uid": "35240-4ea4f093-1186-4b05-82bb-92c8dfe730ca"
+            },
+            {
+              "id": "7e5ebf8d-2ebf-45cc-945d-d0fe5f1698d6",
+              "name": "The request path parameters, query parameters or headers are not valid",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/employees?email=<email>&employee_identifier=<string>&cursor=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "employees"
+                  ],
+                  "query": [
+                    {
+                      "description": "The email of the employees to retrieve",
+                      "key": "email",
+                      "value": "<email>"
+                    },
+                    {
+                      "description": "The unique id used by the employees company to identify the employee",
+                      "key": "employee_identifier",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The pagination key to use for the next page of results. \n\nThe last successful call will include this in the response body in `pagination.afterKey`.\n\nNote:\n* Pagination also works using the `after_key` query parameter. However, if both `cursor` and `after_key` are \nprovided, `cursor` will take precedence.",
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:27:28.000Z",
+              "updatedAt": "2026-07-28T01:27:28.000Z",
+              "uid": "35240-7e5ebf8d-2ebf-45cc-945d-d0fe5f1698d6"
+            },
+            {
+              "id": "f4fb9055-372c-43bc-a4d0-7f07e0b35176",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/employees?email=<email>&employee_identifier=<string>&cursor=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "employees"
+                  ],
+                  "query": [
+                    {
+                      "description": "The email of the employees to retrieve",
+                      "key": "email",
+                      "value": "<email>"
+                    },
+                    {
+                      "description": "The unique id used by the employees company to identify the employee",
+                      "key": "employee_identifier",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The pagination key to use for the next page of results. \n\nThe last successful call will include this in the response body in `pagination.afterKey`.\n\nNote:\n* Pagination also works using the `after_key` query parameter. However, if both `cursor` and `after_key` are \nprovided, `cursor` will take precedence.",
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:27:28.000Z",
+              "updatedAt": "2026-07-28T01:27:28.000Z",
+              "uid": "35240-f4fb9055-372c-43bc-a4d0-7f07e0b35176"
+            },
+            {
+              "id": "0ba2df99-7b6c-44f7-9ac7-5bed2946f487",
+              "name": "Forbidden",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/employees?email=<email>&employee_identifier=<string>&cursor=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "employees"
+                  ],
+                  "query": [
+                    {
+                      "description": "The email of the employees to retrieve",
+                      "key": "email",
+                      "value": "<email>"
+                    },
+                    {
+                      "description": "The unique id used by the employees company to identify the employee",
+                      "key": "employee_identifier",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The pagination key to use for the next page of results. \n\nThe last successful call will include this in the response body in `pagination.afterKey`.\n\nNote:\n* Pagination also works using the `after_key` query parameter. However, if both `cursor` and `after_key` are \nprovided, `cursor` will take precedence.",
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:27:28.000Z",
+              "updatedAt": "2026-07-28T01:27:28.000Z",
+              "uid": "35240-0ba2df99-7b6c-44f7-9ac7-5bed2946f487"
+            },
+            {
+              "id": "900218f0-30d4-4f7e-9c64-9848c5ab5673",
+              "name": "The specified resource was not found",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/employees?email=<email>&employee_identifier=<string>&cursor=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "employees"
+                  ],
+                  "query": [
+                    {
+                      "description": "The email of the employees to retrieve",
+                      "key": "email",
+                      "value": "<email>"
+                    },
+                    {
+                      "description": "The unique id used by the employees company to identify the employee",
+                      "key": "employee_identifier",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The pagination key to use for the next page of results. \n\nThe last successful call will include this in the response body in `pagination.afterKey`.\n\nNote:\n* Pagination also works using the `after_key` query parameter. However, if both `cursor` and `after_key` are \nprovided, `cursor` will take precedence.",
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:27:28.000Z",
+              "updatedAt": "2026-07-28T01:27:28.000Z",
+              "uid": "35240-900218f0-30d4-4f7e-9c64-9848c5ab5673"
+            },
+            {
+              "id": "da9f32ff-1064-47bd-af78-b753903c8e52",
+              "name": "Too Many Requests - client rate limit exceeded",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/employees?email=<email>&employee_identifier=<string>&cursor=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "employees"
+                  ],
+                  "query": [
+                    {
+                      "description": "The email of the employees to retrieve",
+                      "key": "email",
+                      "value": "<email>"
+                    },
+                    {
+                      "description": "The unique id used by the employees company to identify the employee",
+                      "key": "employee_identifier",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The pagination key to use for the next page of results. \n\nThe last successful call will include this in the response body in `pagination.afterKey`.\n\nNote:\n* Pagination also works using the `after_key` query parameter. However, if both `cursor` and `after_key` are \nprovided, `cursor` will take precedence.",
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:27:28.000Z",
+              "updatedAt": "2026-07-28T01:27:28.000Z",
+              "uid": "35240-da9f32ff-1064-47bd-af78-b753903c8e52"
+            },
+            {
+              "id": "d6ee9666-51f5-4a29-910a-d1fbdd223633",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/employees?email=<email>&employee_identifier=<string>&cursor=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "employees"
+                  ],
+                  "query": [
+                    {
+                      "description": "The email of the employees to retrieve",
+                      "key": "email",
+                      "value": "<email>"
+                    },
+                    {
+                      "description": "The unique id used by the employees company to identify the employee",
+                      "key": "employee_identifier",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The pagination key to use for the next page of results. \n\nThe last successful call will include this in the response body in `pagination.afterKey`.\n\nNote:\n* Pagination also works using the `after_key` query parameter. However, if both `cursor` and `after_key` are \nprovided, `cursor` will take precedence.",
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:27:28.000Z",
+              "updatedAt": "2026-07-28T01:27:28.000Z",
+              "uid": "35240-d6ee9666-51f5-4a29-910a-d1fbdd223633"
+            },
+            {
+              "id": "268b312e-9d62-477a-ac5b-8e9616016977",
+              "name": "Service Unavailable - endpoint rate limit exceeded",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/employees?email=<email>&employee_identifier=<string>&cursor=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "employees"
+                  ],
+                  "query": [
+                    {
+                      "description": "The email of the employees to retrieve",
+                      "key": "email",
+                      "value": "<email>"
+                    },
+                    {
+                      "description": "The unique id used by the employees company to identify the employee",
+                      "key": "employee_identifier",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The pagination key to use for the next page of results. \n\nThe last successful call will include this in the response body in `pagination.afterKey`.\n\nNote:\n* Pagination also works using the `after_key` query parameter. However, if both `cursor` and `after_key` are \nprovided, `cursor` will take precedence.",
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:27:28.000Z",
+              "updatedAt": "2026-07-28T01:27:28.000Z",
+              "uid": "35240-268b312e-9d62-477a-ac5b-8e9616016977"
+            }
+          ],
+          "createdAt": "2026-07-28T01:27:28.000Z",
+          "updatedAt": "2026-07-28T01:27:28.000Z",
+          "uid": "35240-a5c37cd0-6597-40c9-ae41-9ae684f54c14"
+        }
+      ],
+      "id": "cef3e0d4-b1b8-48a0-b591-859e4f533bca",
+      "createdAt": "2026-07-28T01:27:28.000Z",
+      "updatedAt": "2026-07-28T01:27:28.000Z",
+      "uid": "35240-cef3e0d4-b1b8-48a0-b591-859e4f533bca"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.cultureamp.com/v1"
+    }
+  ]
+}
