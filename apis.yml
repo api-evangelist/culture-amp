@@ -54,7 +54,7 @@ apis:
   - type: Authentication
     url: https://docs.api.cultureamp.com/docs/resources-getting-started
   - type: OpenAPILocal
-    url: openapi/culture-amp-public-api-openapi.yml
+    url: openapi/_original/culture-amp-public-api-openapi.yml
   - type: JSONSchema
     url: json-schema/culture-amp-employee-schema.json
   - type: JSONSchema
@@ -86,7 +86,7 @@ apis:
   - type: Authentication
     url: https://docs.api.cultureamp.com/docs/resources-getting-started
   - type: OpenAPILocal
-    url: openapi/culture-amp-public-api-openapi.yml
+    url: openapi/_original/culture-amp-public-api-openapi.yml
   - type: JSONSchema
     url: json-schema/culture-amp-employee-schema.json
   - type: JSONSchema
@@ -118,7 +118,7 @@ apis:
   - type: Authentication
     url: https://docs.api.cultureamp.com/docs/resources-getting-started
   - type: OpenAPILocal
-    url: openapi/culture-amp-public-api-openapi.yml
+    url: openapi/_original/culture-amp-public-api-openapi.yml
   - type: JSONSchema
     url: json-schema/culture-amp-employee-schema.json
   - type: JSONSchema
