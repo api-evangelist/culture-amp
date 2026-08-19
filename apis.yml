@@ -18,7 +18,7 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/culture-am
 url: https://raw.githubusercontent.com/api-evangelist/culture-amp/refs/heads/main/apis.yml
 created: 2026-06-12
 modified: 2026-06-12
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 description: >
   Culture Amp is the leading employee experience platform providing tools for
   employee engagement surveys, performance management, and people analytics.
