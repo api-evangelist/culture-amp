@@ -1,0 +1,352 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Culture Amp Public Employees Surveys API",
+    "version": "0.0.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Surveys",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List surveys",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cultureamp.com/v1/surveys",
+            "params": [
+              {
+                "name": "cursor",
+                "value": "ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J",
+                "type": "query",
+                "description": "The pagination key to use for the next page of results. \n\nThe last successful call will include this in the response body in `pagination.afterKey`.\n\nNote:\n* Pagination also works using the `after_key` query parameter. However, if both `cursor` and `after_key` are \nprovided, `cursor` will take precedence."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "/oauth2/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Returns a list of all surveys in the account\n\n> 🛑 Deprecated API - No Longer Available\n>\n> This API is no longer available to setup. Please use the [Reporting API](https://support.cultureamp.com/en/articles/9232738-reporting-api) for access to RDE enabled Survey data which is available now.\n"
+        },
+        {
+          "info": {
+            "name": "Get survey",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cultureamp.com/v1/surveys/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "survey id"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "/oauth2/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieves the details of an individual survey\n\n> 🛑 Deprecated API - No Longer Available\n>\n> This API is no longer available to setup. Please use the [Reporting API](https://support.cultureamp.com/en/articles/9232738-reporting-api) for access to RDE enabled Survey data which is available now.\n"
+        },
+        {
+          "info": {
+            "name": "List questions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cultureamp.com/v1/surveys/:id/questions",
+            "params": [
+              {
+                "name": "cursor",
+                "value": "ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J",
+                "type": "query",
+                "description": "The pagination key to use for the next page of results. \n\nThe last successful call will include this in the response body in `pagination.afterKey`.\n\nNote:\n* Pagination also works using the `after_key` query parameter. However, if both `cursor` and `after_key` are \nprovided, `cursor` will take precedence."
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "survey id"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "/oauth2/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Returns a list of all questions from an individual survey\n\n> 🛑 Deprecated API - No Longer Available\n>\n> This API is no longer available to setup. Please use the [Reporting API](https://support.cultureamp.com/en/articles/9232738-reporting-api) for access to RDE enabled Survey data which is available now.\n"
+        },
+        {
+          "info": {
+            "name": "Get question",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cultureamp.com/v1/surveys/:survey_id/question/:question_id",
+            "params": [
+              {
+                "name": "cursor",
+                "value": "ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J",
+                "type": "query",
+                "description": "The pagination key to use for the next page of results. \n\nThe last successful call will include this in the response body in `pagination.afterKey`.\n\nNote:\n* Pagination also works using the `after_key` query parameter. However, if both `cursor` and `after_key` are \nprovided, `cursor` will take precedence."
+              },
+              {
+                "name": "survey_id",
+                "value": "",
+                "type": "path",
+                "description": "survey id"
+              },
+              {
+                "name": "question_id",
+                "value": "",
+                "type": "path",
+                "description": "question id"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "/oauth2/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieves the details of an individual question from a survey\n\n> 🛑 Deprecated API - No Longer Available\n>\n> This API is no longer available to setup. Please use the [Reporting API](https://support.cultureamp.com/en/articles/9232738-reporting-api) for access to RDE enabled Survey data which is available now.\n"
+        },
+        {
+          "info": {
+            "name": "List responses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cultureamp.com/v1/surveys/:id/responses",
+            "params": [
+              {
+                "name": "cursor",
+                "value": "ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J",
+                "type": "query",
+                "description": "The pagination key to use for the next page of results. \n\nThe last successful call will include this in the response body in `pagination.afterKey`.\n\nNote:\n* Pagination also works using the `after_key` query parameter. However, if both `cursor` and `after_key` are \nprovided, `cursor` will take precedence."
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "survey id"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "/oauth2/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Returns a list of all responses from an individual survey\n\n> 🛑 Deprecated API - No Longer Available\n>\n> This API is no longer available to setup. Please use the [Reporting API](https://support.cultureamp.com/en/articles/9232738-reporting-api) for access to RDE enabled Survey data which is available now.\n"
+        },
+        {
+          "info": {
+            "name": "Get response",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cultureamp.com/v1/surveys/:survey_id/responses/:response_id",
+            "params": [
+              {
+                "name": "survey_id",
+                "value": "",
+                "type": "path",
+                "description": "survey id"
+              },
+              {
+                "name": "response_id",
+                "value": "",
+                "type": "path",
+                "description": "response id"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "/oauth2/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieves the details of an individual response from a survey\n\n> 🛑 Deprecated API - No Longer Available\n>\n> This API is no longer available to setup. Please use the [Reporting API](https://support.cultureamp.com/en/articles/9232738-reporting-api) for access to RDE enabled Survey data which is available now.\n"
+        },
+        {
+          "info": {
+            "name": "List factors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cultureamp.com/v1/surveys/:id/factors",
+            "params": [
+              {
+                "name": "cursor",
+                "value": "ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J",
+                "type": "query",
+                "description": "The pagination key to use for the next page of results. \n\nThe last successful call will include this in the response body in `pagination.afterKey`.\n\nNote:\n* Pagination also works using the `after_key` query parameter. However, if both `cursor` and `after_key` are \nprovided, `cursor` will take precedence."
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "factor id"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "/oauth2/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Returns a list of all factors from an individual survey\n\n> 🛑 Deprecated API - No Longer Available\n>\n> This API is no longer available to setup. Please use the [Reporting API](https://support.cultureamp.com/en/articles/9232738-reporting-api) for access to RDE enabled Survey data which is available now.\n"
+        },
+        {
+          "info": {
+            "name": "Get factor",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cultureamp.com/v1/surveys/:survey_id/factors/:factor_id",
+            "params": [
+              {
+                "name": "survey_id",
+                "value": "",
+                "type": "path",
+                "description": "survey id"
+              },
+              {
+                "name": "factor_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifiers of the factors associated with this question."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "/oauth2/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieves the details of an individual factor from a survey\n\n> 🛑 Deprecated API - No Longer Available\n>\n> This API is no longer available to setup. Please use the [Reporting API](https://support.cultureamp.com/en/articles/9232738-reporting-api) for access to RDE enabled Survey data which is available now.\n"
+        },
+        {
+          "info": {
+            "name": "List sections",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cultureamp.com/v1/surveys/:id/sections",
+            "params": [
+              {
+                "name": "cursor",
+                "value": "ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J",
+                "type": "query",
+                "description": "The pagination key to use for the next page of results. \n\nThe last successful call will include this in the response body in `pagination.afterKey`.\n\nNote:\n* Pagination also works using the `after_key` query parameter. However, if both `cursor` and `after_key` are \nprovided, `cursor` will take precedence."
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "survey id"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "/oauth2/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Returns a list of all sections from an individual survey\n\n> 🛑 Deprecated API - No Longer Available\n>\n> This API is no longer available to setup. Please use the [Reporting API](https://support.cultureamp.com/en/articles/9232738-reporting-api) for access to RDE enabled Survey data which is available now.\n"
+        },
+        {
+          "info": {
+            "name": "Get section",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cultureamp.com/v1/surveys/:survey_id/sections/:section_id",
+            "params": [
+              {
+                "name": "survey_id",
+                "value": "",
+                "type": "path",
+                "description": "survey id"
+              },
+              {
+                "name": "section_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the section associated with this question"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "/oauth2/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieves the details of an individual section from a survey\n\n> 🛑 Deprecated API - No Longer Available\n>\n> This API is no longer available to setup. Please use the [Reporting API](https://support.cultureamp.com/en/articles/9232738-reporting-api) for access to RDE enabled Survey data which is available now.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

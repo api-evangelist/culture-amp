@@ -1,0 +1,216 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Culture Amp Public Employees Performance API",
+    "version": "0.0.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Performance",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List manager reviews by employee",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cultureamp.com/v1/employees/:id/manager-reviews",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "the Culture Amp employee identifier"
+              },
+              {
+                "name": "cursor",
+                "value": "ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J",
+                "type": "query",
+                "description": "The pagination key to use for the next page of results. \n\nThe last successful call will include this in the response body in `pagination.afterKey`.\n\nNote:\n* Pagination also works using the `after_key` query parameter. However, if both `cursor` and `after_key` are \nprovided, `cursor` will take precedence."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "/oauth2/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Returns manager reviews for a given employee"
+        },
+        {
+          "info": {
+            "name": "List performance cycles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cultureamp.com/v1/performance-cycles",
+            "params": [
+              {
+                "name": "after_date",
+                "value": "2013-01-15T00:00:00+08:00",
+                "type": "query",
+                "description": "Only returns resources processed by the public API after the date-time provided.\n\nUses the date-time format specified in [RFC 3339 section 5.6, Internet Date/Time Format](https://tools.ietf.org/html/rfc3339#section-5.6). \n\nThe value cannot contain spaces, and date and time should be separated by \"T\". \n\nFor example:\n* UTC time \"2023-05-01T00:00:00Z\".\n* An offset from UTC time to indicate a time zone, such as \"2023-05-01T00:00:00%2B08:00\" (for 8 hours ahead of UTC time). \n\nNote that query parameters should be properly escaped, last example is equivalent to \"2023-05-01T00:00:00+08:00\"."
+              },
+              {
+                "name": "cursor",
+                "value": "ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J",
+                "type": "query",
+                "description": "The pagination key to use for the next page of results. \n\nThe last successful call will include this in the response body in `pagination.afterKey`.\n\nNote:\n* Pagination also works using the `after_key` query parameter. However, if both `cursor` and `after_key` are \nprovided, `cursor` will take precedence."
+              },
+              {
+                "name": "state",
+                "value": "active",
+                "type": "query",
+                "description": "the state of the performance cycles to be returned"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "/oauth2/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Returns all performance cycles in the account.\n\nIf both `cursor` and `state` are provided in a request, `cursor` takes precedence."
+        },
+        {
+          "info": {
+            "name": "Get performance cycle",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cultureamp.com/v1/performance-cycles/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "performance cycle id"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "/oauth2/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Returns the details of a performance cycle by its id"
+        },
+        {
+          "info": {
+            "name": "List manager reviews by performance cycle",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cultureamp.com/v1/performance-cycles/:id/manager-reviews",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "performance cycle id"
+              },
+              {
+                "name": "cursor",
+                "value": "ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J",
+                "type": "query",
+                "description": "The pagination key to use for the next page of results. \n\nThe last successful call will include this in the response body in `pagination.afterKey`.\n\nNote:\n* Pagination also works using the `after_key` query parameter. However, if both `cursor` and `after_key` are \nprovided, `cursor` will take precedence."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "/oauth2/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Returns manager reviews for a given performance cycle"
+        },
+        {
+          "info": {
+            "name": "List manager reviews",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cultureamp.com/v1/manager-reviews",
+            "params": [
+              {
+                "name": "after_date",
+                "value": "2013-01-15T00:00:00+08:00",
+                "type": "query",
+                "description": "Only returns resources processed by the public API after the date-time provided.\n\nUses the date-time format specified in [RFC 3339 section 5.6, Internet Date/Time Format](https://tools.ietf.org/html/rfc3339#section-5.6). \n\nThe value cannot contain spaces, and date and time should be separated by \"T\". \n\nFor example:\n* UTC time \"2023-05-01T00:00:00Z\".\n* An offset from UTC time to indicate a time zone, such as \"2023-05-01T00:00:00%2B08:00\" (for 8 hours ahead of UTC time). \n\nNote that query parameters should be properly escaped, last example is equivalent to \"2023-05-01T00:00:00+08:00\"."
+              },
+              {
+                "name": "cursor",
+                "value": "ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J",
+                "type": "query",
+                "description": "The pagination key to use for the next page of results. \n\nThe last successful call will include this in the response body in `pagination.afterKey`.\n\nNote:\n* Pagination also works using the `after_key` query parameter. However, if both `cursor` and `after_key` are \nprovided, `cursor` will take precedence."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "/oauth2/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Returns all manager reviews in the account"
+        },
+        {
+          "info": {
+            "name": "Get manager review",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cultureamp.com/v1/manager-reviews/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "manager review id"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "/oauth2/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Returns the details of a manager review corresponding to the provided id"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

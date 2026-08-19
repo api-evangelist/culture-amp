@@ -1,0 +1,2942 @@
+{
+  "item": [
+    {
+      "id": "36463247-e6a0-4988-bea3-32d25d4b6f92",
+      "name": "Performance",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "02283cdc-b025-4018-804f-91fd4598d81f",
+          "name": "List manager reviews by employee",
+          "request": {
+            "name": "List manager reviews by employee",
+            "description": {
+              "content": "Returns manager reviews for a given employee",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "employees",
+                ":id",
+                "manager-reviews"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "The pagination key to use for the next page of results. \n\nThe last successful call will include this in the response body in `pagination.afterKey`.\n\nNote:\n* Pagination also works using the `after_key` query parameter. However, if both `cursor` and `after_key` are \nprovided, `cursor` will take precedence."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) the Culture Amp employee identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "employees-read employee-demographics-read performance-evaluations-read"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "/oauth2/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5cd609e2-374e-4337-8f38-6e111e847513",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "employees",
+                    ":id",
+                    "manager-reviews"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) the Culture Amp employee identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"employeeId\": \"string\",\n      \"createdAt\": \"1990-01-10T17:17:14.016Z\",\n      \"updatedAt\": \"1984-09-27T09:50:56.525Z\",\n      \"processedAt\": \"1955-03-06T22:08:55.497Z\",\n      \"performanceCycleId\": \"string\",\n      \"managerReviewId\": \"string\",\n      \"managerId\": \"string\",\n      \"performanceRating\": {\n        \"ratingBuckets\": [\n          {\n            \"title\": \"string\",\n            \"value\": 3853,\n            \"description\": \"string\"\n          },\n          {\n            \"title\": \"string\",\n            \"value\": 3562,\n            \"description\": \"string\"\n          }\n        ],\n        \"ratingQuestion\": {\n          \"title\": \"string\",\n          \"description\": \"string\"\n        },\n        \"rating\": {\n          \"id\": \"string\",\n          \"title\": \"string\",\n          \"value\": 9383,\n          \"createdAt\": \"2017-03-07T07:31:35.267Z\",\n          \"updatedAt\": \"1979-04-05T22:45:46.062Z\",\n          \"description\": \"string\"\n        }\n      },\n      \"openTextQuestions\": [\n        {\n          \"id\": \"string\",\n          \"text\": \"string\",\n          \"answer\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"text\": \"string\",\n          \"answer\": \"string\"\n        }\n      ],\n      \"multipleChoiceQuestions\": [\n        {\n          \"id\": \"string\",\n          \"text\": \"string\",\n          \"options\": [\n            \"string\",\n            \"string\"\n          ],\n          \"answer\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"text\": \"string\",\n          \"options\": [\n            \"string\",\n            \"string\"\n          ],\n          \"answer\": \"string\"\n        }\n      ],\n      \"multipleChoiceMultiSelectQuestions\": [\n        {\n          \"id\": \"string\",\n          \"text\": \"string\",\n          \"options\": [\n            \"string\",\n            \"string\"\n          ],\n          \"answers\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"id\": \"string\",\n          \"text\": \"string\",\n          \"options\": [\n            \"string\",\n            \"string\"\n          ],\n          \"answers\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"reviewAcknowledged\": true,\n      \"status\": \"incomplete\",\n      \"links\": [\n        {\n          \"rel\": \"string\",\n          \"uri\": \"string\"\n        },\n        {\n          \"rel\": \"string\",\n          \"uri\": \"string\"\n        }\n      ],\n      \"completedAt\": \"2011-09-04T05:16:23.686Z\"\n    },\n    {\n      \"employeeId\": \"string\",\n      \"createdAt\": \"1960-06-02T09:27:46.429Z\",\n      \"updatedAt\": \"1977-01-07T22:10:18.355Z\",\n      \"processedAt\": \"1999-11-11T19:46:22.076Z\",\n      \"performanceCycleId\": \"string\",\n      \"managerReviewId\": \"string\",\n      \"managerId\": \"string\",\n      \"performanceRating\": {\n        \"ratingBuckets\": [\n          {\n            \"title\": \"string\",\n            \"value\": 3846,\n            \"description\": \"string\"\n          },\n          {\n            \"title\": \"string\",\n            \"value\": 2478,\n            \"description\": \"string\"\n          }\n        ],\n        \"ratingQuestion\": {\n          \"title\": \"string\",\n          \"description\": \"string\"\n        },\n        \"rating\": {\n          \"id\": \"string\",\n          \"title\": \"string\",\n          \"value\": 4842,\n          \"createdAt\": \"2018-08-31T14:10:50.175Z\",\n          \"updatedAt\": \"2010-05-22T11:31:33.806Z\",\n          \"description\": \"string\"\n        }\n      },\n      \"openTextQuestions\": [\n        {\n          \"id\": \"string\",\n          \"text\": \"string\",\n          \"answer\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"text\": \"string\",\n          \"answer\": \"string\"\n        }\n      ],\n      \"multipleChoiceQuestions\": [\n        {\n          \"id\": \"string\",\n          \"text\": \"string\",\n          \"options\": [\n            \"string\",\n            \"string\"\n          ],\n          \"answer\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"text\": \"string\",\n          \"options\": [\n            \"string\",\n            \"string\"\n          ],\n          \"answer\": \"string\"\n        }\n      ],\n      \"multipleChoiceMultiSelectQuestions\": [\n        {\n          \"id\": \"string\",\n          \"text\": \"string\",\n          \"options\": [\n            \"string\",\n            \"string\"\n          ],\n          \"answers\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"id\": \"string\",\n          \"text\": \"string\",\n          \"options\": [\n            \"string\",\n            \"string\"\n          ],\n          \"answers\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"reviewAcknowledged\": true,\n      \"status\": \"dirty\",\n      \"links\": [\n        {\n          \"rel\": \"string\",\n          \"uri\": \"string\"\n        },\n        {\n          \"rel\": \"string\",\n          \"uri\": \"string\"\n        }\n      ],\n      \"completedAt\": \"2025-05-01T03:53:36.455Z\"\n    }\n  ],\n  \"pagination\": {\n    \"afterKey\": \"ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J\",\n    \"nextPath\": \"/<path>?cursor=ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0809cb3e-25bd-4828-afa4-1e00a2f7acd0",
+              "name": "The request path parameters, query parameters or headers are not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "employees",
+                    ":id",
+                    "manager-reviews"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) the Culture Amp employee identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7474,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "77132793-30cb-4432-a049-7912381cec1a",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "employees",
+                    ":id",
+                    "manager-reviews"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) the Culture Amp employee identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7474,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ace9c870-dedc-4f8c-a533-7d51f74119ed",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "employees",
+                    ":id",
+                    "manager-reviews"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) the Culture Amp employee identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7474,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "12af607d-60c9-48a6-aa3c-dd630ca4b2b6",
+              "name": "The specified resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "employees",
+                    ":id",
+                    "manager-reviews"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) the Culture Amp employee identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7474,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "75364cd6-22a6-4446-9999-f18b9442274c",
+              "name": "Too Many Requests - client rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "employees",
+                    ":id",
+                    "manager-reviews"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) the Culture Amp employee identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7474,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d247e252-5b8e-43e6-bfb6-48cd62964bff",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "employees",
+                    ":id",
+                    "manager-reviews"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) the Culture Amp employee identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7474,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8cb8ffd3-bc18-47d0-9b3d-316587ba82ad",
+              "name": "Service Unavailable - endpoint rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "employees",
+                    ":id",
+                    "manager-reviews"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) the Culture Amp employee identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7474,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "27203dd2-ed42-47be-b77f-0eb328725ca2",
+          "name": "List performance cycles",
+          "request": {
+            "name": "List performance cycles",
+            "description": {
+              "content": "Returns all performance cycles in the account.\n\nIf both `cursor` and `state` are provided in a request, `cursor` takes precedence.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "performance-cycles"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "after_date",
+                  "value": "<string>",
+                  "description": "Only returns resources processed by the public API after the date-time provided.\n\nUses the date-time format specified in [RFC 3339 section 5.6, Internet Date/Time Format](https://tools.ietf.org/html/rfc3339#section-5.6). \n\nThe value cannot contain spaces, and date and time should be separated by \"T\". \n\nFor example:\n* UTC time \"2023-05-01T00:00:00Z\".\n* An offset from UTC time to indicate a time zone, such as \"2023-05-01T00:00:00%2B08:00\" (for 8 hours ahead of UTC time). \n\nNote that query parameters should be properly escaped, last example is equivalent to \"2023-05-01T00:00:00+08:00\"."
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "The pagination key to use for the next page of results. \n\nThe last successful call will include this in the response body in `pagination.afterKey`.\n\nNote:\n* Pagination also works using the `after_key` query parameter. However, if both `cursor` and `after_key` are \nprovided, `cursor` will take precedence."
+                },
+                {
+                  "disabled": false,
+                  "key": "state",
+                  "value": "<string>",
+                  "description": "the state of the performance cycles to be returned"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "employees-read employee-demographics-read performance-evaluations-read"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "/oauth2/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8bd7b0c6-7ffe-4e31-98c8-f30138a08bc0",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "performance-cycles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "after_date",
+                      "value": "2013-01-15T00:00:00+08:00"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J"
+                    },
+                    {
+                      "key": "state",
+                      "value": "active"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"state\": \"active\",\n      \"createdAt\": \"2017-08-15T08:28:56.401Z\",\n      \"updatedAt\": \"1973-08-15T03:35:35.051Z\",\n      \"processedAt\": \"1989-12-01T17:03:00.925Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"state\": \"active\",\n      \"createdAt\": \"1951-07-23T08:57:50.895Z\",\n      \"updatedAt\": \"2025-09-12T06:47:42.294Z\",\n      \"processedAt\": \"2026-07-21T02:36:35.233Z\"\n    }\n  ],\n  \"pagination\": {\n    \"afterKey\": \"ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J\",\n    \"nextPath\": \"/<path>?cursor=ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9218935e-9ebd-4388-8c8f-a2d9b8924b68",
+              "name": "The request path parameters, query parameters or headers are not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "performance-cycles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "after_date",
+                      "value": "2013-01-15T00:00:00+08:00"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J"
+                    },
+                    {
+                      "key": "state",
+                      "value": "active"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7474,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8b0c2dff-c7d8-4a20-bd6d-75e8a573180a",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "performance-cycles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "after_date",
+                      "value": "2013-01-15T00:00:00+08:00"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J"
+                    },
+                    {
+                      "key": "state",
+                      "value": "active"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7474,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "898350e5-b19b-47c0-9b66-d2c0638e707e",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "performance-cycles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "after_date",
+                      "value": "2013-01-15T00:00:00+08:00"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J"
+                    },
+                    {
+                      "key": "state",
+                      "value": "active"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7474,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6def6fa0-175f-4e09-b509-73e2fd0e16b2",
+              "name": "The specified resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "performance-cycles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "after_date",
+                      "value": "2013-01-15T00:00:00+08:00"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J"
+                    },
+                    {
+                      "key": "state",
+                      "value": "active"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7474,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "33e9b14a-4ebd-4b1c-b890-7cecb186e861",
+              "name": "Too Many Requests - client rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "performance-cycles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "after_date",
+                      "value": "2013-01-15T00:00:00+08:00"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J"
+                    },
+                    {
+                      "key": "state",
+                      "value": "active"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7474,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "76a2aeeb-6419-4dea-994f-94c40122ceb7",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "performance-cycles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "after_date",
+                      "value": "2013-01-15T00:00:00+08:00"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J"
+                    },
+                    {
+                      "key": "state",
+                      "value": "active"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7474,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4946ad8d-a7cf-4515-95df-7bcf56fd7005",
+              "name": "Service Unavailable - endpoint rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "performance-cycles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "after_date",
+                      "value": "2013-01-15T00:00:00+08:00"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J"
+                    },
+                    {
+                      "key": "state",
+                      "value": "active"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7474,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "38b2dd0e-43cf-4f74-9cf9-039eaeb6f88e",
+          "name": "Get performance cycle",
+          "request": {
+            "name": "Get performance cycle",
+            "description": {
+              "content": "Returns the details of a performance cycle by its id",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "performance-cycles",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) performance cycle id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "employees-read employee-demographics-read performance-evaluations-read"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "/oauth2/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c04904f8-7ac9-495d-9fc4-38c59fe20548",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "performance-cycles",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) performance cycle id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"state\": \"active\",\n    \"createdAt\": \"2019-05-12T05:38:46.537Z\",\n    \"updatedAt\": \"1994-03-07T16:20:19.126Z\",\n    \"processedAt\": \"1987-12-02T13:10:06.246Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b63f0f9f-b13d-4201-ae9d-a93465d44530",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "performance-cycles",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) performance cycle id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7474,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "33732907-0b07-4646-bc39-ab0d8ae6e426",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "performance-cycles",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) performance cycle id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7474,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bb67b4f8-406d-4f2b-aad1-46c0e40589fc",
+              "name": "The specified resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "performance-cycles",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) performance cycle id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7474,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "32a24fe3-2d05-48ae-a94f-37d0023bf363",
+              "name": "Too Many Requests - client rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "performance-cycles",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) performance cycle id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7474,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c870a845-b615-435c-ae8a-18d2e09947d2",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "performance-cycles",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) performance cycle id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7474,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "beb63e27-5d48-4026-9d46-504bc5442749",
+              "name": "Service Unavailable - endpoint rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "performance-cycles",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) performance cycle id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7474,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "45cd7ac7-f0ae-4cf5-8196-796868c67df4",
+          "name": "List manager reviews by performance cycle",
+          "request": {
+            "name": "List manager reviews by performance cycle",
+            "description": {
+              "content": "Returns manager reviews for a given performance cycle",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "performance-cycles",
+                ":id",
+                "manager-reviews"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "The pagination key to use for the next page of results. \n\nThe last successful call will include this in the response body in `pagination.afterKey`.\n\nNote:\n* Pagination also works using the `after_key` query parameter. However, if both `cursor` and `after_key` are \nprovided, `cursor` will take precedence."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) performance cycle id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "employees-read employee-demographics-read performance-evaluations-read"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "/oauth2/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "96c224af-70a8-4ebd-866c-a3dda7a16a0f",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "performance-cycles",
+                    ":id",
+                    "manager-reviews"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) performance cycle id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"employeeId\": \"string\",\n      \"createdAt\": \"1986-01-17T12:34:56.460Z\",\n      \"updatedAt\": \"1957-02-11T14:04:12.430Z\",\n      \"processedAt\": \"1964-07-16T20:14:01.723Z\",\n      \"performanceCycleId\": \"string\",\n      \"managerReviewId\": \"string\",\n      \"managerId\": \"string\",\n      \"performanceRating\": {\n        \"ratingBuckets\": [\n          {\n            \"title\": \"string\",\n            \"value\": 9367,\n            \"description\": \"string\"\n          },\n          {\n            \"title\": \"string\",\n            \"value\": 2775,\n            \"description\": \"string\"\n          }\n        ],\n        \"ratingQuestion\": {\n          \"title\": \"string\",\n          \"description\": \"string\"\n        },\n        \"rating\": {\n          \"id\": \"string\",\n          \"title\": \"string\",\n          \"value\": 7737,\n          \"createdAt\": \"1999-05-21T17:29:33.905Z\",\n          \"updatedAt\": \"1995-04-30T15:04:06.028Z\",\n          \"description\": \"string\"\n        }\n      },\n      \"openTextQuestions\": [\n        {\n          \"id\": \"string\",\n          \"text\": \"string\",\n          \"answer\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"text\": \"string\",\n          \"answer\": \"string\"\n        }\n      ],\n      \"multipleChoiceQuestions\": [\n        {\n          \"id\": \"string\",\n          \"text\": \"string\",\n          \"options\": [\n            \"string\",\n            \"string\"\n          ],\n          \"answer\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"text\": \"string\",\n          \"options\": [\n            \"string\",\n            \"string\"\n          ],\n          \"answer\": \"string\"\n        }\n      ],\n      \"multipleChoiceMultiSelectQuestions\": [\n        {\n          \"id\": \"string\",\n          \"text\": \"string\",\n          \"options\": [\n            \"string\",\n            \"string\"\n          ],\n          \"answers\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"id\": \"string\",\n          \"text\": \"string\",\n          \"options\": [\n            \"string\",\n            \"string\"\n          ],\n          \"answers\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"reviewAcknowledged\": true,\n      \"status\": \"incomplete\",\n      \"links\": [\n        {\n          \"rel\": \"string\",\n          \"uri\": \"string\"\n        },\n        {\n          \"rel\": \"string\",\n          \"uri\": \"string\"\n        }\n      ],\n      \"completedAt\": \"2018-03-04T03:45:09.549Z\"\n    },\n    {\n      \"employeeId\": \"string\",\n      \"createdAt\": \"1980-08-06T01:31:25.248Z\",\n      \"updatedAt\": \"2008-07-25T09:11:42.654Z\",\n      \"processedAt\": \"1947-09-22T04:10:45.335Z\",\n      \"performanceCycleId\": \"string\",\n      \"managerReviewId\": \"string\",\n      \"managerId\": \"string\",\n      \"performanceRating\": {\n        \"ratingBuckets\": [\n          {\n            \"title\": \"string\",\n            \"value\": 2663,\n            \"description\": \"string\"\n          },\n          {\n            \"title\": \"string\",\n            \"value\": 4018,\n            \"description\": \"string\"\n          }\n        ],\n        \"ratingQuestion\": {\n          \"title\": \"string\",\n          \"description\": \"string\"\n        },\n        \"rating\": {\n          \"id\": \"string\",\n          \"title\": \"string\",\n          \"value\": 1197,\n          \"createdAt\": \"2006-01-20T09:38:17.120Z\",\n          \"updatedAt\": \"1995-09-13T21:05:24.323Z\",\n          \"description\": \"string\"\n        }\n      },\n      \"openTextQuestions\": [\n        {\n          \"id\": \"string\",\n          \"text\": \"string\",\n          \"answer\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"text\": \"string\",\n          \"answer\": \"string\"\n        }\n      ],\n      \"multipleChoiceQuestions\": [\n        {\n          \"id\": \"string\",\n          \"text\": \"string\",\n          \"options\": [\n            \"string\",\n            \"string\"\n          ],\n          \"answer\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"text\": \"string\",\n          \"options\": [\n            \"string\",\n            \"string\"\n          ],\n          \"answer\": \"string\"\n        }\n      ],\n      \"multipleChoiceMultiSelectQuestions\": [\n        {\n          \"id\": \"string\",\n          \"text\": \"string\",\n          \"options\": [\n            \"string\",\n            \"string\"\n          ],\n          \"answers\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"id\": \"string\",\n          \"text\": \"string\",\n          \"options\": [\n            \"string\",\n            \"string\"\n          ],\n          \"answers\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"reviewAcknowledged\": false,\n      \"status\": \"shared\",\n      \"links\": [\n        {\n          \"rel\": \"string\",\n          \"uri\": \"string\"\n        },\n        {\n          \"rel\": \"string\",\n          \"uri\": \"string\"\n        }\n      ],\n      \"completedAt\": \"1959-04-18T03:58:17.014Z\"\n    }\n  ],\n  \"pagination\": {\n    \"afterKey\": \"ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J\",\n    \"nextPath\": \"/<path>?cursor=ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e488cc03-f75a-48d9-a8fe-00ee303f2b9d",
+              "name": "The request path parameters, query parameters or headers are not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "performance-cycles",
+                    ":id",
+                    "manager-reviews"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) performance cycle id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7474,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fd088be0-2c21-47f8-861c-d1b0e7d88ed3",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "performance-cycles",
+                    ":id",
+                    "manager-reviews"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) performance cycle id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7474,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3900f102-e5ef-45ab-889a-bfaa2980771e",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "performance-cycles",
+                    ":id",
+                    "manager-reviews"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) performance cycle id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7474,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1d17c094-29c8-482e-86b7-96be78f2b971",
+              "name": "The specified resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "performance-cycles",
+                    ":id",
+                    "manager-reviews"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) performance cycle id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7474,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "12b0e0fb-47ed-4b02-a0c7-9b2ff0477ec6",
+              "name": "Too Many Requests - client rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "performance-cycles",
+                    ":id",
+                    "manager-reviews"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) performance cycle id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7474,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ea8f7edf-8591-4bee-badb-e23661f051e9",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "performance-cycles",
+                    ":id",
+                    "manager-reviews"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) performance cycle id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7474,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5e00a24b-adba-4fac-b346-3ca4bbed82ca",
+              "name": "Service Unavailable - endpoint rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "performance-cycles",
+                    ":id",
+                    "manager-reviews"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) performance cycle id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7474,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e3efe742-523d-4391-a689-65bd6d705202",
+          "name": "List manager reviews",
+          "request": {
+            "name": "List manager reviews",
+            "description": {
+              "content": "Returns all manager reviews in the account",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "manager-reviews"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "after_date",
+                  "value": "<string>",
+                  "description": "Only returns resources processed by the public API after the date-time provided.\n\nUses the date-time format specified in [RFC 3339 section 5.6, Internet Date/Time Format](https://tools.ietf.org/html/rfc3339#section-5.6). \n\nThe value cannot contain spaces, and date and time should be separated by \"T\". \n\nFor example:\n* UTC time \"2023-05-01T00:00:00Z\".\n* An offset from UTC time to indicate a time zone, such as \"2023-05-01T00:00:00%2B08:00\" (for 8 hours ahead of UTC time). \n\nNote that query parameters should be properly escaped, last example is equivalent to \"2023-05-01T00:00:00+08:00\"."
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "The pagination key to use for the next page of results. \n\nThe last successful call will include this in the response body in `pagination.afterKey`.\n\nNote:\n* Pagination also works using the `after_key` query parameter. However, if both `cursor` and `after_key` are \nprovided, `cursor` will take precedence."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "employees-read employee-demographics-read performance-evaluations-read"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "/oauth2/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "35ef6911-3ed1-441b-8d29-43da87b0c227",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "manager-reviews"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "after_date",
+                      "value": "2013-01-15T00:00:00+08:00"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"employeeId\": \"string\",\n      \"createdAt\": \"1986-01-17T12:34:56.460Z\",\n      \"updatedAt\": \"1957-02-11T14:04:12.430Z\",\n      \"processedAt\": \"1964-07-16T20:14:01.723Z\",\n      \"performanceCycleId\": \"string\",\n      \"managerReviewId\": \"string\",\n      \"managerId\": \"string\",\n      \"performanceRating\": {\n        \"ratingBuckets\": [\n          {\n            \"title\": \"string\",\n            \"value\": 9367,\n            \"description\": \"string\"\n          },\n          {\n            \"title\": \"string\",\n            \"value\": 2775,\n            \"description\": \"string\"\n          }\n        ],\n        \"ratingQuestion\": {\n          \"title\": \"string\",\n          \"description\": \"string\"\n        },\n        \"rating\": {\n          \"id\": \"string\",\n          \"title\": \"string\",\n          \"value\": 7737,\n          \"createdAt\": \"1999-05-21T17:29:33.905Z\",\n          \"updatedAt\": \"1995-04-30T15:04:06.028Z\",\n          \"description\": \"string\"\n        }\n      },\n      \"openTextQuestions\": [\n        {\n          \"id\": \"string\",\n          \"text\": \"string\",\n          \"answer\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"text\": \"string\",\n          \"answer\": \"string\"\n        }\n      ],\n      \"multipleChoiceQuestions\": [\n        {\n          \"id\": \"string\",\n          \"text\": \"string\",\n          \"options\": [\n            \"string\",\n            \"string\"\n          ],\n          \"answer\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"text\": \"string\",\n          \"options\": [\n            \"string\",\n            \"string\"\n          ],\n          \"answer\": \"string\"\n        }\n      ],\n      \"multipleChoiceMultiSelectQuestions\": [\n        {\n          \"id\": \"string\",\n          \"text\": \"string\",\n          \"options\": [\n            \"string\",\n            \"string\"\n          ],\n          \"answers\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"id\": \"string\",\n          \"text\": \"string\",\n          \"options\": [\n            \"string\",\n            \"string\"\n          ],\n          \"answers\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"reviewAcknowledged\": true,\n      \"status\": \"incomplete\",\n      \"links\": [\n        {\n          \"rel\": \"string\",\n          \"uri\": \"string\"\n        },\n        {\n          \"rel\": \"string\",\n          \"uri\": \"string\"\n        }\n      ],\n      \"completedAt\": \"2018-03-04T03:45:09.549Z\"\n    },\n    {\n      \"employeeId\": \"string\",\n      \"createdAt\": \"1980-08-06T01:31:25.248Z\",\n      \"updatedAt\": \"2008-07-25T09:11:42.654Z\",\n      \"processedAt\": \"1947-09-22T04:10:45.335Z\",\n      \"performanceCycleId\": \"string\",\n      \"managerReviewId\": \"string\",\n      \"managerId\": \"string\",\n      \"performanceRating\": {\n        \"ratingBuckets\": [\n          {\n            \"title\": \"string\",\n            \"value\": 2663,\n            \"description\": \"string\"\n          },\n          {\n            \"title\": \"string\",\n            \"value\": 4018,\n            \"description\": \"string\"\n          }\n        ],\n        \"ratingQuestion\": {\n          \"title\": \"string\",\n          \"description\": \"string\"\n        },\n        \"rating\": {\n          \"id\": \"string\",\n          \"title\": \"string\",\n          \"value\": 1197,\n          \"createdAt\": \"2006-01-20T09:38:17.120Z\",\n          \"updatedAt\": \"1995-09-13T21:05:24.323Z\",\n          \"description\": \"string\"\n        }\n      },\n      \"openTextQuestions\": [\n        {\n          \"id\": \"string\",\n          \"text\": \"string\",\n          \"answer\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"text\": \"string\",\n          \"answer\": \"string\"\n        }\n      ],\n      \"multipleChoiceQuestions\": [\n        {\n          \"id\": \"string\",\n          \"text\": \"string\",\n          \"options\": [\n            \"string\",\n            \"string\"\n          ],\n          \"answer\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"text\": \"string\",\n          \"options\": [\n            \"string\",\n            \"string\"\n          ],\n          \"answer\": \"string\"\n        }\n      ],\n      \"multipleChoiceMultiSelectQuestions\": [\n        {\n          \"id\": \"string\",\n          \"text\": \"string\",\n          \"options\": [\n            \"string\",\n            \"string\"\n          ],\n          \"answers\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"id\": \"string\",\n          \"text\": \"string\",\n          \"options\": [\n            \"string\",\n            \"string\"\n          ],\n          \"answers\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"reviewAcknowledged\": false,\n      \"status\": \"shared\",\n      \"links\": [\n        {\n          \"rel\": \"string\",\n          \"uri\": \"string\"\n        },\n        {\n          \"rel\": \"string\",\n          \"uri\": \"string\"\n        }\n      ],\n      \"completedAt\": \"1959-04-18T03:58:17.014Z\"\n    }\n  ],\n  \"pagination\": {\n    \"afterKey\": \"ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J\",\n    \"nextPath\": \"/<path>?cursor=ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "759e8b2d-291b-4d92-800b-aae95c3c2c90",
+              "name": "The request path parameters, query parameters or headers are not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "manager-reviews"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "after_date",
+                      "value": "2013-01-15T00:00:00+08:00"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7474,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "80a129d1-542b-45e6-a9b1-353742995722",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "manager-reviews"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "after_date",
+                      "value": "2013-01-15T00:00:00+08:00"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7474,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "af7afb65-8c70-4f61-8ff5-484d55d8fbbb",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "manager-reviews"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "after_date",
+                      "value": "2013-01-15T00:00:00+08:00"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7474,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6a36020a-c9ba-46d6-895e-ee3f260cbcb8",
+              "name": "The specified resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "manager-reviews"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "after_date",
+                      "value": "2013-01-15T00:00:00+08:00"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7474,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c7837c9b-1609-4d22-b175-5b1b5ab2ce64",
+              "name": "Too Many Requests - client rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "manager-reviews"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "after_date",
+                      "value": "2013-01-15T00:00:00+08:00"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7474,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "81300618-bf09-4311-9b8e-278955b70b58",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "manager-reviews"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "after_date",
+                      "value": "2013-01-15T00:00:00+08:00"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7474,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1ee8b7a5-f50d-498f-9a0d-455ffafbc813",
+              "name": "Service Unavailable - endpoint rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "manager-reviews"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "after_date",
+                      "value": "2013-01-15T00:00:00+08:00"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7474,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1cdac465-02ad-4317-8fe2-838a4e250773",
+          "name": "Get manager review",
+          "request": {
+            "name": "Get manager review",
+            "description": {
+              "content": "Returns the details of a manager review corresponding to the provided id",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "manager-reviews",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) manager review id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "employees-read employee-demographics-read performance-evaluations-read"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "/oauth2/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9188f13d-4151-42ca-bc0e-14fe98ae49d2",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "manager-reviews",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) manager review id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"employeeId\": \"string\",\n    \"createdAt\": \"1977-04-25T10:44:45.675Z\",\n    \"updatedAt\": \"1960-10-22T07:08:09.915Z\",\n    \"processedAt\": \"1995-04-29T20:13:28.422Z\",\n    \"performanceCycleId\": \"string\",\n    \"managerReviewId\": \"string\",\n    \"managerId\": \"string\",\n    \"performanceRating\": {\n      \"ratingBuckets\": [\n        {\n          \"title\": \"string\",\n          \"value\": 2982,\n          \"description\": \"string\"\n        },\n        {\n          \"title\": \"string\",\n          \"value\": 4726,\n          \"description\": \"string\"\n        }\n      ],\n      \"ratingQuestion\": {\n        \"title\": \"string\",\n        \"description\": \"string\"\n      },\n      \"rating\": {\n        \"id\": \"string\",\n        \"title\": \"string\",\n        \"value\": 6108,\n        \"createdAt\": \"1996-03-13T15:29:44.742Z\",\n        \"updatedAt\": \"1948-02-09T04:53:46.712Z\",\n        \"description\": \"string\"\n      }\n    },\n    \"openTextQuestions\": [\n      {\n        \"id\": \"string\",\n        \"text\": \"string\",\n        \"answer\": \"string\"\n      },\n      {\n        \"id\": \"string\",\n        \"text\": \"string\",\n        \"answer\": \"string\"\n      }\n    ],\n    \"multipleChoiceQuestions\": [\n      {\n        \"id\": \"string\",\n        \"text\": \"string\",\n        \"options\": [\n          \"string\",\n          \"string\"\n        ],\n        \"answer\": \"string\"\n      },\n      {\n        \"id\": \"string\",\n        \"text\": \"string\",\n        \"options\": [\n          \"string\",\n          \"string\"\n        ],\n        \"answer\": \"string\"\n      }\n    ],\n    \"multipleChoiceMultiSelectQuestions\": [\n      {\n        \"id\": \"string\",\n        \"text\": \"string\",\n        \"options\": [\n          \"string\",\n          \"string\"\n        ],\n        \"answers\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      {\n        \"id\": \"string\",\n        \"text\": \"string\",\n        \"options\": [\n          \"string\",\n          \"string\"\n        ],\n        \"answers\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    ],\n    \"reviewAcknowledged\": false,\n    \"status\": \"shared\",\n    \"links\": [\n      {\n        \"rel\": \"string\",\n        \"uri\": \"string\"\n      },\n      {\n        \"rel\": \"string\",\n        \"uri\": \"string\"\n      }\n    ],\n    \"completedAt\": \"1984-06-03T13:24:50.830Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "09674748-5e15-443b-86c0-fee3daa757c6",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "manager-reviews",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) manager review id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7474,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aaee277e-8feb-4ee2-bbc9-3609a9735370",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "manager-reviews",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) manager review id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7474,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "73ce17de-32d3-4dcf-9966-4e5fe4a59bfc",
+              "name": "The specified resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "manager-reviews",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) manager review id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7474,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f5fe0c0f-71e2-42c6-a6d4-aa4eb61bc0cc",
+              "name": "Too Many Requests - client rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "manager-reviews",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) manager review id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7474,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "543c3603-d7fc-4107-98c9-f0746bc38f9e",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "manager-reviews",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) manager review id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7474,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "284ef5fe-e2d9-4ee1-a855-5ef7856240d7",
+              "name": "Service Unavailable - endpoint rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "manager-reviews",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) manager review id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7474,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.cultureamp.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "f68b629d-30a2-415d-84f4-b097206d0a41",
+    "name": "Culture Amp Public Employees Performance API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This Open API specification describes the interface for the Culture Amp public API service\n\nContact Support:\n Name: Culture Amp Support\n Email: support@cultureamp.com",
+      "type": "text/plain"
+    }
+  }
+}
