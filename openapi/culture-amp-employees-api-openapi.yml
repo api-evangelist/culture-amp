@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   title: Culture Amp Public Employees API
   description: This Open API specification describes the interface for the Culture Amp public API service
@@ -142,18 +142,50 @@ paths:
       - Oauth2:
         - employee-demographics-read
 components:
+  responses:
+    BadRequest:
+      description: The request path parameters, query parameters or headers are not valid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The specified resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    InternalServerError:
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    TooManyRequests:
+      description: Too Many Requests - client rate limit exceeded
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Forbidden:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ServiceUnavailable:
+      description: Service Unavailable - endpoint rate limit exceeded
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    DemographicsResponse:
-      title: DemographicsResponse
-      type: object
-      description: container object for multiple demographics response
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Demographic'
-      required:
-      - data
     EmployeesResponse:
       title: EmployeesResponse
       type: object
@@ -182,6 +214,31 @@ components:
           description: the relative url for the next page of data
       required:
       - nextPath
+    Demographic:
+      title: Demographic
+      type: object
+      example:
+        name: star sign
+        value: capricorn
+      properties:
+        name:
+          type: string
+          description: the name of the demographic
+        value:
+          type: string
+          description: the value of the demographic
+      required:
+      - name
+      - value
+    EmployeeByIDResponse:
+      title: EmployeeByIDResponse
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Employee'
+      description: container object for a single employee response
+      required:
+      - data
     Link:
       title: Link
       type: object
@@ -196,6 +253,17 @@ components:
       required:
       - rel
       - uri
+    DemographicsResponse:
+      title: DemographicsResponse
+      type: object
+      description: container object for multiple demographics response
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Demographic'
+      required:
+      - data
     Error:
       required:
       - code
@@ -210,15 +278,6 @@ components:
           type: string
           description: a description of the error
       description: an object describing an API error
-    EmployeeByIDResponse:
-      title: EmployeeByIDResponse
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/Employee'
-      description: container object for a single employee response
-      required:
-      - data
     Employee:
       title: Employee
       type: object
@@ -279,22 +338,6 @@ components:
         - rel: manager-reviews
           uri: /v1/employees/96b1cff7-3099-44a9-bd28-0292be8aff7f/manager-reviews
         processedAt: '2019-08-01T12:00:00Z'
-    Demographic:
-      title: Demographic
-      type: object
-      example:
-        name: star sign
-        value: capricorn
-      properties:
-        name:
-          type: string
-          description: the name of the demographic
-        value:
-          type: string
-          description: the value of the demographic
-      required:
-      - name
-      - value
   parameters:
     CursorQueryParam:
       name: cursor
@@ -303,49 +346,6 @@ components:
       schema:
         type: string
       example: ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J
-  responses:
-    Forbidden:
-      description: Forbidden
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The specified resource was not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    ServiceUnavailable:
-      description: Service Unavailable - endpoint rate limit exceeded
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: The request path parameters, query parameters or headers are not valid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    TooManyRequests:
-      description: Too Many Requests - client rate limit exceeded
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    InternalServerError:
-      description: Internal Server Error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     Oauth2:
       type: oauth2
