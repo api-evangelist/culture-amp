@@ -43,12 +43,16 @@ description: >
   subscription fees. The platform serves thousands of organizations worldwide
   and integrates with leading HRIS systems, Slack, Microsoft Teams, and
   compensation tools like Pave.
+x-docs-platform: readme
+x-docs-platform-confidence: high
+x-docs-platform-checked: 2026-09-24
 tags:
   - Human Resources
   - Employee Engagement
   - Performance Management
   - People Analytics
   - Surveys
+  - Australia
 tags_raw:
   - HR
   - Employee Engagement
@@ -56,6 +60,7 @@ tags_raw:
   - People Analytics
   - Surveys
   - Human Resources
+  - Australia
 apis:
 - aid: culture-amp:culture-amp-employees-api
   name: Culture Amp Employees API
@@ -87,8 +92,6 @@ apis:
     url: examples/culture-amp-performance-cycle-example.json
   - type: Examples
     url: examples/culture-amp-manager-review-example.json
-  - type: GraphQL
-    url: graphql/culture-amp-graphql.md
 - aid: culture-amp:culture-amp-performance-api
   name: Culture Amp Performance API
   description: The Performance API from Culture Amp — 6 operation(s) for performance.
@@ -119,8 +122,6 @@ apis:
     url: examples/culture-amp-performance-cycle-example.json
   - type: Examples
     url: examples/culture-amp-manager-review-example.json
-  - type: GraphQL
-    url: graphql/culture-amp-graphql.md
 - aid: culture-amp:culture-amp-surveys-api
   name: Culture Amp Surveys API
   description: The Surveys API from Culture Amp — 10 operation(s) for surveys.
@@ -151,8 +152,6 @@ apis:
     url: examples/culture-amp-performance-cycle-example.json
   - type: Examples
     url: examples/culture-amp-manager-review-example.json
-  - type: GraphQL
-    url: graphql/culture-amp-graphql.md
 common:
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/culture-amp/overview
