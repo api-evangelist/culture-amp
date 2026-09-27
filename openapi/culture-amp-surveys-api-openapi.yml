@@ -499,94 +499,213 @@ paths:
       - Oauth2:
         - surveys-read
 components:
+  responses:
+    NotFound:
+      description: The specified resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: The request path parameters, query parameters or headers are not valid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    InternalServerError:
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Forbidden:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ServiceUnavailable:
+      description: Service Unavailable - endpoint rate limit exceeded
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    TooManyRequests:
+      description: Too Many Requests - client rate limit exceeded
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    SurveyQuestion:
-      title: SurveyQuestion
+    SurveySection:
+      title: SurveySection
       type: object
-      description: The Survey Question record
+      description: A section is a grouping of questions in a survey
       properties:
         id:
           type: string
-          description: the identifier used by Culture Amp to identify the Survey
+          description: Unique identifier for this section.
+        name:
+          type: string
+          description: Name of this section
+        type:
+          type: string
+          description: Defines the type category of the section, including how it will display to respondents
         code:
           type: string
-          description: The unique question code
-        questionType:
+          description: Auto-generated code for the section
+        shortDescription:
           type: string
-          description: The type of the survey question eg. culture, segment
-        label:
-          type: object
-          additionalProperties:
-            type: string
-          description: The localised label of the survey question
-          example:
-            en: Hello!
-            fr: Bonjour!
-        description:
-          type: object
-          additionalProperties:
-            type: string
-          description: The localised description of the survey question
-          example:
-            en: Hello!
-            fr: Bonjour!
-        ratingScale:
+          description: Short text label which describes the section
+        longDescription:
           type: string
-          description: The rating scale of the survey question
-        selectOptions:
-          type: array
-          items:
-            $ref: '#/components/schemas/SurveyQuestionSelectOption'
-        otherOption:
-          type: boolean
-          description: The flag for other select option
+          description: Long text label which describes the section
         status:
           type: string
-          description: The status of the survey question, active or deleted
-        sectionId:
-          type: string
-          description: The ID of a section the survey question belongs to
-        factorIds:
-          type: array
-          description: The IDs of factors associated with the survey question
-          items:
-            type: string
+          description: Whether the section is active or deleted
+        order:
+          type: integer
+          description: Order of the section as configured in the survey
+          format: int32
         createdAt:
           type: string
-          description: The date the Survey question was created
+          description: When this section was created
           format: date-time
         updatedAt:
           type: string
-          description: The date the Survey question was last updated
+          description: When this Section was last updated
           format: date-time
-        processedAt:
+    SurveyRespAnswer:
+      type: object
+      properties:
+        questionId:
           type: string
-          description: The date the survey question was last processed by the public API. This can be used by consumers to determine if the question has been updated since the last time it was retrieved.
+          description: the id of the question being answered
+        textValue:
+          type: string
+          description: The comment left for a free text style question, or the answer a user left when the "other" option is picked on a select question
+        ratingScore:
+          type: integer
+          description: The rating in the range 1..5 or -1 if it was not answered
+        selectOptions:
+          type: array
+          items:
+            $ref: '#/components/schemas/SurveyRespAnswerSelectOption'
+        answered:
+          type: boolean
+          description: Whether or not this answer was completed
+        additionalComment:
+          type: string
+          description: the comment text left against select questions as an additional input to the option chosen
+        mandatory:
+          type: boolean
+          description: Whether or not the question was made mandatory
+        createdAt:
+          type: string
+          description: The date the answer was created
+          format: date-time
+        updatedAt:
+          type: string
+          description: The date the answer was last updated
           format: date-time
       required:
-      - id
-      - otherOption
-      - processedAt
-    SurveysResponse:
-      title: SurveysResponse
+      - answered
+      - mandatory
+    SurveySectionResponse:
+      title: SurveySectionResponse
       type: object
-      description: container object for multiple Surveys
+      description: container object for a single Section
+      properties:
+        data:
+          $ref: '#/components/schemas/SurveySection'
+      required:
+      - data
+    SurveySectionsResponse:
+      title: SurveySectionsResponse
+      type: object
+      description: container object for multiple Sections
       properties:
         data:
           type: array
           items:
-            $ref: '#/components/schemas/Survey'
+            $ref: '#/components/schemas/SurveySection'
         pagination:
           $ref: '#/components/schemas/PaginationV2'
-      required:
-      - data
-    SurveyRespResponse:
-      title: SurveyRespResponse
+    SurveyFactor:
+      title: SurveyFactor
       type: object
-      description: container object for a Survey Response
+      description: A Factor is an aspect that one seeks to measure in a Survey
+      properties:
+        id:
+          type: string
+          description: Unique identifier for this reporting factor
+        name:
+          type: object
+          additionalProperties:
+            type: string
+          description: Text name set by the survey admin for this reporting factor
+          example:
+            en: Hello!
+            fr: Bonjour!
+        type:
+          type: string
+          description: Defines the type of the reporting factor and how it will be used in survey reporting
+        code:
+          type: string
+          description: Auto-generated code for the reporting factor
+        indexFactor:
+          type: boolean
+          description: Whether the reporting factor is used as an index or not
+        customFactor:
+          type: boolean
+          description: Whether the reporting factor was created via the reporting factors page or not
+        shortDescription:
+          type: string
+          description: Short text label which describes the reporting factor
+        longDescription:
+          type: string
+          description: Long text label which describes the reporting factor
+        status:
+          type: string
+          description: Whether this reporting factor is active or deleted
+        order:
+          type: integer
+          description: Order of the factor as configured in the survey
+          format: int32
+        createdAt:
+          type: string
+          description: When this factor was created
+          format: date-time
+        updatedAt:
+          type: string
+          description: When the factor was last updated
+          format: date-time
+    SurveyResponse:
+      title: SurveyResponse
+      type: object
+      description: container object for a single Survey
       properties:
         data:
-          $ref: '#/components/schemas/SurveyResp'
+          $ref: '#/components/schemas/Survey'
+      required:
+      - data
+    SurveyRespsResponse:
+      title: SurveyRespsResponse
+      type: object
+      description: container object for multiple Survey Responses
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/SurveyResp'
+        pagination:
+          $ref: '#/components/schemas/PaginationV2'
       required:
       - data
     Survey:
@@ -669,75 +788,45 @@ components:
       - id
       - processedAt
       - rdeEnabled
-    SurveyFactorsResponse:
-      title: SurveyFactorsResponse
+    SurveyRespResponse:
+      title: SurveyRespResponse
       type: object
-      description: container object for multiple Factors
+      description: container object for a Survey Response
       properties:
         data:
-          type: array
-          items:
-            $ref: '#/components/schemas/SurveyFactor'
-        pagination:
-          $ref: '#/components/schemas/PaginationV2'
-    SurveyFactor:
-      title: SurveyFactor
+          $ref: '#/components/schemas/SurveyResp'
+      required:
+      - data
+    SurveyRespAnswerSelectOption:
+      title: SurveyResponseAnswerSelectOption
       type: object
-      description: A Factor is an aspect that one seeks to measure in a Survey
+      description: A chosen select option in a survey response answer
       properties:
         id:
           type: string
-          description: Unique identifier for this reporting factor
-        name:
+          description: ID of a select option chosen as part of the response
+        label:
           type: object
           additionalProperties:
             type: string
-          description: Text name set by the survey admin for this reporting factor
+          description: The localised label of a select option chosen as part of the response
           example:
             en: Hello!
             fr: Bonjour!
-        type:
-          type: string
-          description: Defines the type of the reporting factor and how it will be used in survey reporting
-        code:
-          type: string
-          description: Auto-generated code for the reporting factor
-        indexFactor:
-          type: boolean
-          description: Whether the reporting factor is used as an index or not
-        customFactor:
-          type: boolean
-          description: Whether the reporting factor was created via the reporting factors page or not
-        shortDescription:
-          type: string
-          description: Short text label which describes the reporting factor
-        longDescription:
-          type: string
-          description: Long text label which describes the reporting factor
-        status:
-          type: string
-          description: Whether this reporting factor is active or deleted
-        order:
-          type: integer
-          description: Order of the factor as configured in the survey
-          format: int32
-        createdAt:
-          type: string
-          description: When this factor was created
-          format: date-time
-        updatedAt:
-          type: string
-          description: When the factor was last updated
-          format: date-time
-    SurveyQuestionResponse:
-      title: SurveyQuestionResponse
-      type: object
-      description: container object for a single Survey question
-      properties:
-        data:
-          $ref: '#/components/schemas/SurveyQuestion'
+    Error:
       required:
-      - data
+      - code
+      - message
+      type: object
+      properties:
+        code:
+          type: integer
+          description: the HTTP status code of the error
+          format: int32
+        message:
+          type: string
+          description: a description of the error
+      description: an object describing an API error
     SurveyResp:
       title: SurveyResponse
       type: object
@@ -796,100 +885,6 @@ components:
       - id
       - processedAt
       - rdeEnabled
-    PaginationV2:
-      title: Pagination
-      type: object
-      example:
-        nextPath: /<path>?cursor=ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J
-      properties:
-        nextPath:
-          type: string
-          description: the relative url for the next page of data
-    SurveySectionResponse:
-      title: SurveySectionResponse
-      type: object
-      description: container object for a single Section
-      properties:
-        data:
-          $ref: '#/components/schemas/SurveySection'
-      required:
-      - data
-    SurveyResponse:
-      title: SurveyResponse
-      type: object
-      description: container object for a single Survey
-      properties:
-        data:
-          $ref: '#/components/schemas/Survey'
-      required:
-      - data
-    SurveyRespAnswerSelectOption:
-      title: SurveyResponseAnswerSelectOption
-      type: object
-      description: A chosen select option in a survey response answer
-      properties:
-        id:
-          type: string
-          description: ID of a select option chosen as part of the response
-        label:
-          type: object
-          additionalProperties:
-            type: string
-          description: The localised label of a select option chosen as part of the response
-          example:
-            en: Hello!
-            fr: Bonjour!
-    SurveyQuestionsResponse:
-      title: SurveyQuestionsResponse
-      type: object
-      description: container object for multiple Survey questions
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/SurveyQuestion'
-        pagination:
-          $ref: '#/components/schemas/PaginationV2'
-      required:
-      - data
-    SurveySection:
-      title: SurveySection
-      type: object
-      description: A section is a grouping of questions in a survey
-      properties:
-        id:
-          type: string
-          description: Unique identifier for this section.
-        name:
-          type: string
-          description: Name of this section
-        type:
-          type: string
-          description: Defines the type category of the section, including how it will display to respondents
-        code:
-          type: string
-          description: Auto-generated code for the section
-        shortDescription:
-          type: string
-          description: Short text label which describes the section
-        longDescription:
-          type: string
-          description: Long text label which describes the section
-        status:
-          type: string
-          description: Whether the section is active or deleted
-        order:
-          type: integer
-          description: Order of the section as configured in the survey
-          format: int32
-        createdAt:
-          type: string
-          description: When this section was created
-          format: date-time
-        updatedAt:
-          type: string
-          description: When this Section was last updated
-          format: date-time
     SurveyQuestionSelectOption:
       type: object
       description: a survey question's select option
@@ -924,66 +919,6 @@ components:
           type: string
           description: The date the option was last updated
           format: date-time
-    SurveyRespAnswer:
-      type: object
-      properties:
-        questionId:
-          type: string
-          description: the id of the question being answered
-        textValue:
-          type: string
-          description: The comment left for a free text style question, or the answer a user left when the "other" option is picked on a select question
-        ratingScore:
-          type: integer
-          description: The rating in the range 1..5 or -1 if it was not answered
-        selectOptions:
-          type: array
-          items:
-            $ref: '#/components/schemas/SurveyRespAnswerSelectOption'
-        answered:
-          type: boolean
-          description: Whether or not this answer was completed
-        additionalComment:
-          type: string
-          description: the comment text left against select questions as an additional input to the option chosen
-        mandatory:
-          type: boolean
-          description: Whether or not the question was made mandatory
-        createdAt:
-          type: string
-          description: The date the answer was created
-          format: date-time
-        updatedAt:
-          type: string
-          description: The date the answer was last updated
-          format: date-time
-      required:
-      - answered
-      - mandatory
-    SurveyRespsResponse:
-      title: SurveyRespsResponse
-      type: object
-      description: container object for multiple Survey Responses
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/SurveyResp'
-        pagination:
-          $ref: '#/components/schemas/PaginationV2'
-      required:
-      - data
-    SurveySectionsResponse:
-      title: SurveySectionsResponse
-      type: object
-      description: container object for multiple Sections
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/SurveySection'
-        pagination:
-          $ref: '#/components/schemas/PaginationV2'
     SurveyFactorResponse:
       title: SurveyFactorResponse
       type: object
@@ -993,63 +928,128 @@ components:
           $ref: '#/components/schemas/SurveyFactor'
       required:
       - data
-    Error:
-      required:
-      - code
-      - message
+    SurveyQuestionResponse:
+      title: SurveyQuestionResponse
       type: object
+      description: container object for a single Survey question
       properties:
-        code:
-          type: integer
-          description: the HTTP status code of the error
-          format: int32
-        message:
+        data:
+          $ref: '#/components/schemas/SurveyQuestion'
+      required:
+      - data
+    SurveysResponse:
+      title: SurveysResponse
+      type: object
+      description: container object for multiple Surveys
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Survey'
+        pagination:
+          $ref: '#/components/schemas/PaginationV2'
+      required:
+      - data
+    PaginationV2:
+      title: Pagination
+      type: object
+      example:
+        nextPath: /<path>?cursor=ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J
+      properties:
+        nextPath:
           type: string
-          description: a description of the error
-      description: an object describing an API error
-  responses:
-    InternalServerError:
-      description: Internal Server Error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Forbidden:
-      description: Forbidden
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: The request path parameters, query parameters or headers are not valid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The specified resource was not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    TooManyRequests:
-      description: Too Many Requests - client rate limit exceeded
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    ServiceUnavailable:
-      description: Service Unavailable - endpoint rate limit exceeded
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+          description: the relative url for the next page of data
+    SurveyQuestionsResponse:
+      title: SurveyQuestionsResponse
+      type: object
+      description: container object for multiple Survey questions
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/SurveyQuestion'
+        pagination:
+          $ref: '#/components/schemas/PaginationV2'
+      required:
+      - data
+    SurveyQuestion:
+      title: SurveyQuestion
+      type: object
+      description: The Survey Question record
+      properties:
+        id:
+          type: string
+          description: the identifier used by Culture Amp to identify the Survey
+        code:
+          type: string
+          description: The unique question code
+        questionType:
+          type: string
+          description: The type of the survey question eg. culture, segment
+        label:
+          type: object
+          additionalProperties:
+            type: string
+          description: The localised label of the survey question
+          example:
+            en: Hello!
+            fr: Bonjour!
+        description:
+          type: object
+          additionalProperties:
+            type: string
+          description: The localised description of the survey question
+          example:
+            en: Hello!
+            fr: Bonjour!
+        ratingScale:
+          type: string
+          description: The rating scale of the survey question
+        selectOptions:
+          type: array
+          items:
+            $ref: '#/components/schemas/SurveyQuestionSelectOption'
+        otherOption:
+          type: boolean
+          description: The flag for other select option
+        status:
+          type: string
+          description: The status of the survey question, active or deleted
+        sectionId:
+          type: string
+          description: The ID of a section the survey question belongs to
+        factorIds:
+          type: array
+          description: The IDs of factors associated with the survey question
+          items:
+            type: string
+        createdAt:
+          type: string
+          description: The date the Survey question was created
+          format: date-time
+        updatedAt:
+          type: string
+          description: The date the Survey question was last updated
+          format: date-time
+        processedAt:
+          type: string
+          description: The date the survey question was last processed by the public API. This can be used by consumers to determine if the question has been updated since the last time it was retrieved.
+          format: date-time
+      required:
+      - id
+      - otherOption
+      - processedAt
+    SurveyFactorsResponse:
+      title: SurveyFactorsResponse
+      type: object
+      description: container object for multiple Factors
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/SurveyFactor'
+        pagination:
+          $ref: '#/components/schemas/PaginationV2'
   parameters:
     CursorQueryParam:
       name: cursor
