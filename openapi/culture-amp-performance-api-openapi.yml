@@ -245,18 +245,6 @@ paths:
         - performance-evaluations-read
 components:
   schemas:
-    ManagerReviewsResponse:
-      title: ManagerReviewsResponse
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/ManagerReview'
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-      required:
-      - data
     ManagerReview:
       title: ManagerReview
       type: object
@@ -402,93 +390,51 @@ components:
         createdAt: '2022-04-28T02:14:10+00:00'
         updatedAt: '2022-08-02T02:14:10+00:00'
         completedAt: '2022-08-02T02:14:10+00:00'
-    MultipleChoiceQuestion:
-      type: object
-      description: The multiple choice questions corresponding to a review
-      properties:
-        id:
-          type: string
-        text:
-          type: string
-        options:
-          type: array
-          items:
-            type: string
-        answer:
-          type: string
-      required:
-      - id
-      - text
-      - options
-    OpenTextQuestion:
-      type: object
-      description: The open text questions corresponding to a review
-      properties:
-        id:
-          type: string
-        text:
-          type: string
-        answer:
-          type: string
-      required:
-      - id
-      - text
-    Pagination:
-      title: Pagination
-      type: object
-      example:
-        afterKey: ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J
-        nextPath: /<path>?cursor=ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J
-      properties:
-        afterKey:
-          type: string
-          description: The pagination key to use for the next page of results
-        nextPath:
-          type: string
-          description: the relative url for the next page of data
-      required:
-      - nextPath
-    RatingQuestion:
-      type: object
-      properties:
-        title:
-          type: string
-        description:
-          type: string
-      required:
-      - title
     PerformanceCycleState:
       type: string
       enum:
       - active
       - closed
       - ready
-    Error:
-      required:
-      - code
-      - message
+    Rating:
+      title: Rating
       type: object
+      description: Describes a performance rating for an employee
       properties:
-        code:
-          type: integer
-          description: the HTTP status code of the error
-          format: int32
-        message:
+        id:
           type: string
-          description: a description of the error
-      description: an object describing an API error
-    PerformanceReviewStatus:
-      type: string
-      description: 'The status of the performance review.
-
-        \
-
-        **Note:** data from manager reviews with ‘dirty’ status is not served from this API.'
-      enum:
-      - completed
-      - shared
-      - dirty
-      - incomplete
+        title:
+          type: string
+        description:
+          type: string
+        value:
+          type: integer
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      required:
+      - id
+      - title
+      - value
+      - createdAt
+      - updatedAt
+    RatingBucket:
+      title: RatingBucket
+      type: object
+      description: Describes a performance rating bucket that an employee may be assigned to
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        value:
+          type: integer
+      required:
+      - title
+      - value
     PerformanceRating:
       title: PerformanceRating
       type: object
@@ -504,6 +450,101 @@ components:
           $ref: '#/components/schemas/Rating'
       required:
       - ratingBuckets
+    MultipleChoiceMultiSelectQuestion:
+      type: object
+      description: The multiple choice multi-select questions corresponding to a review
+      properties:
+        id:
+          type: string
+        text:
+          type: string
+        options:
+          description: All the available answer options that can be selected
+          type: array
+          items:
+            type: string
+        answers:
+          description: All the selected answers
+          type: array
+          items:
+            type: string
+      required:
+      - id
+      - text
+      - options
+    Error:
+      required:
+      - code
+      - message
+      type: object
+      properties:
+        code:
+          type: integer
+          description: the HTTP status code of the error
+          format: int32
+        message:
+          type: string
+          description: a description of the error
+      description: an object describing an API error
+    OpenTextQuestion:
+      type: object
+      description: The open text questions corresponding to a review
+      properties:
+        id:
+          type: string
+        text:
+          type: string
+        answer:
+          type: string
+      required:
+      - id
+      - text
+    ManagerReviewsResponse:
+      title: ManagerReviewsResponse
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ManagerReview'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+      required:
+      - data
+    Link:
+      title: Link
+      type: object
+      properties:
+        rel:
+          type: string
+          description: the type of related data e.g. demographics, goals, performance
+        uri:
+          type: string
+          description: the relative url that points to the data
+      description: Link to related data
+      required:
+      - rel
+      - uri
+    PerformanceCyclesResponse:
+      title: PerformanceCycleResponse
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/PerformanceCycle'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+      required:
+      - data
+    ManagerReviewResponse:
+      title: ManagerReviewResponse
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/ManagerReview'
+      required:
+      - data
     PerformanceCycle:
       title: PerformanceCycle
       type: object
@@ -541,101 +582,24 @@ components:
         createdAt: '2022-04-28T02:14:10+00:00'
         updatedAt: '2022-08-02T02:14:10+00:00'
         processedAt: '2022-08-02T02:15:10+00:00'
-    MultipleChoiceMultiSelectQuestion:
+    MultipleChoiceQuestion:
       type: object
-      description: The multiple choice multi-select questions corresponding to a review
+      description: The multiple choice questions corresponding to a review
       properties:
         id:
           type: string
         text:
           type: string
         options:
-          description: All the available answer options that can be selected
           type: array
           items:
             type: string
-        answers:
-          description: All the selected answers
-          type: array
-          items:
-            type: string
+        answer:
+          type: string
       required:
       - id
       - text
       - options
-    PerformanceCyclesResponse:
-      title: PerformanceCycleResponse
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/PerformanceCycle'
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-      required:
-      - data
-    ManagerReviewResponse:
-      title: ManagerReviewResponse
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/ManagerReview'
-      required:
-      - data
-    RatingBucket:
-      title: RatingBucket
-      type: object
-      description: Describes a performance rating bucket that an employee may be assigned to
-      properties:
-        title:
-          type: string
-        description:
-          type: string
-        value:
-          type: integer
-      required:
-      - title
-      - value
-    Link:
-      title: Link
-      type: object
-      properties:
-        rel:
-          type: string
-          description: the type of related data e.g. demographics, goals, performance
-        uri:
-          type: string
-          description: the relative url that points to the data
-      description: Link to related data
-      required:
-      - rel
-      - uri
-    Rating:
-      title: Rating
-      type: object
-      description: Describes a performance rating for an employee
-      properties:
-        id:
-          type: string
-        title:
-          type: string
-        description:
-          type: string
-        value:
-          type: integer
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-      required:
-      - id
-      - title
-      - value
-      - createdAt
-      - updatedAt
     PerformanceCycleResponse:
       title: PerformanceCycleResponse
       type: object
@@ -644,39 +608,51 @@ components:
           $ref: '#/components/schemas/PerformanceCycle'
       required:
       - data
+    Pagination:
+      title: Pagination
+      type: object
+      example:
+        afterKey: ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J
+        nextPath: /<path>?cursor=ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J
+      properties:
+        afterKey:
+          type: string
+          description: The pagination key to use for the next page of results
+        nextPath:
+          type: string
+          description: the relative url for the next page of data
+      required:
+      - nextPath
+    RatingQuestion:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+      required:
+      - title
+    PerformanceReviewStatus:
+      type: string
+      description: 'The status of the performance review.
+
+        \
+
+        **Note:** data from manager reviews with ‘dirty’ status is not served from this API.'
+      enum:
+      - completed
+      - shared
+      - dirty
+      - incomplete
   responses:
-    NotFound:
-      description: The specified resource was not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: The request path parameters, query parameters or headers are not valid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
     InternalServerError:
       description: Internal Server Error
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    ServiceUnavailable:
-      description: Service Unavailable - endpoint rate limit exceeded
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Forbidden:
-      description: Forbidden
+    NotFound:
+      description: The specified resource was not found
       content:
         application/json:
           schema:
@@ -687,14 +663,31 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: The request path parameters, query parameters or headers are not valid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Forbidden:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ServiceUnavailable:
+      description: Service Unavailable - endpoint rate limit exceeded
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   parameters:
-    CursorQueryParam:
-      name: cursor
-      in: query
-      description: "The pagination key to use for the next page of results. \n\nThe last successful call will include this in the response body in `pagination.afterKey`.\n\nNote:\n* Pagination also works using the `after_key` query parameter. However, if both `cursor` and `after_key` are \nprovided, `cursor` will take precedence."
-      schema:
-        type: string
-      example: ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J
     AfterDateQueryParam:
       name: after_date
       in: query
@@ -702,6 +695,13 @@ components:
       schema:
         type: string
       example: '2013-01-15T00:00:00+08:00'
+    CursorQueryParam:
+      name: cursor
+      in: query
+      description: "The pagination key to use for the next page of results. \n\nThe last successful call will include this in the response body in `pagination.afterKey`.\n\nNote:\n* Pagination also works using the `after_key` query parameter. However, if both `cursor` and `after_key` are \nprovided, `cursor` will take precedence."
+      schema:
+        type: string
+      example: ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J
   securitySchemes:
     Oauth2:
       type: oauth2

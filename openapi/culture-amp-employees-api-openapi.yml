@@ -142,16 +142,89 @@ paths:
       - Oauth2:
         - employee-demographics-read
 components:
+  responses:
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    InternalServerError:
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: The request path parameters, query parameters or headers are not valid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The specified resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Forbidden:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ServiceUnavailable:
+      description: Service Unavailable - endpoint rate limit exceeded
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    TooManyRequests:
+      description: Too Many Requests - client rate limit exceeded
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    EmployeeByIDResponse:
-      title: EmployeeByIDResponse
+    Error:
+      required:
+      - code
+      - message
       type: object
       properties:
+        code:
+          type: integer
+          description: the HTTP status code of the error
+          format: int32
+        message:
+          type: string
+          description: a description of the error
+      description: an object describing an API error
+    DemographicsResponse:
+      title: DemographicsResponse
+      type: object
+      description: container object for multiple demographics response
+      properties:
         data:
-          $ref: '#/components/schemas/Employee'
-      description: container object for a single employee response
+          type: array
+          items:
+            $ref: '#/components/schemas/Demographic'
       required:
       - data
+    Link:
+      title: Link
+      type: object
+      properties:
+        rel:
+          type: string
+          description: the type of related data e.g. demographics, goals, performance
+        uri:
+          type: string
+          description: the relative url that points to the data
+      description: Link to related data
+      required:
+      - rel
+      - uri
     EmployeesResponse:
       title: EmployeesResponse
       type: object
@@ -165,6 +238,31 @@ components:
       description: container object for multiple employees response
       required:
       - data
+    EmployeeByIDResponse:
+      title: EmployeeByIDResponse
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Employee'
+      description: container object for a single employee response
+      required:
+      - data
+    Demographic:
+      title: Demographic
+      type: object
+      example:
+        name: star sign
+        value: capricorn
+      properties:
+        name:
+          type: string
+          description: the name of the demographic
+        value:
+          type: string
+          description: the value of the demographic
+      required:
+      - name
+      - value
     Employee:
       title: Employee
       type: object
@@ -240,104 +338,6 @@ components:
           description: the relative url for the next page of data
       required:
       - nextPath
-    DemographicsResponse:
-      title: DemographicsResponse
-      type: object
-      description: container object for multiple demographics response
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Demographic'
-      required:
-      - data
-    Demographic:
-      title: Demographic
-      type: object
-      example:
-        name: star sign
-        value: capricorn
-      properties:
-        name:
-          type: string
-          description: the name of the demographic
-        value:
-          type: string
-          description: the value of the demographic
-      required:
-      - name
-      - value
-    Link:
-      title: Link
-      type: object
-      properties:
-        rel:
-          type: string
-          description: the type of related data e.g. demographics, goals, performance
-        uri:
-          type: string
-          description: the relative url that points to the data
-      description: Link to related data
-      required:
-      - rel
-      - uri
-    Error:
-      required:
-      - code
-      - message
-      type: object
-      properties:
-        code:
-          type: integer
-          description: the HTTP status code of the error
-          format: int32
-        message:
-          type: string
-          description: a description of the error
-      description: an object describing an API error
-  responses:
-    BadRequest:
-      description: The request path parameters, query parameters or headers are not valid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    InternalServerError:
-      description: Internal Server Error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    ServiceUnavailable:
-      description: Service Unavailable - endpoint rate limit exceeded
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The specified resource was not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    TooManyRequests:
-      description: Too Many Requests - client rate limit exceeded
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Forbidden:
-      description: Forbidden
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   parameters:
     CursorQueryParam:
       name: cursor
