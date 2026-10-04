@@ -153,6 +153,9 @@ apis:
   - type: Examples
     url: examples/culture-amp-manager-review-example.json
 common:
+  - type: CapabilityMap
+    url: capabilities/culture-amp-capability-edges.yml
+    name: Culture Amp Business Capability Map
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/culture-amp/overview
   - type: AgenticAccess

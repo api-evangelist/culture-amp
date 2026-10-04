@@ -1,0 +1,47 @@
+slug: culture-amp
+provider: Culture Amp
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 3
+edges:
+- tag: Performance
+  spec_file: culture-amp-performance-api-openapi.yml
+  capability_id: BC-300.20
+  capability_id_l1: BC-300
+  capability_name: Talent Management
+  confidence: 0.9
+  evidence: GET /performance-cycles 'List performance cycles'; GET /manager-reviews 'List manager reviews';
+    schemas 'PerformanceRating', 'PerformanceReviewStatus'
+  reason: Performance cycles, manager reviews and performance ratings are performance management artefacts,
+    which sits under Talent Management in HCM.
+- tag: Employees
+  spec_file: culture-amp-employees-api-openapi.yml
+  capability_id: BC-300.70
+  capability_id_l1: BC-300
+  capability_name: HR Operations Management
+  confidence: 0.8
+  evidence: GET /employees 'List employees'; GET /employees/{id}/demographics 'List demographics by employee';
+    schemas 'Employee', 'Demographic'
+  reason: The tag exposes employee master records and demographic attributes, i.e. employee record keeping
+    within HR operations. L2 chosen as HR Operations Management since the surface is record retrieval
+    rather than any talent process.
+- tag: Surveys
+  spec_file: culture-amp-surveys-api-openapi.yml
+  capability_id: BC-300.60
+  capability_id_l1: BC-300
+  capability_name: Employee Experience Management
+  confidence: 0.78
+  evidence: GET /surveys 'List surveys'; GET /surveys/{id}/responses 'List responses'; vendor describes
+    'employee engagement surveys'
+  reason: The survey surface returns employee engagement survey definitions, questions, factors and responses,
+    which realises employee experience/engagement measurement. Slight ambiguity remains since surveys
+    could also be read as generic feedback tooling, but the vendor context names employee engagement explicitly.
