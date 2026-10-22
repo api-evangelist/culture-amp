@@ -4,14 +4,15 @@
 # Coverage demoted 2026-10-07 (roadmap#942, PLAN.md Stage A): this file was written by an API Evangelist
 # sweep and names no billing unit, meters or pricing category read from the provider — it restates the
 # FinOps framework. It is `x-coverage: unmeasured`, and the FOCUS alignment it claimed has been removed.
+name: Culture Amp API FinOps
 x-coverage: unmeasured
 method: generated
 generated: '2026-06-12'
 spec: FinOps Framework 1.0
 provider: Culture Amp
 providerId: culture-amp
-created: 2026-06-12
-modified: 2026-06-12
+created: '2026-06-12'
+modified: '2026-06-12'
 description: >
   Culture Amp follows a per-employee-per-month (PEPM) billing model with
   annual subscriptions. API access is bundled at no additional cost within

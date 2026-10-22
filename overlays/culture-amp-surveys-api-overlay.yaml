@@ -1,0 +1,88 @@
+overlay: 1.0.0
+info:
+  title: Culture Amp surveys API overlay
+  version: 1.0.0
+extends: openapi/culture-amp-surveys-api-openapi.yml
+generated: '2026-10-20'
+method: generated
+source: openapi/culture-amp-surveys-api-openapi.yml
+actions:
+- target: $.info
+  update:
+    x-api-evangelist-overlay: Agent-facing enrichments for Culture Amp Public Surveys API
+    x-llms-txt: https://docs.api.cultureamp.com/llms.txt
+    x-pagination:
+      style: cursor
+      request_param: cursor
+      response_field: pagination.nextPath
+      source: https://docs.api.cultureamp.com/docs/resources-pagination.md
+- target: $.paths['/surveys'].get
+  update:
+    x-agent-read-only: true
+    x-agent-idempotent: true
+    x-agent-required-scopes:
+    - surveys-read
+    x-mcp-tool-name: list_surveys
+- target: $.paths['/surveys/{id}'].get
+  update:
+    x-agent-read-only: true
+    x-agent-idempotent: true
+    x-agent-required-scopes:
+    - surveys-read
+    x-mcp-tool-name: get_survey
+- target: $.paths['/surveys/{id}/questions'].get
+  update:
+    x-agent-read-only: true
+    x-agent-idempotent: true
+    x-agent-required-scopes:
+    - surveys-read
+    x-mcp-tool-name: list_survey_questions
+- target: $.paths['/surveys/{survey_id}/question/{question_id}'].get
+  update:
+    x-agent-read-only: true
+    x-agent-idempotent: true
+    x-agent-required-scopes:
+    - surveys-read
+    x-mcp-tool-name: get_survey_question
+- target: $.paths['/surveys/{id}/responses'].get
+  update:
+    x-agent-read-only: true
+    x-agent-idempotent: true
+    x-agent-required-scopes:
+    - surveys-read
+    x-mcp-tool-name: list_survey_responses
+- target: $.paths['/surveys/{survey_id}/responses/{response_id}'].get
+  update:
+    x-agent-read-only: true
+    x-agent-idempotent: true
+    x-agent-required-scopes:
+    - surveys-read
+    x-mcp-tool-name: get_survey_response
+- target: $.paths['/surveys/{id}/factors'].get
+  update:
+    x-agent-read-only: true
+    x-agent-idempotent: true
+    x-agent-required-scopes:
+    - surveys-read
+    x-mcp-tool-name: list_survey_factors
+- target: $.paths['/surveys/{survey_id}/factors/{factor_id}'].get
+  update:
+    x-agent-read-only: true
+    x-agent-idempotent: true
+    x-agent-required-scopes:
+    - surveys-read
+    x-mcp-tool-name: get_survey_factor
+- target: $.paths['/surveys/{id}/sections'].get
+  update:
+    x-agent-read-only: true
+    x-agent-idempotent: true
+    x-agent-required-scopes:
+    - surveys-read
+    x-mcp-tool-name: list_survey_sections
+- target: $.paths['/surveys/{survey_id}/sections/{section_id}'].get
+  update:
+    x-agent-read-only: true
+    x-agent-idempotent: true
+    x-agent-required-scopes:
+    - surveys-read
+    x-mcp-tool-name: get_survey_section

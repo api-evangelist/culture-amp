@@ -1,0 +1,13 @@
+generated: '2026-10-20'
+method: searched
+source: https://docs.api.cultureamp.com/changelog/01042025
+scheme: dated entries
+current_version: v1
+entries:
+- version: v1
+  date: '2025-04-01'
+  date_note: date read from the entry slug 01042025 (DDMMYYYY)
+  title: Circuit Breaker
+  breaking: false
+  highlights:
+  - Circuit Breakers have been introduced to the API Gateway to enhance reliability and resilience.

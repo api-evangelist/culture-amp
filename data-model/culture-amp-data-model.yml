@@ -1,0 +1,284 @@
+generated: '2026-10-20'
+method: derived
+generator: derive-data-model.py
+source:
+- openapi/culture-amp-employees-api-openapi.yml
+- openapi/culture-amp-performance-api-openapi.yml
+- openapi/culture-amp-surveys-api-openapi.yml
+notation: has_one = property $ref; has_many = array of $ref; belongs_to = <entity>_id field
+summary:
+  entities: 40
+  entities_in_spec: 40
+  relationships: 40
+entities:
+- name: Demographic
+  fields: 2
+- name: DemographicsResponse
+  fields: 1
+  description: container object for multiple demographics response
+- name: Employee
+  fields: 10
+  description: The employee data record
+- name: EmployeeByIDResponse
+  fields: 1
+  description: container object for a single employee response
+- name: EmployeesResponse
+  fields: 2
+  description: container object for multiple employees response
+- name: Error
+  fields: 2
+  description: an object describing an API error
+- name: Link
+  fields: 2
+  description: Link to related data
+- name: ManagerReview
+  fields: 15
+- name: ManagerReviewResponse
+  fields: 1
+- name: ManagerReviewsResponse
+  fields: 2
+- name: MultipleChoiceMultiSelectQuestion
+  fields: 4
+  description: The multiple choice multi-select questions corresponding to a review
+- name: MultipleChoiceQuestion
+  fields: 4
+  description: The multiple choice questions corresponding to a review
+- name: OpenTextQuestion
+  fields: 3
+  description: The open text questions corresponding to a review
+- name: Pagination
+  fields: 2
+- name: PaginationV2
+  fields: 1
+- name: PerformanceCycle
+  fields: 6
+  description: Describes a performance cycle
+- name: PerformanceCycleResponse
+  fields: 1
+- name: PerformanceCyclesResponse
+  fields: 2
+- name: PerformanceRating
+  fields: 3
+  description: Describes a performance rating for an employee
+- name: Rating
+  fields: 6
+  description: Describes a performance rating for an employee
+- name: RatingBucket
+  fields: 3
+  description: Describes a performance rating bucket that an employee may be assigned to
+- name: RatingQuestion
+  fields: 2
+- name: Survey
+  fields: 15
+  description: The Survey record
+- name: SurveyFactor
+  fields: 12
+  description: A Factor is an aspect that one seeks to measure in a Survey
+- name: SurveyFactorResponse
+  fields: 1
+  description: container object for a single Factor
+- name: SurveyFactorsResponse
+  fields: 2
+  description: container object for multiple Factors
+- name: SurveyQuestion
+  fields: 14
+  description: The Survey Question record
+- name: SurveyQuestionResponse
+  fields: 1
+  description: container object for a single Survey question
+- name: SurveyQuestionSelectOption
+  fields: 6
+  description: a survey question's select option
+- name: SurveyQuestionsResponse
+  fields: 2
+  description: container object for multiple Survey questions
+- name: SurveyResp
+  fields: 12
+  description: The Survey Response record
+- name: SurveyRespAnswer
+  fields: 9
+- name: SurveyRespAnswerSelectOption
+  fields: 2
+  description: A chosen select option in a survey response answer
+- name: SurveyRespResponse
+  fields: 1
+  description: container object for a Survey Response
+- name: SurveyResponse
+  fields: 1
+  description: container object for a single Survey
+- name: SurveyRespsResponse
+  fields: 2
+  description: container object for multiple Survey Responses
+- name: SurveySection
+  fields: 10
+  description: A section is a grouping of questions in a survey
+- name: SurveySectionResponse
+  fields: 1
+  description: container object for a single Section
+- name: SurveySectionsResponse
+  fields: 2
+  description: container object for multiple Sections
+- name: SurveysResponse
+  fields: 2
+  description: container object for multiple Surveys
+relationships:
+- from: Employee
+  to: Link
+  type: has_many
+  via: links
+- from: DemographicsResponse
+  to: Demographic
+  type: has_many
+  via: data
+- from: EmployeeByIDResponse
+  to: Employee
+  type: has_one
+  via: data
+- from: EmployeesResponse
+  to: Employee
+  type: has_many
+  via: data
+- from: EmployeesResponse
+  to: Pagination
+  type: has_one
+  via: pagination
+- from: ManagerReviewsResponse
+  to: ManagerReview
+  type: has_many
+  via: data
+- from: ManagerReviewsResponse
+  to: Pagination
+  type: has_one
+  via: pagination
+- from: ManagerReviewResponse
+  to: ManagerReview
+  type: has_one
+  via: data
+- from: PerformanceCycleResponse
+  to: PerformanceCycle
+  type: has_one
+  via: data
+- from: PerformanceCyclesResponse
+  to: PerformanceCycle
+  type: has_many
+  via: data
+- from: PerformanceCyclesResponse
+  to: Pagination
+  type: has_one
+  via: pagination
+- from: ManagerReview
+  to: PerformanceCycle
+  type: belongs_to
+  via: performanceCycleId
+- from: ManagerReview
+  to: Employee
+  type: belongs_to
+  via: employeeId
+- from: ManagerReview
+  to: PerformanceRating
+  type: has_one
+  via: performanceRating
+- from: ManagerReview
+  to: OpenTextQuestion
+  type: has_many
+  via: openTextQuestions
+- from: ManagerReview
+  to: MultipleChoiceQuestion
+  type: has_many
+  via: multipleChoiceQuestions
+- from: ManagerReview
+  to: MultipleChoiceMultiSelectQuestion
+  type: has_many
+  via: multipleChoiceMultiSelectQuestions
+- from: ManagerReview
+  to: Link
+  type: has_many
+  via: links
+- from: PerformanceRating
+  to: RatingQuestion
+  type: has_one
+  via: ratingQuestion
+- from: PerformanceRating
+  to: RatingBucket
+  type: has_many
+  via: ratingBuckets
+- from: PerformanceRating
+  to: Rating
+  type: has_one
+  via: rating
+- from: SurveyRespResponse
+  to: SurveyResp
+  type: has_one
+  via: data
+- from: SurveySectionResponse
+  to: SurveySection
+  type: has_one
+  via: data
+- from: SurveyQuestionsResponse
+  to: SurveyQuestion
+  type: has_many
+  via: data
+- from: SurveyQuestionsResponse
+  to: PaginationV2
+  type: has_one
+  via: pagination
+- from: SurveyRespsResponse
+  to: SurveyResp
+  type: has_many
+  via: data
+- from: SurveyRespsResponse
+  to: PaginationV2
+  type: has_one
+  via: pagination
+- from: SurveyQuestionResponse
+  to: SurveyQuestion
+  type: has_one
+  via: data
+- from: SurveysResponse
+  to: Survey
+  type: has_many
+  via: data
+- from: SurveysResponse
+  to: PaginationV2
+  type: has_one
+  via: pagination
+- from: SurveySectionsResponse
+  to: SurveySection
+  type: has_many
+  via: data
+- from: SurveySectionsResponse
+  to: PaginationV2
+  type: has_one
+  via: pagination
+- from: SurveyResp
+  to: Employee
+  type: belongs_to
+  via: employeeId
+- from: SurveyResp
+  to: SurveyRespAnswer
+  type: has_many
+  via: answers
+- from: SurveyResponse
+  to: Survey
+  type: has_one
+  via: data
+- from: SurveyQuestion
+  to: SurveyQuestionSelectOption
+  type: has_many
+  via: selectOptions
+- from: SurveyFactorResponse
+  to: SurveyFactor
+  type: has_one
+  via: data
+- from: SurveyRespAnswer
+  to: SurveyRespAnswerSelectOption
+  type: has_many
+  via: selectOptions
+- from: SurveyFactorsResponse
+  to: SurveyFactor
+  type: has_many
+  via: data
+- from: SurveyFactorsResponse
+  to: PaginationV2
+  type: has_one
+  via: pagination

@@ -1,0 +1,101 @@
+generated: '2026-10-20'
+method: searched
+probe: true
+source: https://www.cultureamp.com/company/legal
+signals:
+  data_subject_request:
+    url: https://www.cultureamp.com/company/legal/privacy-policy
+    channel: privacy@cultureamp.com
+    stated_sla: 'We will respond to requests to access and correct (if necessary) your personal information as soon as possible.'
+    rights_named: [access, correction, deletion, portability, limit or stop use or disclosure]
+    evidence:
+    - source: https://www.cultureamp.com/company/legal/privacy-policy
+      http_status: 200
+      fetched: '2026-10-20'
+      quote: 'If you live in certain countries (for example, European Union member states) you may have rights regarding your personal information, including the right to access, correct, delete, port, limit or stop the use or disclosure of your personal information.'
+    - source: https://www.cultureamp.com/company/legal/privacy-policy
+      http_status: 200
+      fetched: '2026-10-20'
+      quote: 'Correction and deletion of Platform Data: If you would like to request access, correction, transfer or deletion of your Platform Data, you must contact your Company.'
+    note: >-
+      Named rights, a privacy@ channel and no fixed response period ("as soon as possible"). For platform
+      (employee) data the request is routed to the customer company as controller, not handled directly.
+  subprocessors:
+    url: https://www.cultureamp.com/company/legal/subprocessor-list
+    evidence:
+    - source: https://www.cultureamp.com/company/legal
+      http_status: 200
+      fetched: '2026-10-20'
+      quote: 'This page provides a list of third-party subprocessors we use to support our services, along with information about their roles and locations.'
+    - source: https://www.cultureamp.com/company/legal/data-processing-addendum
+      http_status: 200
+      fetched: '2026-10-20'
+      section: Notice of New Subprocessors
+      quote: 'Before Culture Amp engages a new Subprocessor, Culture Amp will provide notice to the Customer through the Services, by email, through its published materials, or by any other reasonable means.'
+    note: >-
+      A public subprocessor list (entity, location, purpose, transfer mechanism, e.g. "GDPR DPA and SCCs in
+      place") plus a DPA commitment to prior notice and a customer objection right. The DPA cites the list at
+      /company/trust/platform-sub-processors; the legal hub links /company/legal/subprocessor-list (200).
+  incident_notification:
+    url: https://www.cultureamp.com/company/legal/data-processing-addendum
+    stated_period: 'no later than forty-eight (48) hours'
+    evidence:
+    - source: https://www.cultureamp.com/company/legal/data-processing-addendum
+      http_status: 200
+      fetched: '2026-10-20'
+      quote: 'Security Incidents Culture Amp will notify the Customer without undue delay, and where feasible, no later than forty-eight (48) hours after becoming aware of a Security Incident.'
+    note: Contractual breach-notification clock to customers in the DPA, qualified by "where feasible".
+  data_residency:
+    url: https://www.cultureamp.com/company/legal/privacy-policy
+    section: Where your personal information is located
+    regions: [United States, Europe, Australia]
+    evidence:
+    - source: https://www.cultureamp.com/company/legal/privacy-policy
+      http_status: 200
+      fetched: '2026-10-20'
+      quote: 'We have servers based in the United States, Europe and Australia. Your personal information will be hosted in the servers opted for by your Company.'
+    note: >-
+      Customer-selected hosting region (US/EU/AU). The same section says data may still be transferred to other
+      countries (e.g. the UK) via offices and service providers, and that LLM inference endpoints may sit in any
+      AWS or Google Cloud region depending on the model.
+  exit_assistance:
+    url: https://www.cultureamp.com/company/legal/terms
+    stated_period: '30 days following termination'
+    evidence:
+    - source: https://www.cultureamp.com/company/legal/terms
+      http_status: 200
+      fetched: '2026-10-20'
+      quote: '(c) for 30 days following termination, the Customer may export Customer Data using the functionality of the Services. (d) Following that 30-day period, Culture Amp may delete Customer Data in accordance with the Data Processing Addendum.'
+    note: >-
+      A 30-day self-service export window after termination, followed by deletion; the clause continues
+      "(e) Culture Amp may provide reasonable transition assistance during the 30-d[ay period]" (text truncated in our read).
+  data_retention:
+    url: https://www.cultureamp.com/company/legal/privacy-policy
+    evidence:
+    - source: https://www.cultureamp.com/company/legal/privacy-policy
+      http_status: 200
+      fetched: '2026-10-20'
+      quote: 'We retain your personal information for as long as we provide our Services to the Customer and until the Customer requests us to delete your personal information, or as needed to comply with our legal obligations, resolve disputes or enforce our legal rights.'
+    note: Purpose-bound retention with no fixed period; deletion is triggered by the customer's request.
+  ai_transparency:
+    url: https://www.cultureamp.com/company/legal/our-approach-to-ai
+    evidence:
+    - source: https://www.cultureamp.com/company/legal/privacy-policy
+      http_status: 200
+      fetched: '2026-10-20'
+      section: Artificial Intelligence (AI)
+      quote: 'Culture Amp leverages AI techniques such as Natural Language Processing and Large Language Models (LLMs).'
+    - source: https://www.cultureamp.com/company/legal/our-approach-to-ai
+      http_status: 200
+      fetched: '2026-10-20'
+      section: Model Training & Data Usage
+      quote: 'As a rule, Culture Amp never uses identifiable customer data to train any AI models.'
+    - source: https://www.cultureamp.com/company/legal/our-approach-to-ai
+      http_status: 200
+      fetched: '2026-10-20'
+      quote: 'Third-party LLM providers cannot use Culture Amp customer data for model training.'
+    note: >-
+      Public AI disclosures: the privacy policy discloses LLM use (via AWS or GCP) and says users are told about
+      AI features through in-platform indicators. A dedicated "Our Approach to AI" page, an AI Addendum
+      (/company/legal/ai-addendum) and an AI Acceptable Use Policy back this up. These are statements about
+      training-data use, not a training-data summary.

@@ -1,6 +1,9 @@
 aid: culture-amp
+
 name: Culture Amp
+
 type: Index
+
 deliveryModel:
   model: saas
   open_source: false
@@ -13,6 +16,7 @@ deliveryModel:
   - pricing
   generated: '2026-08-28'
   method: derived
+
 accessModel:
   pricing: unknown
   onboarding: self-serve
@@ -26,11 +30,17 @@ accessModel:
   - authentication
   generated: '2026-07-22'
   method: derived
+
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/culture-amp.png
+
 url: https://raw.githubusercontent.com/api-evangelist/culture-amp/refs/heads/main/apis.yml
-created: 2026-06-12
-modified: 2026-06-12
+
+created: '2026-06-12'
+
+modified: '2026-10-20'
+
 specificationVersion: '0.23'
+
 description: >
   Culture Amp is the leading employee experience platform providing tools for
   employee engagement surveys, performance management, and people analytics.
@@ -43,9 +53,13 @@ description: >
   subscription fees. The platform serves thousands of organizations worldwide
   and integrates with leading HRIS systems, Slack, Microsoft Teams, and
   compensation tools like Pave.
+
 x-docs-platform: readme
+
 x-docs-platform-confidence: high
+
 x-docs-platform-checked: 2026-09-24
+
 tags:
   - Human Resources
   - Employee Engagement
@@ -53,6 +67,7 @@ tags:
   - People Analytics
   - Surveys
   - Australia
+
 tags_raw:
   - HR
   - Employee Engagement
@@ -61,98 +76,52 @@ tags_raw:
   - Surveys
   - Human Resources
   - Australia
-apis:
-- aid: culture-amp:culture-amp-employees-api
-  name: Culture Amp Employees API
-  description: The Employees API from Culture Amp — 3 operation(s) for employees.
-  humanURL: https://www.cultureamp.com/company/api
-  baseURL: https://api.cultureamp.com
-  tags:
-  - Employees
-  properties:
-  - type: OpenAPI
-    url: openapi/culture-amp-employees-api-openapi.yml
-  - type: Documentation
-    url: https://docs.api.cultureamp.com/docs/resources-getting-started
-  - type: Authentication
-    url: https://docs.api.cultureamp.com/docs/resources-getting-started
-  - type: OpenAPILocal
-    url: openapi/_original/culture-amp-public-api-openapi.yml
-  - type: JSONSchema
-    url: json-schema/culture-amp-employee-schema.json
-  - type: JSONSchema
-    url: json-schema/culture-amp-performance-cycle-schema.json
-  - type: JSONSchema
-    url: json-schema/culture-amp-manager-review-schema.json
-  - type: Examples
-    url: examples/culture-amp-employee-example.json
-  - type: Examples
-    url: examples/culture-amp-employees-list-example.json
-  - type: Examples
-    url: examples/culture-amp-performance-cycle-example.json
-  - type: Examples
-    url: examples/culture-amp-manager-review-example.json
-- aid: culture-amp:culture-amp-performance-api
-  name: Culture Amp Performance API
-  description: The Performance API from Culture Amp — 6 operation(s) for performance.
-  humanURL: https://www.cultureamp.com/company/api
-  baseURL: https://api.cultureamp.com
-  tags:
-  - Performance
-  properties:
-  - type: OpenAPI
-    url: openapi/culture-amp-performance-api-openapi.yml
-  - type: Documentation
-    url: https://docs.api.cultureamp.com/docs/resources-getting-started
-  - type: Authentication
-    url: https://docs.api.cultureamp.com/docs/resources-getting-started
-  - type: OpenAPILocal
-    url: openapi/_original/culture-amp-public-api-openapi.yml
-  - type: JSONSchema
-    url: json-schema/culture-amp-employee-schema.json
-  - type: JSONSchema
-    url: json-schema/culture-amp-performance-cycle-schema.json
-  - type: JSONSchema
-    url: json-schema/culture-amp-manager-review-schema.json
-  - type: Examples
-    url: examples/culture-amp-employee-example.json
-  - type: Examples
-    url: examples/culture-amp-employees-list-example.json
-  - type: Examples
-    url: examples/culture-amp-performance-cycle-example.json
-  - type: Examples
-    url: examples/culture-amp-manager-review-example.json
-- aid: culture-amp:culture-amp-surveys-api
-  name: Culture Amp Surveys API
-  description: The Surveys API from Culture Amp — 10 operation(s) for surveys.
-  humanURL: https://www.cultureamp.com/company/api
-  baseURL: https://api.cultureamp.com
-  tags:
-  - Surveys
-  properties:
-  - type: OpenAPI
-    url: openapi/culture-amp-surveys-api-openapi.yml
-  - type: Documentation
-    url: https://docs.api.cultureamp.com/docs/resources-getting-started
-  - type: Authentication
-    url: https://docs.api.cultureamp.com/docs/resources-getting-started
-  - type: OpenAPILocal
-    url: openapi/_original/culture-amp-public-api-openapi.yml
-  - type: JSONSchema
-    url: json-schema/culture-amp-employee-schema.json
-  - type: JSONSchema
-    url: json-schema/culture-amp-performance-cycle-schema.json
-  - type: JSONSchema
-    url: json-schema/culture-amp-manager-review-schema.json
-  - type: Examples
-    url: examples/culture-amp-employee-example.json
-  - type: Examples
-    url: examples/culture-amp-employees-list-example.json
-  - type: Examples
-    url: examples/culture-amp-performance-cycle-example.json
-  - type: Examples
-    url: examples/culture-amp-manager-review-example.json
+
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
+
 common:
+  - type: Spectral
+    url: rules/culture-amp-rules.yml
+  - type: Spectral
+    url: rules/culture-amp-jsonschema-spectral-rules.yml
+  - type: JSONLD
+    url: json-ld/culture-amp-context.jsonld
+  - type: AgentSkill
+    url: skills/_index.yml
+  - type: DataModel
+    url: data-model/culture-amp-data-model.yml
+  - type: ChangeLog
+    url: changelog/culture-amp-changelog.yml
+  - type: Conventions
+    url: conventions/culture-amp-conventions.yml
+  - type: Sandbox
+    url: sandbox/culture-amp-sandbox.yml
+  - type: Compliance
+    url: https://security.cultureamp.com/
+  - type: Deprecation
+    url: lifecycle/culture-amp-lifecycle.yml
+  - type: Lifecycle
+    url: lifecycle/culture-amp-lifecycle.yml
+  - type: ErrorCatalog
+    url: errors/culture-amp-problem-types.yml
+  - type: Conformance
+    url: conformance/culture-amp-conformance.yml
+  - type: Overlay
+    url: overlays/culture-amp-employees-api-overlay.yaml
+  - type: LLMsTxt
+    url: llms/culture-amp-llms.txt
+  - type: SecurityTxt
+    url: well-known/culture-amp-support-security.txt
+  - type: WellKnown
+    url: well-known/culture-amp-well-known.yml
+  - type: Hosts
+    url: hosts/culture-amp-hosts.yml
+  - type: IntegrationEdges
+    url: integrations/culture-amp-integration-edges.yml
+  - type: Vendors
+    url: vendors/culture-amp-vendors.yml
   - type: CapabilityMap
     url: capabilities/culture-amp-capability-edges.yml
     name: Culture Amp Business Capability Map
@@ -181,7 +150,29 @@ common:
   - type: Blog
     url: https://www.cultureamp.com/blog
   - type: Pricing
-    url: https://www.cultureamp.com/platform/pricing
+    url: https://www.cultureamp.com/platform/plans-and-pricing
+  - type: APIReference
+    url: https://docs.api.cultureamp.com/reference
+  - type: GettingStarted
+    url: https://docs.api.cultureamp.com/docs/resources-getting-started
+  - type: ChangeLog
+    url: https://docs.api.cultureamp.com/changelog
+  - type: LLMsTxt
+    url: https://docs.api.cultureamp.com/llms.txt
+  - type: Support
+    url: https://support.cultureamp.com/
+  - type: Contact
+    url: https://www.cultureamp.com/company/contact-us
+  - type: Login
+    url: https://id.cultureamp.com
+  - type: TermsOfService
+    url: https://www.cultureamp.com/company/legal/terms
+  - type: PrivacyPolicy
+    url: https://www.cultureamp.com/company/legal/privacy-policy
+  - type: Newsroom
+    url: https://www.cultureamp.com/company/newsroom
+  - type: TrustCenterPage
+    url: https://www.cultureamp.com/company/trust
   - type: StatusPage
     url: https://status.cultureamp.com
   - type: Plans
@@ -194,6 +185,123 @@ common:
     url: vocabulary/culture-amp-vocabulary.yml
   - type: JSONLDContext
     url: json-ld/culture-amp-context.jsonld
-maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+
+apis:
+- aid: culture-amp:culture-amp-employees-api
+  name: Culture Amp Employees API
+  description: The Employees API from Culture Amp — 3 operation(s) for employees.
+  humanURL: https://www.cultureamp.com/platform/integrations
+  baseURL: https://api.cultureamp.com
+  tags:
+  - Employees
+  properties:
+  - type: OpenAPI
+    url: openapi/culture-amp-employees-api-openapi.yml
+  - type: Documentation
+    url: https://docs.api.cultureamp.com/docs/resources-getting-started
+  - type: Authentication
+    url: https://docs.api.cultureamp.com/docs/resources-getting-started
+  - type: OpenAPILocal
+    url: openapi/_original/culture-amp-public-api-openapi.yml
+  - type: OpenAPI
+    name: OpenAPI (provider-hosted)
+    url: https://api.cultureamp.com/spec
+  - type: JSONSchema
+    url: json-schema/culture-amp-employee-schema.json
+  - type: JSONSchema
+    url: json-schema/culture-amp-performance-cycle-schema.json
+  - type: JSONSchema
+    url: json-schema/culture-amp-manager-review-schema.json
+  - type: Examples
+    url: examples/culture-amp-employee-example.json
+  - type: Examples
+    url: examples/culture-amp-employees-list-example.json
+  - type: Examples
+    url: examples/culture-amp-performance-cycle-example.json
+  - type: Examples
+    url: examples/culture-amp-manager-review-example.json
+- aid: culture-amp:culture-amp-performance-api
+  name: Culture Amp Performance API
+  description: The Performance API from Culture Amp — 6 operation(s) for performance.
+  humanURL: https://www.cultureamp.com/platform/integrations
+  baseURL: https://api.cultureamp.com
+  tags:
+  - Performance
+  properties:
+  - type: OpenAPI
+    url: openapi/culture-amp-performance-api-openapi.yml
+  - type: Documentation
+    url: https://docs.api.cultureamp.com/docs/resources-getting-started
+  - type: Authentication
+    url: https://docs.api.cultureamp.com/docs/resources-getting-started
+  - type: OpenAPILocal
+    url: openapi/_original/culture-amp-public-api-openapi.yml
+  - type: OpenAPI
+    name: OpenAPI (provider-hosted)
+    url: https://api.cultureamp.com/spec
+  - type: JSONSchema
+    url: json-schema/culture-amp-employee-schema.json
+  - type: JSONSchema
+    url: json-schema/culture-amp-performance-cycle-schema.json
+  - type: JSONSchema
+    url: json-schema/culture-amp-manager-review-schema.json
+  - type: Examples
+    url: examples/culture-amp-employee-example.json
+  - type: Examples
+    url: examples/culture-amp-employees-list-example.json
+  - type: Examples
+    url: examples/culture-amp-performance-cycle-example.json
+  - type: Examples
+    url: examples/culture-amp-manager-review-example.json
+- aid: culture-amp:culture-amp-surveys-api
+  name: Culture Amp Surveys API
+  description: The Surveys API from Culture Amp — 10 operation(s) for surveys.
+  humanURL: https://www.cultureamp.com/platform/integrations
+  baseURL: https://api.cultureamp.com
+  tags:
+  - Surveys
+  properties:
+  - type: OpenAPI
+    url: openapi/culture-amp-surveys-api-openapi.yml
+  - type: Documentation
+    url: https://docs.api.cultureamp.com/docs/resources-getting-started
+  - type: Authentication
+    url: https://docs.api.cultureamp.com/docs/resources-getting-started
+  - type: OpenAPILocal
+    url: openapi/_original/culture-amp-public-api-openapi.yml
+  - type: OpenAPI
+    name: OpenAPI (provider-hosted)
+    url: https://api.cultureamp.com/spec
+  - type: JSONSchema
+    url: json-schema/culture-amp-employee-schema.json
+  - type: JSONSchema
+    url: json-schema/culture-amp-performance-cycle-schema.json
+  - type: JSONSchema
+    url: json-schema/culture-amp-manager-review-schema.json
+  - type: Examples
+    url: examples/culture-amp-employee-example.json
+  - type: Examples
+    url: examples/culture-amp-employees-list-example.json
+  - type: Examples
+    url: examples/culture-amp-performance-cycle-example.json
+  - type: Examples
+    url: examples/culture-amp-manager-review-example.json
+
+x-coverage:
+  state: covered
+  reason: identity-verified
+  detail: Website www.cultureamp.com (200, title 'Culture Amp'); pointers verified by GET on 2026-10-20; dead /platform/pricing replaced with /platform/plans-and-pricing; humanURL /company/api redirects to /platform/integrations.
+  evidence:
+  - {url: 'https://www.cultureamp.com', status: 200}
+  - {url: 'https://www.cultureamp.com/platform/pricing', status: 404}
+  - {url: 'https://www.cultureamp.com/platform/plans-and-pricing', status: 200}
+  - {url: 'https://docs.api.cultureamp.com/reference', status: 200}
+  - {url: 'https://docs.api.cultureamp.com/changelog', status: 200}
+  - {url: 'https://support.cultureamp.com/', status: 200}
+  - {url: 'https://status.cultureamp.com', status: 200}
+x-enrichment:
+  date: '2026-10-20'
+  status: enriched
+  artifacts_added: 25
+  pass: modular-v1
+  engine: identity=anthropic,contract=anthropic,surfaces=anthropic,docs=anthropic,regulatory=anthropic

@@ -1,0 +1,57 @@
+# Culture Amp API Documentation
+
+> Documentation for Culture Amp API
+
+## Guides: RESOURCES
+- [Getting Started](https://docs.api.cultureamp.com/docs/resources-getting-started.md): The API can be set up and used in a few quick steps. Check out our guides below.
+- [API Specification](https://docs.api.cultureamp.com/docs/resources-spec.md): Open API 3 Specification.
+- [Pagination](https://docs.api.cultureamp.com/docs/resources-pagination.md): Details of how API responses are paginated.
+- [Usage Limits](https://docs.api.cultureamp.com/docs/resources-usage-limits.md): Usage constraints in place to protect the API.
+- [Security Information](https://docs.api.cultureamp.com/docs/resources-security-information.md): Details on the API's encryption and security protocols.
+- [Troubleshooting Errors](https://docs.api.cultureamp.com/docs/resources-troubleshooting.md): Learn how to diagnose and resolve common problems for the REST API.
+- [Feedback & Requests](https://docs.api.cultureamp.com/docs/resources-feedback-and-requests.md): We'd love to hear from you and find out how we can improve your development experience.
+- [FAQs](https://docs.api.cultureamp.com/docs/resources-faqs.md): Questions frequently asked about Culture Amp's API.
+
+## Guides: Customer GUIDE
+- [For Customers](https://docs.api.cultureamp.com/docs/customer-guide-for-customers.md): Guide for Culture Amp customers using the API.
+- [Getting Credentials](https://docs.api.cultureamp.com/docs/customer-guide-getting-credentials.md): Generate credentials within your account's Admin Settings to set up API access.
+- [Authentication](https://docs.api.cultureamp.com/docs/customer-guide-authentication.md): Authenticate to create access tokens that are needed to make requests to the API.
+- [Authorization Scopes](https://docs.api.cultureamp.com/docs/customer-guide-authorization-scopes.md): Understanding and using the Scope Parameter.
+- [Common Use Cases](https://docs.api.cultureamp.com/docs/customer-guide-common-use-cases.md): Learn about common ways customers use the API.
+
+## Guides: PARTNER GUIDE
+- [For Partners](https://docs.api.cultureamp.com/docs/partner-guide-for-partners.md): Understand more about partnering & building with Culture Amp.
+- [Overview of Partner Build Process](https://docs.api.cultureamp.com/docs/partner-guide-overview.md): Understand how we build with Partners.
+- [Authentication](https://docs.api.cultureamp.com/docs/partner-guide-authentication.md): Authenticate to create access tokens that are needed to make requests to the API.
+- [Getting Credentials](https://docs.api.cultureamp.com/docs/partner-guide-getting-credentials.md): Understand how we provide credentials to Partners.
+- [Authorization Scopes](https://docs.api.cultureamp.com/docs/partner-guide-authorization-scopes.md): Understanding and using the Scope Parameter.
+
+## API Reference: Culture Amp Public API
+- Employees
+  - [List employees](https://docs.api.cultureamp.com/reference/list-employees.md): Returns all employees in the account.  If both `email` and `employee_identifier` are provided, `employee_identifier` will take precedence.  `cursor` is optional and used for pagination.
+  - [Get employee](https://docs.api.cultureamp.com/reference/get-employee.md): Returns the details of an employee corresponding to the provided Culture Amp employee identifier
+  - [List demographics by employee](https://docs.api.cultureamp.com/reference/list-demographics-by-employee.md): Returns the demographic assignments for a given employee
+- Performance
+  - [List manager reviews by employee](https://docs.api.cultureamp.com/reference/list-manager-reviews-by-employee.md): Returns manager reviews for a given employee
+  - [List performance cycles](https://docs.api.cultureamp.com/reference/list-performance-cycles.md): Returns all performance cycles in the account.  If both `cursor` and `state` are provided in a request, `cursor` takes precedence.
+  - [Get performance cycle](https://docs.api.cultureamp.com/reference/get-performance-cycle.md): Returns the details of a performance cycle by its id
+  - [List manager reviews by performance cycle](https://docs.api.cultureamp.com/reference/list-manager-reviews-by-performance-cycle.md): Returns manager reviews for a given performance cycle
+  - [List manager reviews](https://docs.api.cultureamp.com/reference/list-manager-reviews.md): Returns all manager reviews in the account
+  - [Get manager review](https://docs.api.cultureamp.com/reference/get-manager-review.md): Returns the details of a manager review corresponding to the provided id
+- Surveys
+  - [List surveys](https://docs.api.cultureamp.com/reference/list-surveys.md): Returns a list of all surveys in the account  > 🛑 Deprecated API - No Longer Available > > This API is no longer available to setup. Please use the [Reporting…
+  - [Get survey](https://docs.api.cultureamp.com/reference/get-survey.md): Retrieves the details of an individual survey  > 🛑 Deprecated API - No Longer Available > > This API is no longer available to setup. Please use the [Reporting…
+  - [List questions](https://docs.api.cultureamp.com/reference/list-survey-questions.md): Returns a list of all questions from an individual survey  > 🛑 Deprecated API - No Longer Available > > This API is no longer available to setup. Please use the [Reporting…
+  - [Get question](https://docs.api.cultureamp.com/reference/get-survey-question.md): Retrieves the details of an individual question from a survey  > 🛑 Deprecated API - No Longer Available > > This API is no longer available to setup. Please use the [Reporting…
+  - [List responses](https://docs.api.cultureamp.com/reference/list-survey-responses.md): Returns a list of all responses from an individual survey  > 🛑 Deprecated API - No Longer Available > > This API is no longer available to setup. Please use the [Reporting…
+  - [Get response](https://docs.api.cultureamp.com/reference/get-survey-response.md): Retrieves the details of an individual response from a survey  > 🛑 Deprecated API - No Longer Available > > This API is no longer available to setup. Please use the [Reporting…
+  - [List factors](https://docs.api.cultureamp.com/reference/list-survey-factors.md): Returns a list of all factors from an individual survey  > 🛑 Deprecated API - No Longer Available > > This API is no longer available to setup. Please use the [Reporting…
+  - [Get factor](https://docs.api.cultureamp.com/reference/get-survey-factor.md): Retrieves the details of an individual factor from a survey  > 🛑 Deprecated API - No Longer Available > > This API is no longer available to setup. Please use the [Reporting…
+  - [List sections](https://docs.api.cultureamp.com/reference/list-survey-sections.md): Returns a list of all sections from an individual survey  > 🛑 Deprecated API - No Longer Available > > This API is no longer available to setup. Please use the [Reporting…
+  - [Get section](https://docs.api.cultureamp.com/reference/get-survey-section.md): Retrieves the details of an individual section from a survey  > 🛑 Deprecated API - No Longer Available > > This API is no longer available to setup. Please use the [Reporting…
+
+## Pages
+- [Developer Experience Feedback](https://docs.api.cultureamp.com/page/feedback-form.md)
+
+## Changelog
+- [Circuit Breaker](https://docs.api.cultureamp.com/changelog/01042025.md)

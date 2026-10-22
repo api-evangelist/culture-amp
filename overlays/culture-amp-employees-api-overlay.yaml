@@ -1,0 +1,39 @@
+overlay: 1.0.0
+info:
+  title: Culture Amp employees API overlay
+  version: 1.0.0
+extends: openapi/culture-amp-employees-api-openapi.yml
+generated: '2026-10-20'
+method: generated
+source: openapi/culture-amp-employees-api-openapi.yml
+actions:
+- target: $.info
+  update:
+    x-api-evangelist-overlay: Agent-facing enrichments for Culture Amp Public Employees API
+    x-llms-txt: https://docs.api.cultureamp.com/llms.txt
+    x-pagination:
+      style: cursor
+      request_param: cursor
+      response_field: pagination.nextPath
+      source: https://docs.api.cultureamp.com/docs/resources-pagination.md
+- target: $.paths['/employees'].get
+  update:
+    x-agent-read-only: true
+    x-agent-idempotent: true
+    x-agent-required-scopes:
+    - employees-read
+    x-mcp-tool-name: list_employees
+- target: $.paths['/employees/{id}'].get
+  update:
+    x-agent-read-only: true
+    x-agent-idempotent: true
+    x-agent-required-scopes:
+    - employees-read
+    x-mcp-tool-name: get_employee
+- target: $.paths['/employees/{id}/demographics'].get
+  update:
+    x-agent-read-only: true
+    x-agent-idempotent: true
+    x-agent-required-scopes:
+    - employee-demographics-read
+    x-mcp-tool-name: list_demographics_by_employee

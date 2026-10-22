@@ -1,0 +1,28 @@
+generated: '2026-10-20'
+method: searched
+source: https://docs.api.cultureamp.com/changelog/01042025
+versioning:
+  scheme: URI path major version
+  current: v1
+  spec_info_version: 0.0.1
+  note: No written versioning policy found in the docs.
+deprecation:
+  policy: null
+  headers: No Sunset/Deprecation headers documented.
+  deprecated_operations:
+  - spec: openapi/culture-amp-surveys-api-openapi.yml
+    operations:
+    - list-surveys
+    - get-survey
+    - list-survey-questions
+    - get-survey-question
+    - list-survey-responses
+    - get-survey-response
+    - list-survey-factors
+    - get-survey-factor
+    - list-survey-sections
+    - get-survey-section
+    notice: Deprecated API - No Longer Available. This API is no longer available to setup. Please use the Reporting API for
+      access to RDE enabled Survey data which is available now.
+status_page: https://status.cultureamp.com
+sla: null

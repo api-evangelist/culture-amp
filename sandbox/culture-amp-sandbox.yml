@@ -1,0 +1,14 @@
+generated: '2026-10-20'
+method: searched
+source: https://docs.api.cultureamp.com/docs/partner-guide-overview
+description: 'A sandbox environment exists for partners: "we''ll provide access to sandbox endpoints and dummy data for you
+  to develop on and unit test." The customer FAQ states "Sandbox endpoints and credential generation methods are coming soon."
+  No published test keys or fixtures.'
+docs:
+- https://docs.api.cultureamp.com/docs/partner-guide-overview
+- https://docs.api.cultureamp.com/docs/customer-guide-authorization-scopes
+- https://docs.api.cultureamp.com/docs/resources-faqs
+base_url: https://sandbox.public-api.development.cultureamp.net/v1
+base_url_source: OpenAPI servers[]
+sandbox_target_entity_id: 79040b4d-3e2b-4480-a061-2e230eeb83b2
+access: partners, provisioned by Culture Amp

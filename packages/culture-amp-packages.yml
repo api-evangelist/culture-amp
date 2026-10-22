@@ -1,0 +1,7 @@
+generated: '2026-10-20'
+method: none
+source: https://registry.npmjs.org/-/v1/search?text=cultureamp
+note: No first-party API client SDK found in the docs (llms.txt index) or npm/PyPI. Culture Amp publishes the Kaizen design
+  system on npm (@kaizen/*, @cultureamp/kaizen-component-library) for its own UI; it is not an API client and is not recorded
+  here.
+packages: []

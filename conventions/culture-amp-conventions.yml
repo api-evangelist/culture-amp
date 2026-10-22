@@ -1,0 +1,45 @@
+generated: '2026-10-20'
+method: searched
+source: https://docs.api.cultureamp.com/docs/resources-pagination
+auth:
+  style: OAuth 2.0 client credentials, Bearer JWT
+  see: authentication/culture-amp-authentication.yml
+read_only: 'FAQ: "It is a one-way outbound API currently and does not yet support inbound data ingestion." All 19 operations
+  in the specs are GET.'
+idempotency:
+  coverage: na
+  note: 'Read-only API: no write operations.'
+reversibility:
+  status: na
+  note: 'Read-only API: no write surface.'
+dry_run_mode: na
+pagination:
+  style: cursor
+  params:
+  - cursor
+  response_fields:
+  - pagination.nextPath
+  end: Once the list of results has been exhausted, the response will no longer include a `pagination` object.
+  payload_cap: ~1MB
+linking: resources carry links[{rel, uri}]
+versioning:
+  style: path
+  current: v1
+  see: lifecycle/culture-amp-lifecycle.yml
+errors:
+  envelope:
+  - code
+  - message
+  see: errors/culture-amp-problem-types.yml
+rate_limit_signaling:
+  status:
+  - 429
+  - 503
+  headers: []
+  see: rate-limits/culture-amp-rate-limits.yml
+timeouts: requests over 15 seconds are terminated with 503
+docs:
+- https://docs.api.cultureamp.com/docs/resources-pagination
+- https://docs.api.cultureamp.com/docs/resources-troubleshooting
+- https://docs.api.cultureamp.com/docs/resources-usage-limits
+- https://docs.api.cultureamp.com/docs/resources-faqs

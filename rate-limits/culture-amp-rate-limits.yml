@@ -1,54 +1,18 @@
-# Provenance stamped 2026-10-07 (roadmap#943): written by an API Evangelist sweep (dated 2026-06-12 by the file itself), not
-# harvested from the provider. `method: generated` so the economics campaign may replace it with a
-# dated, verbatim transcription; every figure below is unverified until it does.
-method: generated
-generated: '2026-06-12'
-spec: API Commons Rate Limits 0.1
-provider: Culture Amp
-providerId: culture-amp
-created: 2026-06-12
-modified: 2026-06-12
-description: >
-  Culture Amp applies both client-based and service-based throttling to its
-  Public API. Specific numeric thresholds are not publicly disclosed; the
-  platform describes its limits as "generous" and designed not to impact
-  typical usage. Developers encountering frequent throttling are advised to
-  contact Culture Amp support. Response payloads are limited to approximately
-  1 MB, with automatic pagination applied when this threshold is reached.
-retryAfter:
-  header: Retry-After
-  note: >
-    Exact Retry-After header behavior is not documented publicly. Implement
-    exponential backoff and retry logic when receiving 429 or 503 responses.
-throttled:
-  statusCode: 429
-  description: Too Many Requests — client or service rate limit exceeded
-  additionalCode: 503
-  additionalDescription: Service Unavailable — service-level throttle
+name: Culture Amp rate limits
+generated: '2026-10-20'
+method: searched
+source: https://docs.api.cultureamp.com/docs/resources-usage-limits
+limit_count: 1
+note: Numeric thresholds are not published. Throttling is signalled with HTTP 429 or 503; no rate-limit response headers are
+  documented. Response payloads are capped at roughly 1MB, after which pagination applies.
 limits:
-  - scope: client
-    metric: requests
-    limit: undisclosed
-    timeFrame: undisclosed
-    note: >
-      Client-based throttling is applied per API credential set. Thresholds
-      are not published but are described as generous for typical usage.
-  - scope: service
-    metric: requests
-    limit: undisclosed
-    timeFrame: undisclosed
-    note: >
-      Service-based throttling protects platform stability across all clients.
-  - scope: response
-    metric: payload-size
-    limit: 1
-    unit: MB
-    timeFrame: per-request
-    note: >
-      Response payloads are capped at approximately 1 MB per request.
-      Pagination is automatically applied when this threshold is reached.
-recommendations:
-  - Implement exponential backoff and retry logic for 429 and 503 responses
-  - Use pagination parameters to manage large data sets within the 1 MB limit
-  - Contact Culture Amp support if frequent throttling is encountered
-  - Cache API responses where possible to reduce request volume
+- name: API request throttling
+  scope: client and service
+  limit_text: The limits are generous and should not impact normal usage.
+exhaustion:
+  status_codes:
+  - 429
+  - 503
+  guidance: build with a backoff and retry strategy
+  docs: https://docs.api.cultureamp.com/docs/resources-troubleshooting
+headers: []

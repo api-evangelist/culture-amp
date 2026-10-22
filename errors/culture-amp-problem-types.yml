@@ -1,0 +1,40 @@
+generated: '2026-10-20'
+method: searched
+source: https://docs.api.cultureamp.com/docs/resources-troubleshooting
+format: custom-json
+envelope:
+  fields:
+  - code
+  - message
+  example:
+    code: 400
+    message: malformed request, "hello" cannot be converted to valid RFC3339 timestamp
+problems:
+- status: 400
+  title: Bad Request
+  description: There is a problem with the format of your request.
+  remediation: Read the message for the problematic part of the request.
+- status: 401
+  title: Unauthorized
+  description: No permission to make the request; commonly an expired access token (JWT).
+  remediation: Request a new token; review Authentication.
+- status: 403
+  title: Forbidden
+  description: Token lacks the required scopes to access the path.
+  remediation: Include the required permissions in the token scope.
+- status: 404
+  title: Not Found
+  description: The requested resource does not exist.
+  remediation: Check the record ID and request path.
+- status: 429
+  title: Too Many Requests
+  description: Rate limits hit.
+  remediation: Back off and retry; see Usage Limits.
+- status: 500
+  title: Circuit Breaker Is Open
+  description: Gateway circuit breaker stops traffic to a failing backend after consecutive failures.
+  remediation: Retry later; contact support if ongoing.
+- status: 503
+  title: Service Unavailable
+  description: Request took more than 15 seconds and was terminated ("timeout" body), or rate limits hit.
+  remediation: Wait a minute and retry.

@@ -1,0 +1,25 @@
+generated: '2026-10-20'
+method: searched
+source: https://docs.api.cultureamp.com/docs/customer-guide-getting-credentials
+standards:
+- id: oauth2
+  conforms: true
+  evidence: Culture Amp's API uses the OAuth 2.0 Client Credentials Flow for authentication (https://docs.api.cultureamp.com/docs/customer-guide-getting-credentials)
+- id: pagination
+  conforms: true
+  evidence: cursor query parameter with pagination.nextPath (https://docs.api.cultureamp.com/docs/resources-pagination)
+- id: idempotency
+  conforms: na
+  evidence: read-only API (all operations GET)
+- id: rfc9457
+  conforms: false
+  evidence: error envelope is {code, message} (https://docs.api.cultureamp.com/docs/resources-troubleshooting)
+- id: soc2
+  conforms: true
+  evidence: '"we have recently acquired our SOC II Type I certification" (https://www.cultureamp.com/platform/plans-and-pricing)'
+- id: iso27001
+  conforms: true
+  evidence: '"We follow globally recognized security and data privacy requirements as a standard practice including: GDPR, CCPA, ISO 27001" (https://www.cultureamp.com/platform/plans-and-pricing)'
+- id: openapi-3.2
+  conforms: true
+  evidence: the document declares 3.2.0

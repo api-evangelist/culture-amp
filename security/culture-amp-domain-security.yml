@@ -1,26 +1,23 @@
-generated: '2026-07-11'
+generated: '2026-10-20'
 method: probed
 source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
 hosts:
 - host: www.cultureamp.com
   https: true
   tls_version: TLSv1.3
-  cert_expires: Dec  9 23:59:59 2026 GMT
+  cert_expires: Apr 26 23:59:59 2027 GMT
   hsts: true
   hsts_max_age: 31536000
 - host: api.cultureamp.com
   https: true
   tls_version: TLSv1.3
-  cert_expires: Nov 26 23:59:59 2026 GMT
+  cert_expires: Apr 28 23:59:59 2027 GMT
   hsts: null
 - host: sandbox.public-api.development.cultureamp.net
-  https: true
-  tls_version: TLSv1.3
-  cert_expires: Nov 26 23:59:59 2026 GMT
-  hsts: null
+  https: false
 domains:
 - domain: cultureamp.com
-  dnssec: true
+  dnssec: false
   caa:
   - 0 issue "letsencrypt.org"
   - 0 issue "pki.goog"

@@ -1,31 +1,36 @@
-generated: '2026-07-11'
-method: derived
-source: openapi/culture-amp-public-api-openapi.yml
+generated: '2026-10-20'
+method: searched
+source: https://docs.api.cultureamp.com/docs/customer-guide-authorization-scopes
+docs: https://docs.api.cultureamp.com/docs/customer-guide-authorization-scopes
 schemes:
 - name: Oauth2
-  source: openapi/culture-amp-public-api-openapi.yml
   flows:
   - flow: clientCredentials
-    tokenUrl: /oauth2/token
+    tokenUrl: https://api.cultureamp.com/v1/oauth2/token
+  sources:
+  - openapi/culture-amp-employees-api-openapi.yml
+  - openapi/culture-amp-performance-api-openapi.yml
+  - openapi/culture-amp-surveys-api-openapi.yml
+scope_format: target-entity:<entity id>:<comma separated list of permissions>
+target_entities:
+- id: 8ed17dce-9eca-4383-a9e1-54f82c362b6d
+  description: The entity id to use when calling the production API
+- id: 79040b4d-3e2b-4480-a061-2e230eeb83b2
+  description: The entity id to use when calling the sandbox API
 scopes:
-- scope: employee-demographics-read
-  description: Grants access to employee demographics
-  flows:
-  - clientCredentials
-  sources:
-  - openapi/culture-amp-public-api-openapi.yml
 - scope: employees-read
-  description: Grants read access to employees resources
+  description: Provides access to basic employee data
   flows:
   - clientCredentials
-  sources:
-  - openapi/culture-amp-public-api-openapi.yml
+- scope: employee-demographics-read
+  description: Provides access to employee demographic data
+  flows:
+  - clientCredentials
 - scope: performance-evaluations-read
-  description: Grants access to employee performance evaluations
+  description: Provides access to performance evaluation data
   flows:
   - clientCredentials
-  sources:
-  - openapi/culture-amp-public-api-openapi.yml
 - scope: surveys-read
-  sources:
-  - openapi/culture-amp-public-api-openapi.yml
+  description: Provides access to engagement survey data
+  flows:
+  - clientCredentials

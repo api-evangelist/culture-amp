@@ -1,0 +1,11 @@
+name: Culture Amp agent skills
+generated: '2026-10-20'
+method: generated
+source: openapi/
+skills:
+  - name: culture-amp-look-up-an-employee
+    path: skills/culture-amp-look-up-an-employee.md
+  - name: culture-amp-collect-performance-cycle-reviews
+    path: skills/culture-amp-collect-performance-cycle-reviews.md
+  - name: culture-amp-export-survey-results
+    path: skills/culture-amp-export-survey-results.md

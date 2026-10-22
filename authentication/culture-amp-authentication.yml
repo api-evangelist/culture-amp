@@ -1,6 +1,11 @@
-generated: '2026-07-11'
-method: derived
-source: openapi/culture-amp-public-api-openapi.yml
+generated: '2026-10-20'
+method: searched
+source:
+- https://docs.api.cultureamp.com/docs/customer-guide-authentication
+- https://docs.api.cultureamp.com/docs/customer-guide-getting-credentials
+- https://docs.api.cultureamp.com/docs/partner-guide-authentication
+- https://docs.api.cultureamp.com/docs/resources-security-information
+docs: https://docs.api.cultureamp.com/docs/customer-guide-authentication
 summary:
   types:
   - oauth2
@@ -11,7 +16,22 @@ schemes:
   type: oauth2
   flows:
   - flow: clientCredentials
-    tokenUrl: /oauth2/token
-    scopes: 3
+    tokenUrl: https://api.cultureamp.com/v1/oauth2/token
+    scopes: 4
+  client_auth:
+  - client_id/client_secret in form body
+  - HTTP Basic (base64 client id:secret)
+  token_request_content_type: application/x-www-form-urlencoded
+  token:
+    format: JWT
+    usage: 'Authorization: Bearer <access token>'
+    lifetime: Access tokens are valid for 1 hour.
+    expires_in_example: 3599
+  scope_format: target-entity:<entity id>:<comma separated list of permissions>
   sources:
-  - openapi/culture-amp-public-api-openapi.yml
+  - openapi/culture-amp-employees-api-openapi.yml
+  - openapi/culture-amp-performance-api-openapi.yml
+  - openapi/culture-amp-surveys-api-openapi.yml
+credentials: Created in Admin Settings > API by an Admin user with Account Owner permissions; account-level credentials.
+ip_allowlisting: We do not support IP whitelisting.
+tls: Minimum TLS 1.2

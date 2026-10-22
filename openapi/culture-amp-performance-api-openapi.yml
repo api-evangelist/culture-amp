@@ -251,8 +251,8 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    InternalServerError:
-      description: Internal Server Error
+    NotFound:
+      description: The specified resource was not found
       content:
         application/json:
           schema:
@@ -263,14 +263,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: The request path parameters, query parameters or headers are not valid
+    InternalServerError:
+      description: Internal Server Error
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    TooManyRequests:
-      description: Too Many Requests - client rate limit exceeded
+    BadRequest:
+      description: The request path parameters, query parameters or headers are not valid
       content:
         application/json:
           schema:
@@ -281,13 +281,52 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The specified resource was not found
+    TooManyRequests:
+      description: Too Many Requests - client rate limit exceeded
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
   schemas:
+    RatingBucket:
+      title: RatingBucket
+      type: object
+      description: Describes a performance rating bucket that an employee may be assigned to
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        value:
+          type: integer
+      required:
+      - title
+      - value
+    OpenTextQuestion:
+      type: object
+      description: The open text questions corresponding to a review
+      properties:
+        id:
+          type: string
+        text:
+          type: string
+        answer:
+          type: string
+      required:
+      - id
+      - text
+    PerformanceCyclesResponse:
+      title: PerformanceCycleResponse
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/PerformanceCycle'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+      required:
+      - data
     RatingQuestion:
       type: object
       properties:
@@ -312,34 +351,6 @@ components:
           description: the relative url for the next page of data
       required:
       - nextPath
-    ManagerReviewsResponse:
-      title: ManagerReviewsResponse
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/ManagerReview'
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-      required:
-      - data
-    ManagerReviewResponse:
-      title: ManagerReviewResponse
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/ManagerReview'
-      required:
-      - data
-    PerformanceCycleResponse:
-      title: PerformanceCycleResponse
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/PerformanceCycle'
-      required:
-      - data
     MultipleChoiceQuestion:
       type: object
       description: The multiple choice questions corresponding to a review
@@ -358,18 +369,36 @@ components:
       - id
       - text
       - options
-    PerformanceCyclesResponse:
+    PerformanceCycleResponse:
       title: PerformanceCycleResponse
       type: object
       properties:
         data:
-          type: array
-          items:
-            $ref: '#/components/schemas/PerformanceCycle'
-        pagination:
-          $ref: '#/components/schemas/Pagination'
+          $ref: '#/components/schemas/PerformanceCycle'
       required:
       - data
+    MultipleChoiceMultiSelectQuestion:
+      type: object
+      description: The multiple choice multi-select questions corresponding to a review
+      properties:
+        id:
+          type: string
+        text:
+          type: string
+        options:
+          description: All the available answer options that can be selected
+          type: array
+          items:
+            type: string
+        answers:
+          description: All the selected answers
+          type: array
+          items:
+            type: string
+      required:
+      - id
+      - text
+      - options
     Link:
       title: Link
       type: object
@@ -384,95 +413,26 @@ components:
       required:
       - rel
       - uri
-    PerformanceCycle:
-      title: PerformanceCycle
+    ManagerReviewResponse:
+      title: ManagerReviewResponse
       type: object
       properties:
-        id:
-          type: string
-        name:
-          type: string
-        state:
-          $ref: '#/components/schemas/PerformanceCycleState'
-        createdAt:
-          type: string
-          description: The date the performance cycle was created in the source system
-          format: date-time
-        updatedAt:
-          type: string
-          description: The date the performance cycle was last updated in the source system
-          format: date-time
-        processedAt:
-          type: string
-          description: The date the performance cycle was last processed by the public API. This can be used by consumers to determine if the performance cycle has been updated since the last time they retrieved it.
-          format: date-time
+        data:
+          $ref: '#/components/schemas/ManagerReview'
       required:
-      - id
-      - name
-      - state
-      - createdAt
-      - updatedAt
-      - processedAt
-      description: Describes a performance cycle
-      example:
-        id: b6505a73-d45f-4091-b3fb-74997de4cdc6
-        name: H1 2022 Pied Piper engineering performance cycle
-        state: active
-        createdAt: '2022-04-28T02:14:10+00:00'
-        updatedAt: '2022-08-02T02:14:10+00:00'
-        processedAt: '2022-08-02T02:15:10+00:00'
-    OpenTextQuestion:
-      type: object
-      description: The open text questions corresponding to a review
-      properties:
-        id:
-          type: string
-        text:
-          type: string
-        answer:
-          type: string
-      required:
-      - id
-      - text
-    Rating:
-      title: Rating
-      type: object
-      description: Describes a performance rating for an employee
-      properties:
-        id:
-          type: string
-        title:
-          type: string
-        description:
-          type: string
-        value:
-          type: integer
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-      required:
-      - id
-      - title
-      - value
-      - createdAt
-      - updatedAt
-    Error:
-      required:
-      - code
-      - message
+      - data
+    ManagerReviewsResponse:
+      title: ManagerReviewsResponse
       type: object
       properties:
-        code:
-          type: integer
-          description: the HTTP status code of the error
-          format: int32
-        message:
-          type: string
-          description: a description of the error
-      description: an object describing an API error
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ManagerReview'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+      required:
+      - data
     ManagerReview:
       title: ManagerReview
       type: object
@@ -618,40 +578,31 @@ components:
         createdAt: '2022-04-28T02:14:10+00:00'
         updatedAt: '2022-08-02T02:14:10+00:00'
         completedAt: '2022-08-02T02:14:10+00:00'
-    MultipleChoiceMultiSelectQuestion:
+    Rating:
+      title: Rating
       type: object
-      description: The multiple choice multi-select questions corresponding to a review
+      description: Describes a performance rating for an employee
       properties:
         id:
           type: string
-        text:
+        title:
           type: string
-        options:
-          description: All the available answer options that can be selected
-          type: array
-          items:
-            type: string
-        answers:
-          description: All the selected answers
-          type: array
-          items:
-            type: string
+        description:
+          type: string
+        value:
+          type: integer
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
       required:
       - id
-      - text
-      - options
-    PerformanceReviewStatus:
-      type: string
-      description: 'The status of the performance review.
-
-        \
-
-        **Note:** data from manager reviews with ‘dirty’ status is not served from this API.'
-      enum:
-      - completed
-      - shared
-      - dirty
-      - incomplete
+      - title
+      - value
+      - createdAt
+      - updatedAt
     PerformanceRating:
       title: PerformanceRating
       type: object
@@ -673,28 +624,70 @@ components:
       - active
       - closed
       - ready
-    RatingBucket:
-      title: RatingBucket
+    PerformanceCycle:
+      title: PerformanceCycle
       type: object
-      description: Describes a performance rating bucket that an employee may be assigned to
       properties:
-        title:
+        id:
           type: string
-        description:
+        name:
           type: string
-        value:
-          type: integer
+        state:
+          $ref: '#/components/schemas/PerformanceCycleState'
+        createdAt:
+          type: string
+          description: The date the performance cycle was created in the source system
+          format: date-time
+        updatedAt:
+          type: string
+          description: The date the performance cycle was last updated in the source system
+          format: date-time
+        processedAt:
+          type: string
+          description: The date the performance cycle was last processed by the public API. This can be used by consumers to determine if the performance cycle has been updated since the last time they retrieved it.
+          format: date-time
       required:
-      - title
-      - value
+      - id
+      - name
+      - state
+      - createdAt
+      - updatedAt
+      - processedAt
+      description: Describes a performance cycle
+      example:
+        id: b6505a73-d45f-4091-b3fb-74997de4cdc6
+        name: H1 2022 Pied Piper engineering performance cycle
+        state: active
+        createdAt: '2022-04-28T02:14:10+00:00'
+        updatedAt: '2022-08-02T02:14:10+00:00'
+        processedAt: '2022-08-02T02:15:10+00:00'
+    Error:
+      required:
+      - code
+      - message
+      type: object
+      properties:
+        code:
+          type: integer
+          description: the HTTP status code of the error
+          format: int32
+        message:
+          type: string
+          description: a description of the error
+      description: an object describing an API error
+    PerformanceReviewStatus:
+      type: string
+      description: 'The status of the performance review.
+
+        \
+
+        **Note:** data from manager reviews with ‘dirty’ status is not served from this API.'
+      enum:
+      - completed
+      - shared
+      - dirty
+      - incomplete
   parameters:
-    AfterDateQueryParam:
-      name: after_date
-      in: query
-      description: "Only returns resources processed by the public API after the date-time provided.\n\nUses the date-time format specified in [RFC 3339 section 5.6, Internet Date/Time Format](https://tools.ietf.org/html/rfc3339#section-5.6). \n\nThe value cannot contain spaces, and date and time should be separated by \"T\". \n\nFor example:\n* UTC time \"2023-05-01T00:00:00Z\".\n* An offset from UTC time to indicate a time zone, such as \"2023-05-01T00:00:00%2B08:00\" (for 8 hours ahead of UTC time). \n\nNote that query parameters should be properly escaped, last example is equivalent to \"2023-05-01T00:00:00+08:00\"."
-      schema:
-        type: string
-      example: '2013-01-15T00:00:00+08:00'
     CursorQueryParam:
       name: cursor
       in: query
@@ -702,6 +695,13 @@ components:
       schema:
         type: string
       example: ewogICJQSyI6ICJzZGZzZGZzZGYtc2Rmc2Rmc2Qtc2Rmc2RmIiwKICAiU0siOiAic2Rmc2Rmc2RzZGYtc2RmYXNhc2ZzLS1zZGZzZGYiCn0J
+    AfterDateQueryParam:
+      name: after_date
+      in: query
+      description: "Only returns resources processed by the public API after the date-time provided.\n\nUses the date-time format specified in [RFC 3339 section 5.6, Internet Date/Time Format](https://tools.ietf.org/html/rfc3339#section-5.6). \n\nThe value cannot contain spaces, and date and time should be separated by \"T\". \n\nFor example:\n* UTC time \"2023-05-01T00:00:00Z\".\n* An offset from UTC time to indicate a time zone, such as \"2023-05-01T00:00:00%2B08:00\" (for 8 hours ahead of UTC time). \n\nNote that query parameters should be properly escaped, last example is equivalent to \"2023-05-01T00:00:00+08:00\"."
+      schema:
+        type: string
+      example: '2013-01-15T00:00:00+08:00'
   securitySchemes:
     Oauth2:
       type: oauth2

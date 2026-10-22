@@ -1,0 +1,60 @@
+overlay: 1.0.0
+info:
+  title: Culture Amp performance API overlay
+  version: 1.0.0
+extends: openapi/culture-amp-performance-api-openapi.yml
+generated: '2026-10-20'
+method: generated
+source: openapi/culture-amp-performance-api-openapi.yml
+actions:
+- target: $.info
+  update:
+    x-api-evangelist-overlay: Agent-facing enrichments for Culture Amp Public Performance API
+    x-llms-txt: https://docs.api.cultureamp.com/llms.txt
+    x-pagination:
+      style: cursor
+      request_param: cursor
+      response_field: pagination.nextPath
+      source: https://docs.api.cultureamp.com/docs/resources-pagination.md
+- target: $.paths['/employees/{id}/manager-reviews'].get
+  update:
+    x-agent-read-only: true
+    x-agent-idempotent: true
+    x-agent-required-scopes:
+    - performance-evaluations-read
+    x-mcp-tool-name: list_manager_reviews_by_employee
+- target: $.paths['/performance-cycles'].get
+  update:
+    x-agent-read-only: true
+    x-agent-idempotent: true
+    x-agent-required-scopes:
+    - performance-evaluations-read
+    x-mcp-tool-name: list_performance_cycles
+- target: $.paths['/performance-cycles/{id}'].get
+  update:
+    x-agent-read-only: true
+    x-agent-idempotent: true
+    x-agent-required-scopes:
+    - performance-evaluations-read
+    x-mcp-tool-name: get_performance_cycle
+- target: $.paths['/performance-cycles/{id}/manager-reviews'].get
+  update:
+    x-agent-read-only: true
+    x-agent-idempotent: true
+    x-agent-required-scopes:
+    - performance-evaluations-read
+    x-mcp-tool-name: list_manager_reviews_by_performance_cycle
+- target: $.paths['/manager-reviews'].get
+  update:
+    x-agent-read-only: true
+    x-agent-idempotent: true
+    x-agent-required-scopes:
+    - performance-evaluations-read
+    x-mcp-tool-name: list_manager_reviews
+- target: $.paths['/manager-reviews/{id}'].get
+  update:
+    x-agent-read-only: true
+    x-agent-idempotent: true
+    x-agent-required-scopes:
+    - performance-evaluations-read
+    x-mcp-tool-name: get_manager_review

@@ -1,0 +1,197 @@
+name: Culture Amp MCP server (candidate)
+type: MCPServer
+generated: '2026-10-20'
+method: derived
+source:
+- openapi/culture-amp-employees-api-openapi.yml
+- openapi/culture-amp-performance-api-openapi.yml
+- openapi/culture-amp-surveys-api-openapi.yml
+status: candidate
+description: No official Culture Amp MCP server was found (web search 2026-10-20;
+  docs llms.txt at https://docs.api.cultureamp.com/llms.txt, HTTP 200, 39 pages, has
+  no MCP mention). This is a candidate tool list derived 1:1 from the 19 read-only
+  GET operations in the Culture Amp Public API OpenAPI.
+deployment:
+  mode: none
+  auth: oauth
+  verified: derived
+  note: Nobody ships a server; tools would call https://api.cultureamp.com/v1 with
+    an OAuth2 client-credentials JWT (tokenUrl /oauth2/token per spec).
+evidence:
+- url: https://docs.api.cultureamp.com/llms.txt
+  status: 200
+  finding: no MCP documentation
+- url: https://www.getguru.com/reference/culture-amp-mcp
+  finding: third-party article, does not document an official server
+tools:
+- name: list_employees
+  description: List employees
+  operationId: list-employees
+  method: GET
+  path: /employees
+  spec: openapi/culture-amp-employees-api-openapi.yml
+  scopes:
+  - employees-read
+  readOnlyHint: true
+- name: get_employee
+  description: Get employee
+  operationId: get-employee
+  method: GET
+  path: /employees/{id}
+  spec: openapi/culture-amp-employees-api-openapi.yml
+  scopes:
+  - employees-read
+  readOnlyHint: true
+- name: list_demographics_by_employee
+  description: List demographics by employee
+  operationId: list-demographics-by-employee
+  method: GET
+  path: /employees/{id}/demographics
+  spec: openapi/culture-amp-employees-api-openapi.yml
+  scopes:
+  - employee-demographics-read
+  readOnlyHint: true
+- name: list_manager_reviews_by_employee
+  description: List manager reviews by employee
+  operationId: list-manager-reviews-by-employee
+  method: GET
+  path: /employees/{id}/manager-reviews
+  spec: openapi/culture-amp-performance-api-openapi.yml
+  scopes:
+  - performance-evaluations-read
+  readOnlyHint: true
+- name: list_performance_cycles
+  description: List performance cycles
+  operationId: list-performance-cycles
+  method: GET
+  path: /performance-cycles
+  spec: openapi/culture-amp-performance-api-openapi.yml
+  scopes:
+  - performance-evaluations-read
+  readOnlyHint: true
+- name: get_performance_cycle
+  description: Get performance cycle
+  operationId: get-performance-cycle
+  method: GET
+  path: /performance-cycles/{id}
+  spec: openapi/culture-amp-performance-api-openapi.yml
+  scopes:
+  - performance-evaluations-read
+  readOnlyHint: true
+- name: list_manager_reviews_by_performance_cycle
+  description: List manager reviews by performance cycle
+  operationId: list-manager-reviews-by-performance-cycle
+  method: GET
+  path: /performance-cycles/{id}/manager-reviews
+  spec: openapi/culture-amp-performance-api-openapi.yml
+  scopes:
+  - performance-evaluations-read
+  readOnlyHint: true
+- name: list_manager_reviews
+  description: List manager reviews
+  operationId: list-manager-reviews
+  method: GET
+  path: /manager-reviews
+  spec: openapi/culture-amp-performance-api-openapi.yml
+  scopes:
+  - performance-evaluations-read
+  readOnlyHint: true
+- name: get_manager_review
+  description: Get manager review
+  operationId: get-manager-review
+  method: GET
+  path: /manager-reviews/{id}
+  spec: openapi/culture-amp-performance-api-openapi.yml
+  scopes:
+  - performance-evaluations-read
+  readOnlyHint: true
+- name: list_surveys
+  description: List surveys
+  operationId: list-surveys
+  method: GET
+  path: /surveys
+  spec: openapi/culture-amp-surveys-api-openapi.yml
+  scopes:
+  - surveys-read
+  readOnlyHint: true
+- name: get_survey
+  description: Get survey
+  operationId: get-survey
+  method: GET
+  path: /surveys/{id}
+  spec: openapi/culture-amp-surveys-api-openapi.yml
+  scopes:
+  - surveys-read
+  readOnlyHint: true
+- name: list_survey_questions
+  description: List questions
+  operationId: list-survey-questions
+  method: GET
+  path: /surveys/{id}/questions
+  spec: openapi/culture-amp-surveys-api-openapi.yml
+  scopes:
+  - surveys-read
+  readOnlyHint: true
+- name: get_survey_question
+  description: Get question
+  operationId: get-survey-question
+  method: GET
+  path: /surveys/{survey_id}/question/{question_id}
+  spec: openapi/culture-amp-surveys-api-openapi.yml
+  scopes:
+  - surveys-read
+  readOnlyHint: true
+- name: list_survey_responses
+  description: List responses
+  operationId: list-survey-responses
+  method: GET
+  path: /surveys/{id}/responses
+  spec: openapi/culture-amp-surveys-api-openapi.yml
+  scopes:
+  - surveys-read
+  readOnlyHint: true
+- name: get_survey_response
+  description: Get response
+  operationId: get-survey-response
+  method: GET
+  path: /surveys/{survey_id}/responses/{response_id}
+  spec: openapi/culture-amp-surveys-api-openapi.yml
+  scopes:
+  - surveys-read
+  readOnlyHint: true
+- name: list_survey_factors
+  description: List factors
+  operationId: list-survey-factors
+  method: GET
+  path: /surveys/{id}/factors
+  spec: openapi/culture-amp-surveys-api-openapi.yml
+  scopes:
+  - surveys-read
+  readOnlyHint: true
+- name: get_survey_factor
+  description: Get factor
+  operationId: get-survey-factor
+  method: GET
+  path: /surveys/{survey_id}/factors/{factor_id}
+  spec: openapi/culture-amp-surveys-api-openapi.yml
+  scopes:
+  - surveys-read
+  readOnlyHint: true
+- name: list_survey_sections
+  description: List sections
+  operationId: list-survey-sections
+  method: GET
+  path: /surveys/{id}/sections
+  spec: openapi/culture-amp-surveys-api-openapi.yml
+  scopes:
+  - surveys-read
+  readOnlyHint: true
+- name: get_survey_section
+  description: Get section
+  operationId: get-survey-section
+  method: GET
+  path: /surveys/{survey_id}/sections/{section_id}
+  spec: openapi/culture-amp-surveys-api-openapi.yml
+  scopes:
+  - surveys-read
+  readOnlyHint: true
