@@ -7,7 +7,13 @@ artifacts:
     method: generated
     evidence: declared in the artifact
   authentication/culture-amp-authentication.yml:
-    method: derived
+    method: searched
+    evidence: declared in the artifact
+  capabilities/culture-amp-capability-edges.yml:
+    method: unknown
+    evidence: no authorship recorded
+  changelog/culture-amp-changelog.yml:
+    method: searched
     evidence: declared in the artifact
   collections/culture-amp-employees-api.opencollection.json:
     method: derived
@@ -27,6 +33,18 @@ artifacts:
   collections/culture-amp-surveys-api.postman_collection.json:
     method: derived
     evidence: openapi/culture-amp-surveys-api
+  conformance/culture-amp-conformance.yml:
+    method: searched
+    evidence: declared in the artifact
+  conventions/culture-amp-conventions.yml:
+    method: searched
+    evidence: declared in the artifact
+  data-model/culture-amp-data-model.yml:
+    method: derived
+    evidence: declared in the artifact
+  errors/culture-amp-problem-types.yml:
+    method: searched
+    evidence: declared in the artifact
   examples/culture-amp-employee-example.json:
     method: unknown
     evidence: no authorship recorded
@@ -40,11 +58,20 @@ artifacts:
     method: unknown
     evidence: no authorship recorded
   finops/culture-amp-finops.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: generated
+    evidence: declared in the artifact
   front-door-ai/2026-09-17.yml:
     method: unknown
     evidence: no authorship recorded
+  hosts/culture-amp-hosts.yml:
+    method: derived
+    evidence: declared in the artifact
+  integrations/_index.yml:
+    method: generated
+    evidence: carries an API Evangelist house phrase
+  integrations/culture-amp-integration-edges.yml:
+    method: searched
+    evidence: declared in the artifact
   json-ld/culture-amp-context.jsonld:
     method: unknown
     evidence: no authorship recorded
@@ -57,127 +84,7 @@ artifacts:
   json-schema/culture-amp-performance-cycle-schema.json:
     method: unknown
     evidence: no authorship recorded
-  kin/checks-2026-09-24T161608.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-25T125852.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-25T133943.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-25T143147.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-25T154045.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-26T215308.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-27T094438.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-27T103455.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-27T123021.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-27T132314.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-27T140727.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-28T221322.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-29T213958.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-29T230545.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-30T203505.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-30T220315.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-31T223420.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-01T063623.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-01T210448.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-01T222808.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-02T211804.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-02T224043.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-03T161828.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-03T174231.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-04T062714.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-04T212454.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-04T224856.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-05T055819.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-05T072335.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-05T144739.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-05T195450.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-05T211839.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-06T011047.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-06T211804.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-06T224210.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-07T200636.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-07T213054.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-08T214843.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-08T232836.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-10T204815.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-10T222408.yml:
+  kin/checks-2026-10-11T110117.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
   kin/score-2026-09-12T062655.yml:
@@ -261,6 +168,33 @@ artifacts:
   kin/score-2026-09-24T161608.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-25T210408.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-25T232841.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-10-03T000835.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-10-03T024842.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-10-11T110117.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  lifecycle/culture-amp-lifecycle.yml:
+    method: searched
+    evidence: declared in the artifact
+  llms/culture-amp-llms-provenance.yml:
+    method: unknown
+    evidence: no authorship recorded
+  llms/culture-amp-llms.txt:
+    method: unknown
+    evidence: no authorship recorded
+  mcp/culture-amp-mcp.yml:
+    method: derived
+    evidence: declared in the artifact
   openapi/_original/culture-amp-public-api-openapi.yml:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
@@ -274,9 +208,21 @@ artifacts:
   openapi/culture-amp-surveys-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  plans/culture-amp-plans-pricing.yml:
+  overlays/culture-amp-employees-api-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/culture-amp-performance-api-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/culture-amp-surveys-api-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  packages/culture-amp-packages.yml:
     method: unknown
     evidence: no authorship recorded
+  plans/culture-amp-plans-pricing.yml:
+    method: searched
+    evidence: declared in the artifact
   postman/culture-amp-employees-api.postman_collection.json:
     method: derived
     evidence: openapi/culture-amp-employees-api
@@ -287,13 +233,22 @@ artifacts:
     method: derived
     evidence: openapi/culture-amp-surveys-api
   rate-limits/culture-amp-rate-limits.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: searched
+    evidence: declared in the artifact
+  regulatory/culture-amp-regulatory-posture.yml:
+    method: searched
+    evidence: declared in the artifact
   rules/culture-amp-jsonschema-spectral-rules.yml:
     method: generated
     evidence: declared in the artifact
+  rules/culture-amp-rules.yml:
+    method: generated
+    evidence: declared in the artifact
+  sandbox/culture-amp-sandbox.yml:
+    method: searched
+    evidence: declared in the artifact
   scopes/culture-amp-scopes.yml:
-    method: derived
+    method: searched
     evidence: declared in the artifact
   security/culture-amp-domain-security.yml:
     method: unknown
@@ -301,6 +256,30 @@ artifacts:
   security/culture-amp-trust-center.yml:
     method: searched
     evidence: declared in the artifact
+  skills/_index.yml:
+    method: generated
+    evidence: declared in the artifact
+  skills/culture-amp-collect-performance-cycle-reviews.md:
+    method: generated
+    evidence: declared in the artifact
+  skills/culture-amp-export-survey-results.md:
+    method: generated
+    evidence: declared in the artifact
+  skills/culture-amp-look-up-an-employee.md:
+    method: generated
+    evidence: declared in the artifact
+  vendors/culture-amp-vendors.yml:
+    method: unknown
+    evidence: no authorship recorded
   vocabulary/culture-amp-vocabulary.yml:
+    method: unknown
+    evidence: no authorship recorded
+  well-known/culture-amp-security-oauth-protected-resource.json:
+    method: unknown
+    evidence: no authorship recorded
+  well-known/culture-amp-support-security.txt:
+    method: unknown
+    evidence: no authorship recorded
+  well-known/culture-amp-well-known.yml:
     method: unknown
     evidence: no authorship recorded
