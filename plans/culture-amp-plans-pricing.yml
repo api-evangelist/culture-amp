@@ -50,3 +50,22 @@ add_ons:
 - name: People Science Consulting
   text: Add-on to Engage Perform
 enterprise_text: Enterprise pricing available
+x-canonical:
+  generated: '2026-10-23'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - negotiated
+  units: []
+  plans:
+  - name: Engage
+    access: other
+    model: negotiated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Perform
+    access: other
+    model: negotiated
+    model_how: derived
+    units: []
+    periods: []
