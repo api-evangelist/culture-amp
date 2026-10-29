@@ -1,4 +1,4 @@
-# Culture Amp (culture-amp)
+# Culture Amp
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,91 +64,190 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Culture Amp is the leading employee experience platform providing tools for employee engagement surveys, performance management, and people analytics. The Culture Amp Public API is a RESTful, read-only interface that enables organizations to programmatically retrieve their people data—including employee records, demographics, performance cycles, manager reviews, and survey results—for integration with external systems and custom analytics workflows. The API uses OAuth 2.0 Client Credentials Flow for authentication and is available to all subscribers at no additional cost as part of standard subscription fees.
+Culture Amp is the leading employee experience platform providing tools for employee engagement surveys, performance management, and people analytics. The Culture Amp Public API is a RESTful, read-only interface that enables organizations to programmatically retrieve their people data—including employee records, demographics, performance cycles, manager reviews, and survey results—for use in external systems and custom analytics. The API uses OAuth 2.0 Client Credentials Flow for authentication and is available to all Culture Amp subscribers at no additional cost as part of standard subscription fees. The platform serves thousands of organizations worldwide and integrates with leading HRIS systems, Slack, Microsoft Teams, and compensation tools like Pave.
 
-APIs.json: https://raw.githubusercontent.com/api-evangelist/culture-amp/refs/heads/main/apis.yml
+**Areas:** Human Resources · Employee Engagement · Performance Management · People Analytics · Surveys · Australia
 
-Naftiko: https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=culture-amp-api-evangelist&utm_content=repo
+## Culture Amp on APIs.io
 
-## Tags
+Everything profiled for Culture Amp is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/culture-amp/](https://apis.io/providers/culture-amp/)** — or go straight to one of the APIs or properties below.
 
-- HR
-- Employee Engagement
-- Performance Management
-- People Analytics
-- Surveys
-- Human Resources
+### APIs (3)
 
-## APIs
+- [Culture Amp Employees API](https://apis.io/apis/culture-amp/culture-amp-employees-api/) — The Employees API from Culture Amp — 3 operation(s) for employees.
+- [Culture Amp Performance API](https://apis.io/apis/culture-amp/culture-amp-performance-api/) — The Performance API from Culture Amp — 6 operation(s) for performance.
+- [Culture Amp Surveys API](https://apis.io/apis/culture-amp/culture-amp-surveys-api/) — The Surveys API from Culture Amp — 10 operation(s) for surveys.
 
-### Culture Amp Public API
+### Published properties
 
-The Culture Amp Public API provides read-only programmatic access to employee data, performance cycles, manager reviews, and survey data. It follows OAuth 2.0 Client Credentials Flow and returns paginated JSON responses.
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-- **Human URL:** https://www.cultureamp.com/company/api
-- **Base URL:** https://api.cultureamp.com
-- **OpenAPI Spec:** https://api.cultureamp.com/spec
-- **Documentation:** https://docs.api.cultureamp.com/docs/resources-getting-started
+#### GraphQL (1)
 
-**Endpoints include:**
+GraphQL schemas.
 
-- `GET /employees` — List all employees
-- `GET /employees/{id}` — Retrieve specific employee details
-- `GET /employees/{id}/demographics` — Get employee demographic assignments
-- `GET /employees/{id}/manager-reviews` — Access manager reviews for an employee
-- `GET /performance-cycles` — List performance cycles
-- `GET /performance-cycles/{id}` — Retrieve specific cycle details
-- `GET /performance-cycles/{id}/manager-reviews` — Manager reviews by cycle
-- `GET /manager-reviews` — List all manager reviews
-- `GET /manager-reviews/{id}` — Get individual review details
+- [Moved to /providers/culture-amp/](https://apis.io/graphqls/culture-amp/culture-amp-graphql/)
 
-## Plans / Rate Limits / FinOps
+#### Agentic access (1)
 
-### Plans
+Which operations an agent can call, which act, and which need a human in the loop.
 
-Culture Amp offers four main product modules priced on a per-employee-per-month basis with annual subscriptions. All pricing is quote-based.
+- [Culture Amp Agentic Access](https://apis.io/agentic-access/culture-amp/culture-amp-agentic-access/)
 
-| Plan | Type | Price Range |
-|------|------|-------------|
-| Engage | Paid | ~$9–$14 PEPM |
-| Perform | Paid | Quote-based |
-| Develop | Paid | Quote-based |
-| People Analytics | Enterprise | ~$118–$122 PEPM |
+#### JSON Schema (3)
 
-API access is included in all plans at no additional charge.
+The data models the API reads and writes.
 
-Full details: [plans/culture-amp-plans-pricing.yml](plans/culture-amp-plans-pricing.yml)
+- [Employee](https://apis.io/schemas/culture-amp/culture-amp-employee/)
+- [ManagerReview](https://apis.io/schemas/culture-amp/culture-amp-manager-review/)
+- [PerformanceCycle](https://apis.io/schemas/culture-amp/culture-amp-performance-cycle/)
 
-### Rate Limits
+#### JSON-LD (1)
 
-Culture Amp applies client-based and service-based throttling. Specific numeric limits are not publicly disclosed. The platform returns HTTP 429 (Too Many Requests) and 503 (Service Unavailable) when throttled. Response payloads are limited to ~1 MB per request with automatic pagination.
+Linked-data contexts for the provider's vocabulary.
 
-Full details: [rate-limits/culture-amp-rate-limits.yml](rate-limits/culture-amp-rate-limits.yml)
+- [Culture Amp Context](https://apis.io/jsonld/culture-amp/culture-amp-context/)
 
-### FinOps
+#### Vocabulary (1)
 
-Culture Amp follows a per-employee-per-month subscription model billed annually. API usage does not incur additional cost. Primary cost drivers are employee headcount and module selection.
+The provider's domain terms, defined.
 
-Full details: [finops/culture-amp-finops.yml](finops/culture-amp-finops.yml)
+- [Culture Amp API Vocabulary](https://apis.io/vocabularies/culture-amp/culture-amp-vocabulary/)
 
-## Timestamps
+#### Examples (4)
 
-- **Created:** 2026-06-12
-- **Modified:** 2026-06-12
+Example requests and responses.
 
-## Common Properties
+- [Culture Amp Employee Example](https://apis.io/examples/culture-amp/culture-amp-employee-example/)
+- [Culture Amp Employees List Example](https://apis.io/examples/culture-amp/culture-amp-employees-list-example/)
+- [Culture Amp Manager Review Example](https://apis.io/examples/culture-amp/culture-amp-manager-review-example/)
+- [Culture Amp Performance Cycle Example](https://apis.io/examples/culture-amp/culture-amp-performance-cycle-example/)
 
-| Type | URL |
-|------|-----|
-| Website | https://www.cultureamp.com |
-| Documentation | https://docs.api.cultureamp.com |
-| GitHub Organization | https://github.com/cultureamp |
-| LinkedIn | https://www.linkedin.com/company/cultureamp |
-| X (Twitter) | https://x.com/CultureAmp |
-| Blog | https://www.cultureamp.com/blog |
-| Pricing | https://www.cultureamp.com/platform/pricing |
-| Status Page | https://status.cultureamp.com |
+#### Collections (6)
 
-## Maintainers
+Postman and Open Collection request collections.
 
-- **Kin Lane** — kin@apievangelist.com
+- [Culture Amp Public Employees API](https://apis.io/collections/culture-amp/open-culture-amp-employees-api/)
+- [Culture Amp Public Employees Performance API](https://apis.io/collections/culture-amp/open-culture-amp-performance-api/)
+- [Culture Amp Public Employees Surveys API](https://apis.io/collections/culture-amp/open-culture-amp-surveys-api/)
+- [Culture Amp Public Employees API](https://apis.io/collections/culture-amp/postman-culture-amp-employees-api/)
+- [Culture Amp Public Employees Performance API](https://apis.io/collections/culture-amp/postman-culture-amp-performance-api/)
+- [Culture Amp Public Employees Surveys API](https://apis.io/collections/culture-amp/postman-culture-amp-surveys-api/)
+
+#### Overlays (3)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Culture Amp Employees Api Overlay](https://apis.io/overlays/culture-amp/culture-amp-employees-api-overlay/)
+- [Culture Amp Performance Api Overlay](https://apis.io/overlays/culture-amp/culture-amp-performance-api-overlay/)
+- [Culture Amp Surveys Api Overlay](https://apis.io/overlays/culture-amp/culture-amp-surveys-api-overlay/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Culture Amp — jsonschema rules](https://apis.io/rules/culture-amp/culture-amp-jsonschema-spectral-rules/)
+- [Culture Amp API Rules](https://apis.io/rules/culture-amp/culture-amp-rules/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Culture Amp Authentication](https://apis.io/security/culture-amp/culture-amp-authentication/)
+- [Culture Amp Domain Security](https://apis.io/security/culture-amp/culture-amp-domain-security/)
+- [Culture Amp Trust Center](https://apis.io/security/culture-amp/culture-amp-trust-center/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Culture Amp Scopes](https://apis.io/scopes/culture-amp/culture-amp-scopes/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Culture Amp Plans Pricing](https://apis.io/plans/culture-amp/culture-amp-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Culture Amp Rate Limits](https://apis.io/rate-limits/culture-amp/culture-amp-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Culture Amp Finops](https://apis.io/finops/culture-amp/culture-amp-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.cultureamp.com)
+- [Documentation](https://docs.api.cultureamp.com)
+- [Getting started](https://docs.api.cultureamp.com/docs/resources-getting-started)
+- [API reference](https://docs.api.cultureamp.com/reference)
+- [Pricing](https://www.cultureamp.com/platform/plans-and-pricing)
+- [Support](https://support.cultureamp.com/)
+- [Changelog](https://docs.api.cultureamp.com/changelog)
+- [Blog](https://www.cultureamp.com/blog)
+- [Compliance](https://security.cultureamp.com/)
+- [Terms of service](https://www.cultureamp.com/company/legal/terms)
+- [Privacy policy](https://www.cultureamp.com/company/legal/privacy-policy)
+- [GitHub](https://github.com/cultureamp)
+- [Status](https://status.cultureamp.com)
+
+## API Evangelist rating
+
+**Kin Score 60.8** — strong · rubric 0.24.0 · scored 2026-10-20
+
+| Facet | Score |
+|---|---|
+| Discoverability | 75.0 |
+| Contract quality | 69.0 |
+| Contract governance | 43.6 |
+| Operational transparency | 39.5 |
+| Developer ergonomics | 51.7 |
+| Access clarity | 55.3 |
+
+**Agent readiness 47.3** — agent-native
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | na |
+| MCP Server | documented (partial credit) |
+| Auth Clarity | negotiable (partial credit) |
+| Idempotency | na |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | unknown |
+| Well Known Catalog | yes |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | na |
+| Delegated Identity | — |
+| Protected Resource Metadata | verified |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 47.1** — Employment & Payroll
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/culture-amp/](https://apis.io/providers/culture-amp/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Culture Amp: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/culture-amp/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
